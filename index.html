@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>SCIS(Suwon Christian International School)</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  
+
+    <style>
+    .three {
+      justify-content: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* Allows elements to wrap to the next line if needed */
+    }
+
+    .three:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .each-element {
+      border: solid rgb(161, 161, 161) 1px;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      width: 18%;
+      margin: 1rem 0.2rem 0 0.2rem;
+      float: left;
+    }
+
+    .top-padding {
+      padding-top: 8rem;
+    }
+
+    .philosophy-responsive {
+      width: 50%
+    }
+
+    .bible-img {
+      padding-left: 0px; 
+      border-radius: 10px; 
+      border: solid 1px #ababab;
+      width: unset;
+      height: 22rem;
+      margin-bottom: 3rem;
+    }
+
+    .teachers {
+      display: flex;
+    }
+
+    .teacher {
+      width: 25%
+    }
+
+    .school-image {
+      width: 80%;
+    }
+
+    .founder-message {
+      width: 25rem;
+    }
+
+    .school-logo {
+      max-width: 15%; 
+      border-radius: 2rem; 
+      margin-top: 1rem;
+      display: block;
+      margin: 0 auto;
+      margin-top: 1rem;
+      border-radius: 0;
+    }
+
+    .div-school-logo {
+      text-align: center; 
+    }
+
+    .each-element-things {
+      color: #ee626b;
+      color: #002a90;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .each-element {
+        width: 23%; /* Slightly larger width for medium screens */
+      }
+      .top-padding {
+        padding-top: 0rem;
+      }
+
+      .philosophy-responsive {
+        width: 100%;
+      }
+      
+      .bible-img {
+        padding-left: 0px; 
+        border-radius: 10px; 
+        border: solid 1px #ababab;
+        width: unset;
+        height: 20rem;
+        margin-bottom: 3rem;
+      }
+
+      .school-image {
+        width: 450px;
+        margin-bottom: 3rem; 
+      }
+
+
+      
+    }
+
+    @media (max-width: 992px) {
+      .each-element {
+        width: 31%; /* Larger width for tablet screens */
+      }
+      .top-padding {
+        padding-top: 0rem;
+      }
+
+      .teachers {
+        display: unset;
+      }
+      .teacher {
+        width:100%;
+        margin-bottom: 2.5rem;
+      }
+
+      .founder-message {
+        width: unset;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .each-element {
+        width: 48%; /* Two elements per row on smaller screens */
+      }
+      .top-padding {
+        padding-top: 0rem;
+      }
+
+      .school-logo {
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .each-element {
+        width: 100%; /* Full width for small mobile screens */
+        margin: 1rem 0; /* Adjust margin for full-width elements */
+      }
+      .top-padding {
+        padding-top: 0rem;
+      }
+
+      .school-image {
+        width: 100%;
+      }
+
+      .bible-img {
+        width: 100%;
+      }
+    }
+
+
+
+
+    .profile-image {
+      max-width: 12rem;
+      border-radius: 10000rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      background-position: center;
+    }
+
+
+
+    .teacher-name {
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .teacher-desc {
+      line-height: 1;
+      text-align: center;
+    }
+
+
+
+
+
+
+
+
+    .page-heading {
+    position: relative;
+    overflow: hidden;
+    }
+
+    .page-heading img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .page-heading::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+        pointer-events: none;
+    }
+
+    </style>
+  </head>
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+
+                      <div style="display: flex; justify-content: center; align-items: center; ">
+                        <h1>SCIS</h1>
+                        <div style="border-right: solid 1px gray; height: 3rem; margin-left: 0.5rem; margin-right: 0.5rem;"></div>
+                        <p style="line-height: 13px; text-align: left; width: 150px;">Suwon Christian<br>International School</p>
+                      </div>
+
+
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="index.html" class="active">About us</a></li>
+                      <li><a href="education.html">Education</a></li>
+                      <li><a href="admission.html">Admission</a></li>
+                      <li><a href="community.html">Community</a></li>
+                      <li></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+      <!-- ***** Sub Navigation Start ***** -->
+  <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <ul class="info">
+            <li><a href="#Vision">Vision</a></li>
+            <li><a href="#Direction">Direction</a></li>
+            <li style="padding-right:22px"><a href="#Philosophy">Philosophy</a></li>
+            <li><a href="#Faculty Staff">Faculty&Staff</a></li>
+            <li><a href="#Word From Our Founder">Word From Our Founder</a></li>
+          </ul>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <!-- ***** Sub Navigation End ***** -->
+  
+
+  <div class="page-heading header-text" style="background-image: url(assets/images/rsc_all.jpg); background-position: center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Welcome To SCIS</h3>
+          <span class="breadcrumb"><p style="color: #7a7a7a">We welcome new students!</p></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 id="Vision" style="text-align: center; font-weight: 600; padding-top: 3rem; text-shadow: 2px 4px 3px rgba(0,0,0,0.07);;">Empowering Christian<br>Transformation</h1>
+  <p style="text-align: center; padding-top: 1rem;">To be a strong Christian spiritually, physically, and academically in the faith of Jesus Christ.</p>
+  <div class="three" style="padding-bottom: 4rem;">
+    <div class="each-element">
+      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Spiritual Power</p>
+      <p style="text-align: center;">A spiritually powerful Christian who armed with the characters of Jesus Christ, breaks the world's values with the sword of the Word.</p>
+    </div>
+    <div class="each-element">
+      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Mental Health</p>
+      <p style="text-align: center;">A mentally healthy Christian by breaking through the values of the world with insights based on the Biblical worldview.</p>
+    </div> 
+    <div class="each-element">
+      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Academic Excellence</p>
+      <p style="text-align: center;">An academically healthy Christian through the education based on the Christian worldview of the elementary, middle, and high school curriculum</p>
+    </div> 
+  </div>
+
+
+
+  <!-- School Description Start -->
+  <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding: 2rem 0rem 4rem 0rem;">
+    <div class="container">
+      <div class="row" style="display: unset;">
+        <h1 style="padding-top: 1rem; text-align: center;">What is SCIS?</h1>
+
+        <div class="div-school-logo">
+          <img src="assets/images/logo.png" class="school-logo">
+          <p>SCIS stands for Suwon Christian International School and is a Christian alternative school established by Suwon Full Gospel Church. From the first grade of elementary school to the third grade of high school, we learn the word of God here and receive an education built on the word of God through the SOT program. Biblical values are never to be compromised by secular values. It is because this world continues to reject the Christian faith for the reason of human reason. So, we provide the best Christian education to grow the students Christian leaders who shine this world.</p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <!-- School Description End -->  
+
+
+
+
+  <!-- School Direction Start -->
+  <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding: 2rem 0rem 4rem 0rem;">
+    <div class="container">
+      <div class="row" style="justify-content: center;">
+        <div class="col-lg-4 philosophy-responsive">
+          <h1 style="padding-top: 2rem;" id="Direction">Direction</h1>
+          <span class="breadcrumb" style="padding-bottom: 0.7rem"><a href="index.html">Home</a> > <a href="#Direction">Direction</a></span>
+
+          <div class="left-image">
+            <img src="assets/images/featured.webp" alt="" style="padding-left: 0px; border-radius: 10px; border: solid 1px #ababab;" class="school-image">
+          </div>
+        </div>
+
+        <div class="col-lg-5 philosophy-responsive">
+          <div class="section-heading top-padding">
+            <h6>| Contact</h6>
+            <h3 style="padding-top: 1rem">Location</h3>
+            <p>1334, Deogyeong-daero, Gwonseon-gu, Suwon-si, 
+              Gyeonggi-do, Republic of Korea HD 16668 </p>
+
+            <h3 style="padding-top: 1rem;">Number</h3>
+            <p>031-221-0098</p>
+
+            <h3 style="padding-top: 1rem;">Email Address</h3>
+            <p>scis@outlook.kr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- School Direction End -->  
+
+  <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding-top: 2rem;">
+    <div class="container">
+      <div class="row" style="justify-content: center;">
+        <div class="col-lg-4 philosophy-responsive">
+          <h1 style="padding-top: 2rem;" id="Philosophy">Philosophy</h1>
+          <span class="breadcrumb" style="padding-bottom: 0.7rem"><a href="index.html">Home</a> > <a href="#Philosophy">Philosophy</a></span>
+
+          <div class="left-image">
+            <img src="assets/images/featured.jpg" alt="" class="bible-img" style="padding-left: 0;">
+          </div>
+        </div>
+
+        <div class="col-lg-5 philosophy-responsive">
+          <div class="section-heading top-padding">
+            <h6>| Main Bible Verse</h6>
+            <h3 style="padding-top: 1rem">Romans 12:2</h3>
+            <p>And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is
+              that good, and acceptable, and perfect, will of God. (Romans 12:2 KJV) </p>
+
+            <h3 style="padding-top: 1rem;">School Policy</h3>
+            <p>Bible-based education along with A.C.E. curriculums that pursue building Godly Character through Self-Instructional Curriculum and Individualized Programs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Faculty & Staff Start -->
+  <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding-top: 2rem;">
+    <div class="container">
+      <div class="row" style="justify-content: center;">
+
+          <h1 style="padding-top: 2rem;" id="Faculty Staff">Faculty&Staff</h1>
+          <span class="breadcrumb" style="padding-bottom: 0.7rem; padding-left: calc(var(--bs-gutter-x) * .5);"><a href="index.html">Home</a> > <a href="#Faculty Staff">Faculty&Staff</a></span>
+
+
+
+          <div class="section-heading">
+            <div class="teachers">
+
+              <div class="teacher">
+                <img src="assets/images/teachers/head_pastor.png" class="profile-image">
+                <p class="teacher-name">REV. YOHAN LEE</p>
+                <p class="teacher-desc">Principal</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/PastorKim.jpg" class="profile-image">
+                <p class="teacher-name">REV. SUNGHAN KIM</p>
+                <p class="teacher-desc">Vice Principal & Administrator</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/Yoon.jpg" class="profile-image">
+                <p class="teacher-name">MRS. YUNA CHANG</p>
+                <p class="teacher-desc">Vice Principal, Piano accompaniment & elementary, middle, and high school reading</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/Eunice.jpg" class="profile-image">
+                <p class="teacher-name">MRS. EUNICE OH</p>
+                <p class="teacher-desc">Homeroom teacher of Leaf Class, Supervisor for Grades 4-6, Japanese, Korean History & Choir teaching</p>
+              </div>
+
+            </div>
+
+            <div style="margin-top: 1.5rem;"></div>
+
+            <div class="teachers">
+
+              <div class="teacher">
+                <img src="assets/images/teachers/Kevin.jpg" class="profile-image">
+                <p class="teacher-name">MR. GARAM YOO</p>
+                <p class="teacher-desc">Homeroom teacher of Flower-bud Class, Supervisor for Grades 10-12, ESL class, Coding & Middle school math</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/Jake.jpg" class="profile-image">
+                <p class="teacher-name">MR. JONGHYUN LEE </p>
+                <p class="teacher-desc">Homeroom teacher of Stem Class, Supervisor for Grades 7-9, Guitar class & Elementary school math</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/pe.jpg" class="profile-image">
+                <p class="teacher-name">MRS. BOREUM PARK</p>
+                <p class="teacher-desc">P.E. & Volleyball coach</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/face_too_much.png" class="profile-image">
+                <p class="teacher-name">MRS. MOONY CHOI</p>
+                <p class="teacher-desc">Arts for elementary and middle school</p>
+              </div>
+              
+            </div>
+
+
+            <div style="margin-top: 1.5rem;"></div>
+
+            <div class="teachers">
+
+              <div class="teacher">
+                <img src="assets/images/teachers/KakaoTalk_20240824_135313479.jpg" class="profile-image">
+                <p class="teacher-name">MRS. JIYEON KWON</p>
+                <p class="teacher-desc">Piano & Cello</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/Violin.png" class="profile-image">
+                <p class="teacher-name">MR. JAEYOUNG PARK</p>
+                <p class="teacher-desc">Violin</p>
+              </div>
+
+              <div class="teacher">
+                <img src="assets/images/teachers/KakaoTalk_20240824_135313479_01.jpg" class="profile-image" height="180" style="object-fit: cover;">
+                <p class="teacher-name">MR. YOUNGGWANG JOO</p>
+                <p class="teacher-desc">Football coach</p>
+              </div>
+              
+            </div>
+
+
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Facaulty & Staff End -->
+
+
+
+  
+  <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding-top: 2rem;">
+    <div class="container">
+      <div class="row" style="justify-content: center;">
+        <div class="col-lg-4">
+          <h1 style="padding-top: 2rem;" id="Word From Our Founder">Word From Our Founder</h1>
+          <span class="breadcrumb" style="padding-bottom: 0.7rem"><a href="index.html">Home</a> > <a href="#Philosophy">Word From Our Founder</a></span>
+
+          <div class="left-image">
+            <img src="https://cdn.imweb.me/thumbnail/20240328/a598d73a0d764.jpeg" alt="" style="padding-left: 0px; border-radius: 10px; border: solid 1px #ababab;">
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="section-heading top-padding">
+            <h6>| Founder</h6>
+            <h3 style="padding-top: 1rem">Rev. Johan Lee</h3>
+            <p class="founder-message">Today the field of public education is dominated by secular and unbiblical values. Biblical values are never to be compromised by secular values. It is because this world continues to reject the Christian faith for the reason of human reason. However, now I can visualize what I have been praying about which is through SCIS and God’s timing the next generation can receive a Godly education. I firmly believe that SCIS will cultivate plenty of faithful Christian leaders who will lead the 21st century through self-directed learning and character development education based on the biblical worldview. We aim to raise influential godly men and women with superb English skills in the world by using the utmost methods and making Godly choices based on the S.O.T. program. In addition, our great faculty and staff will do their best with God's heart as well. Please prayerfully consider sending your child(ren) to our school. May dreams, love, and blessings for your home.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p style="padding: 1rem 0 1rem 0;">Suwon Christian International School</p>
+        <p>TEL : 031-548-2198 E-mail: scis@outlook.kr</p>
+        <p style="padding: 1rem 0 1rem 0;"><a href="https://bit.ly/inoahbabo" target="_blank">Designed</a> and developed with faith by<br><a href="https://www.instagram.com/yg201009/" target="_blank">Justin Kang</a> & <a rel="nofollow" href="https://www.instagram.com/leeyena120" target="_blank">Laura Lee</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+    
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="vendor\remove_F12.js"></script>
+</html>
