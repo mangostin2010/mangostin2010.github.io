@@ -142,7 +142,7 @@
         margin: 10px;
         background-size: cover;
         background-position: center;
-        height: 150px;
+        height: 165px;
         color: white;
         font-size: 16px;
         border: solid 1px #7d7d7d;
@@ -338,92 +338,72 @@
         }
         
         document.getElementById("defaultOpen").click();
-    
+
+
+
         document.addEventListener('DOMContentLoaded', function() {
             const foldersContainer = document.getElementById('folders-container');
             const imagesContainer = document.getElementById('images-container');
-    
-            const owner = 'mangostin2010';
-            const repo = 'mangostin2010.github.io';
-            const path = 'assets/images/community';
-            const token = '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'; // Replace with your actual token
-    
-            function fetchFromGitHub(url) {
-                return fetch(url, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                }).then(response => {
-                    if (!response.ok) {
-                        throw new Error(`GitHub API responded with ${response.status}: ${response.statusText}`);
-                    }
-                    return response.json();
-                });
-            }
-    
+
             function fetchFolders() {
-                fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
-                    .then(data => {
-                        const folders = data.filter(item => item.type === 'dir');
+                fetch('https://scisjustin.pythonanywhere.com/list_folders')
+                    .then(response => response.json())
+                    .then(folders => {
                         foldersContainer.innerHTML = ''; // Clear previous buttons
                         folders.forEach(folder => {
+                            // Create a parent container for the button and span
                             const folderContainer = document.createElement('div');
                             folderContainer.className = 'folder-container';
-    
+
+                            // Create the button
                             const button = document.createElement('button');
                             button.className = 'folder-button';
                             button.onclick = scrollToCommunity;
-    
-                            fetchRandomImage(folder.name)
+
+                            // Fetch a random image for the folder
+                            fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                                .then(response => response.json())
                                 .then(randomImage => {
-                                    if (randomImage) {
-                                        const imgUrl = randomImage.download_url;
-                                        button.style.backgroundImage = `url(${imgUrl})`;
-                                    }
+                                    const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
+                                    button.style.backgroundImage = `url(${imgUrl})`;
                                 })
                                 .catch(error => console.error('Error fetching random image:', error));
-    
-                            button.addEventListener('click', () => showImages(folder.name));
-    
+
+                            button.addEventListener('click', () => showImages(folder));
+
+                            // Create the span
                             const textSpan = document.createElement('span');
                             textSpan.className = 'folder-button-text';
-                            textSpan.textContent = folder.name;
-    
+                            textSpan.textContent = folder;
+
+                            // Append the button and span to the folder container
                             folderContainer.appendChild(button);
                             folderContainer.appendChild(textSpan);
+
+                            // Append the folder container to the folders container
                             foldersContainer.appendChild(folderContainer);
                         });
                     })
                     .catch(error => console.error('Error fetching folders:', error));
             }
-    
-            function fetchRandomImage(folderName) {
-                return fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${encodeURIComponent(folderName)}`)
-                    .then(files => {
-                        const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
-                        if (images.length > 0) {
-                            const randomIndex = Math.floor(Math.random() * images.length);
-                            return images[randomIndex];
-                        }
-                        return null;
-                    });
-            }
-    
+
             function showImages(folder) {
-                fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${encodeURIComponent(folder)}`)
-                    .then(files => {
-                        const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
-                        
+                const encodedFolder = encodeURIComponent(folder);
+                fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+                    .then(response => response.json())
+                    .then(images => {
+                        // Clear previous images and folder buttons
                         imagesContainer.innerHTML = '';
                         foldersContainer.innerHTML = '';
-    
+
+                        // Show images
                         images.forEach(image => {
                             const imgElement = document.createElement('img');
-                            imgElement.src = image.download_url;
+                            imgElement.src = `/assets/images/community/${encodedFolder}/${image}`;
                             imagesContainer.appendChild(imgElement);
                         });
-    
+
+                        // Create and show Go Back button
                         const goBackButton = document.createElement('button');
                         goBackButton.textContent = 'Go Back';
                         goBackButton.id = 'go-back-button';
@@ -435,10 +415,11 @@
                     })
                     .catch(error => console.error('Error fetching images:', error));
             }
-    
+
             fetchFolders();
+
         });
-    
+
         function scrollToCommunity() {
             const communityElement = document.getElementById('Community');
             if (communityElement) {
