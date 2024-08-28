@@ -338,7 +338,7 @@
         }
         
         document.getElementById("defaultOpen").click();
-
+    
         document.addEventListener('DOMContentLoaded', function() {
             const foldersContainer = document.getElementById('folders-container');
             const imagesContainer = document.getElementById('images-container');
@@ -346,22 +346,35 @@
             const owner = 'mangostin2010';
             const repo = 'mangostin2010.github.io';
             const path = 'assets/images/community';
-
+            const token = 'YOUR_PERSONAL_ACCESS_TOKEN'; // Replace with your actual token
+    
+            function fetchFromGitHub(url) {
+                return fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error(`GitHub API responded with ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                });
+            }
+    
             function fetchFolders() {
-                fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
-                    .then(response => response.json())
+                fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
                     .then(data => {
                         const folders = data.filter(item => item.type === 'dir');
                         foldersContainer.innerHTML = ''; // Clear previous buttons
                         folders.forEach(folder => {
                             const folderContainer = document.createElement('div');
                             folderContainer.className = 'folder-container';
-
+    
                             const button = document.createElement('button');
                             button.className = 'folder-button';
                             button.onclick = scrollToCommunity;
-
-                            // Fetch a random image for the folder
+    
                             fetchRandomImage(folder.name)
                                 .then(randomImage => {
                                     if (randomImage) {
@@ -370,13 +383,13 @@
                                     }
                                 })
                                 .catch(error => console.error('Error fetching random image:', error));
-
+    
                             button.addEventListener('click', () => showImages(folder.name));
-
+    
                             const textSpan = document.createElement('span');
                             textSpan.className = 'folder-button-text';
                             textSpan.textContent = folder.name;
-
+    
                             folderContainer.appendChild(button);
                             folderContainer.appendChild(textSpan);
                             foldersContainer.appendChild(folderContainer);
@@ -386,8 +399,7 @@
             }
     
             function fetchRandomImage(folderName) {
-                return fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${folderName}`)
-                    .then(response => response.json())
+                return fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${encodeURIComponent(folderName)}`)
                     .then(files => {
                         const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
                         if (images.length > 0) {
@@ -398,9 +410,8 @@
                     });
             }
     
-            function showImages(folderName) {
-                fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${folderName}`)
-                    .then(response => response.json())
+            function showImages(folder) {
+                fetchFromGitHub(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${encodeURIComponent(folder)}`)
                     .then(files => {
                         const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
                         
