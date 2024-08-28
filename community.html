@@ -351,6 +351,9 @@
                     .then(folders => {
                         foldersContainer.innerHTML = ''; // Clear previous buttons
                         folders.forEach(folder => {
+                            // Split the folder name and use the part after '[]' for the display name
+                            const [_, displayName] = folder.split('[]');
+
                             // Create a parent container for the button and span
                             const folderContainer = document.createElement('div');
                             folderContainer.className = 'folder-container';
@@ -358,9 +361,8 @@
                             // Create the button
                             const button = document.createElement('button');
                             button.className = 'folder-button';
-                            button.onclick = scrollToCommunity;
 
-                            // Fetch a random image for the folder
+                            // Fetch a random image for the folder using the original folder name (without modification)
                             fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
                                 .then(response => response.json())
                                 .then(randomImage => {
@@ -369,12 +371,17 @@
                                 })
                                 .catch(error => console.error('Error fetching random image:', error));
 
-                            button.addEventListener('click', () => showImages(folder));
+                            // Use the original folder name for fetching images when the button is clicked
+                            button.addEventListener('click', () => {
+                                showImages(folder);
+                                scrollToCommunity(); // Scroll to the community section
+                                document.getElementById("defaultOpen").click(); // Trigger the default tab to open
+                            });
 
-                            // Create the span
+                            // Create the span with the display name (only the part after '[]')
                             const textSpan = document.createElement('span');
                             textSpan.className = 'folder-button-text';
-                            textSpan.textContent = folder;
+                            textSpan.textContent = displayName;
 
                             // Append the button and span to the folder container
                             folderContainer.appendChild(button);
@@ -386,6 +393,7 @@
                     })
                     .catch(error => console.error('Error fetching folders:', error));
             }
+
 
             function showImages(folder) {
                 const encodedFolder = encodeURIComponent(folder);
