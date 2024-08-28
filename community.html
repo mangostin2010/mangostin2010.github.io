@@ -339,71 +339,80 @@
         
         document.getElementById("defaultOpen").click();
 
-
-
         document.addEventListener('DOMContentLoaded', function() {
             const foldersContainer = document.getElementById('folders-container');
             const imagesContainer = document.getElementById('images-container');
+    
+            const owner = 'mangostin2010';
+            const repo = 'mangostin2010.github.io';
+            const path = 'assets/images/community';
 
             function fetchFolders() {
-                fetch('https://scisjustin.pythonanywhere.com/list_folders')
+                fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
                     .then(response => response.json())
-                    .then(folders => {
+                    .then(data => {
+                        const folders = data.filter(item => item.type === 'dir');
                         foldersContainer.innerHTML = ''; // Clear previous buttons
                         folders.forEach(folder => {
-                            // Create a parent container for the button and span
                             const folderContainer = document.createElement('div');
                             folderContainer.className = 'folder-container';
 
-                            // Create the button
                             const button = document.createElement('button');
                             button.className = 'folder-button';
                             button.onclick = scrollToCommunity;
 
                             // Fetch a random image for the folder
-                            fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
-                                .then(response => response.json())
+                            fetchRandomImage(folder.name)
                                 .then(randomImage => {
-                                    const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
-                                    button.style.backgroundImage = `url(${imgUrl})`;
+                                    if (randomImage) {
+                                        const imgUrl = randomImage.download_url;
+                                        button.style.backgroundImage = `url(${imgUrl})`;
+                                    }
                                 })
                                 .catch(error => console.error('Error fetching random image:', error));
 
-                            button.addEventListener('click', () => showImages(folder));
+                            button.addEventListener('click', () => showImages(folder.name));
 
-                            // Create the span
                             const textSpan = document.createElement('span');
                             textSpan.className = 'folder-button-text';
-                            textSpan.textContent = folder;
+                            textSpan.textContent = folder.name;
 
-                            // Append the button and span to the folder container
                             folderContainer.appendChild(button);
                             folderContainer.appendChild(textSpan);
-
-                            // Append the folder container to the folders container
                             foldersContainer.appendChild(folderContainer);
                         });
                     })
                     .catch(error => console.error('Error fetching folders:', error));
             }
-
-            function showImages(folder) {
-                const encodedFolder = encodeURIComponent(folder);
-                fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+    
+            function fetchRandomImage(folderName) {
+                return fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${folderName}`)
                     .then(response => response.json())
-                    .then(images => {
-                        // Clear previous images and folder buttons
+                    .then(files => {
+                        const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
+                        if (images.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * images.length);
+                            return images[randomIndex];
+                        }
+                        return null;
+                    });
+            }
+    
+            function showImages(folderName) {
+                fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}/${folderName}`)
+                    .then(response => response.json())
+                    .then(files => {
+                        const images = files.filter(file => file.type === 'file' && /\.(jpg|jpeg|png|gif)$/i.test(file.name));
+                        
                         imagesContainer.innerHTML = '';
                         foldersContainer.innerHTML = '';
-
-                        // Show images
+    
                         images.forEach(image => {
                             const imgElement = document.createElement('img');
-                            imgElement.src = `/assets/images/community/${encodedFolder}/${image}`;
+                            imgElement.src = image.download_url;
                             imagesContainer.appendChild(imgElement);
                         });
-
-                        // Create and show Go Back button
+    
                         const goBackButton = document.createElement('button');
                         goBackButton.textContent = 'Go Back';
                         goBackButton.id = 'go-back-button';
@@ -415,11 +424,10 @@
                     })
                     .catch(error => console.error('Error fetching images:', error));
             }
-
+    
             fetchFolders();
-
         });
-
+    
         function scrollToCommunity() {
             const communityElement = document.getElementById('Community');
             if (communityElement) {
