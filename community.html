@@ -127,12 +127,7 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 576px) {
-        #folders-container {
-            display: grid;
-            grid-template-columns: unset;
-        }
-    }
+
 
     .folder-button {
         position: relative;
@@ -151,6 +146,7 @@
         background-color: rgb(255, 255, 255);
         margin-bottom: 0;
         transition: 0.3s;
+        width: -webkit-fill-available;
     }
 
     .folder-button:hover {
@@ -220,6 +216,18 @@
     @media (max-width: 768px) {
         .month {
             padding: 0;
+        }
+    }
+
+    @media (max-width: 576px) {
+        #folders-container {
+            display: grid;
+            grid-template-columns: unset;
+        }
+
+        .folder-button {
+            width: -webkit-fill-available;
+            margin: 0 auto;
         }
     }
 </style>
