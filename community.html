@@ -188,7 +188,8 @@
     .calendar-title {
         text-align: center;
         color: #2c3e50;
-        padding: 1rem 0 2rem 0;
+        padding-top: 3rem;
+        border-bottom: solid 1px #424242;
     }
 
     .month-name {
@@ -197,7 +198,6 @@
     }
     ul {
         list-style-type: none;
-        text-align: left;
         padding-left: 2rem;
     }
     li {
@@ -231,6 +231,116 @@
             margin: 0 auto;
         }
     }
+
+    :root {
+    --day-height: 50px;
+}
+
+
+.calendar-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #ccc;
+}
+
+.day, .day-name {
+    background-color: white;
+    min-height: var(--day-height);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    word-break: break-word; /* Allows words to break */
+    overflow: hidden; /* Hides overflow */
+}
+
+.day-name {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.current-day {
+    background-color: #e0f2f1;
+}
+
+.event {
+    font-size: 1em; /* Keeping this size adjustment for mobile */
+    background-color: #00796b;
+    margin-top: 2px;
+    overflow-wrap: break-word; /* Allows word breaking */
+    word-wrap: break-word; /* For compatibility with older browsers */
+    word-break: break-word; /* Ensures long words are broken */
+    overflow: hidden; /* Hide content if it exceeds max-height */
+    text-align: left; /* Align text to left for better readability when wrapped */
+    width: 100%; /* Ensure it uses full width of parent */
+    color: white;
+}
+
+/* Remove or adjust these if previously set for ellipsis effect */
+/* 
+.event {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+*/
+
+@media (max-width: 600px) {
+    #calendar {
+        font-size: 0.8em;
+    }
+
+    .day {
+        min-height: 60px; /* Increased for more space for events */
+    }
+
+    .day-name {
+        min-height: 40px;
+    }
+
+    .event {
+        font-size: 1em;
+    }
+
+    .calendar-controls button {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+    .calendar-controls span {
+        font-size: 0.9em;
+    }
+}
+
+/* Button styles for better mobile interaction */
+#prev-month, #next-month {
+    cursor: pointer;
+    border: none;
+    background-color: #6d6d6d;
+    color: white;
+    border-radius: 3px;
+}
+
+#prev-month:hover, #next-month:hover {
+    background-color: #474747;
+}
 </style>
 
 <body>
@@ -306,7 +416,7 @@
         <!-- Tab links -->
         <div class="tab">
             <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Gallery');">Gallery</button>
-            <button class="tablinks" onclick="openCity(event, 'Calendar')">Calendar</button>
+            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">Calendar</button>
             <!--<button class="tablinks" onclick="openCity(event, 'Recruitment information')">Recruitment Information</button>-->
             <!--<button class="tablinks" onclick="openCity(event, 'Post')">Post</button>-->
         </div>
@@ -321,112 +431,20 @@
 
         </div>
 
-        <div id="Calendar" class="tabcontent">
+        <div id="Calendar_tab" class="tabcontent">
             <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">Calendar</h4>
             <p>Calendar of SCIS in 2024</p>
             
             <h1 class="calendar-title"></h1>
 
-            <div class="month">
-                <h2 class="month-name">March</h2>
-                <ul>
-                    <li><span class="date">2</span> - Parents Meeting</li>
-                    <li><span class="date">4-5</span> - Opening Camp</li>
-                    <li><span class="date">22</span> - CEC</li>
-                    <li><span class="date">25</span> - Observed Holiday</li>
-                    <li><span class="date">29</span> - Easter Event</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">April</h2>
-                <ul>
-                    <li><span class="date">6</span> - Parents Meeting</li>
-                    <li><span class="date">22-26</span> - Midterm Exam Week</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">May</h2>
-                <ul>
-                    <li><span class="date">4</span> - Parents Meeting</li>
-                    <li><span class="date">11</span> - Spring Sport Day</li>
-                    <li><span class="date">31</span> - Field Trip</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">June</h2>
-                <ul>
-                    <li><span class="date">1</span> - Parents Meeting</li>
-                    <li><span class="date">10-14</span> - Dress Up Week</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">July</h2>
-                <ul>
-                    <li><span class="date">6</span> - Parents Meeting</li>
-                    <li><span class="date">15-18</span> - Final Exam Week</li>
-                    <li><span class="date">19</span> - Water Park</li>
-                    <li><span class="date">26</span> - Closing Ceremony</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">August</h2>
-                <ul>
-                    <li><span class="date">19-30</span> - Intensive Week</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">September</h2>
-                <ul>
-                    <li><span class="date">2-3</span> - Opening Camp</li>
-                    <li><span class="date">7</span> - Parents Meeting</li>
-                    <li><span class="date">16-18</span> - Chuseok</li>
-                </ul>
-            </div>
-        
-            <div class="month">
-                <h2 class="month-name">October</h2>
-                <ul>
-                    <li><span class="date">5</span> - Parents Meeting</li>
-                    <li><span class="date">12</span> - Fall Sport Day</li>
-                    <li><span class="date">14</span> - Observed Holiday</li>
-                    <li><span class="date">21-25</span> - Midterm Exam Week</li>
-                </ul>
-            </div>
-
-            <div class="month">
-                <h2 class="month-name">November</h2>
-                <ul>
-                    <li><span class="date">1</span> - Hallelujah Day</li>
-                    <li><span class="date">2</span> - Parents Meeting</li>
-                    <li><span class="date">25-29</span> - AASC</li>
-                </ul>
-            </div>
-
-            <div class="month">
-                <h2 class="month-name">December</h2>
-                <ul>
-                    <li><span class="date">7</span> - Parents Meeting</li>
-                    <li><span class="date">20</span> - Secret Angels Day</li>
-                    <li><span class="date">21</span> - Christmas Concert</li>
-                    <li><span class="date">23</span> - Observed Holiday</li>
-                </ul>
-            </div>
-
-            <div class="month">
-                <h2 class="month-name">January 2025</h2>
-                <ul>
-                    <li><span class="date">4</span> - Parent Meeting</li>
-                    <li><span class="date">13-16</span> - Final Exam Week</li>
-                    <li><span class="date">17</span> - Observed Holiday</li>
-                    <li><span class="date">24</span> - Closing Ceremony</li>
-                    <li><span class="date">25</span> - Graduation Ceremony</li>
-                </ul>
+            
+            <div class="calendar-container">
+                <div class="calendar-controls">
+                    <button id="prev-month">Previous</button>
+                    <span id="current-month-year" style="font-size: 1.3rem;"></span>
+                    <button id="next-month">Next</button>
+                </div>
+                <div id="calendar"></div>
             </div>
             
         </div>
@@ -464,6 +482,7 @@
     <script src="assets/js/counter.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="vendor/remove_F12.js"></script>
+    <script src="vendor/calendar.js"></script>
 
     <script>
         function openCity(evt, cityName) {
