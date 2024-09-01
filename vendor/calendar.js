@@ -104,13 +104,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let currMonth = date.getMonth();
 
     const renderCalendar = () => {
-        date.setDate(1);
+        date.setDate(1); // Set date to the first day of the current month
         const monthDays = document.createDocumentFragment();
-        const lastDay = new Date(currYear, currMonth + 1, 0).getDate();
-        const prevLastDay = new Date(currYear, currMonth, 0).getDate();
-        const firstDayIndex = date.getDay();
-        const lastDayIndex = new Date(currYear, currMonth + 1, 0).getDay();
-        const nextDays = 7 - lastDayIndex - 1;
+        const lastDay = new Date(currYear, currMonth + 1, 0).getDate(); // Get the last day of the current month
+        const firstDayIndex = date.getDay(); // Get the weekday of the first day of the current month
+        const lastDayIndex = new Date(currYear, currMonth + 1, 0).getDay(); // Get the weekday of the last day of the current month
+        const prevLastDay = new Date(currYear, currMonth, 0).getDate(); // Get the last day of the previous month
+        const nextDays = 7 - lastDayIndex - 1; // Calculate the number of days to display from the next month
 
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         currentMonthYear.textContent = `${months[currMonth]} ${currYear}`;
@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', function() {
             monthDays.appendChild(dayNameElement);
         });
 
-        // Days of previous month
+        // Days of previous month (grayed out)
         for (let i = firstDayIndex; i > 0; i--) {
             const dayElement = document.createElement("div");
-            dayElement.classList.add('day');
+            dayElement.classList.add('day', 'prev-month-day', 'grayed-out');
             dayElement.innerText = prevLastDay - i + 1;
             monthDays.appendChild(dayElement);
         }
@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
             monthDays.appendChild(dayElement);
         }
 
-        // Days of next month
+        // Days of next month (grayed out)
         for (let i = 1; i <= nextDays; i++) {
             const dayElement = document.createElement("div");
-            dayElement.classList.add('day');
+            dayElement.classList.add('day', 'next-month-day', 'grayed-out');
             dayElement.innerText = i;
             monthDays.appendChild(dayElement);
         }
@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currMonth = 11;
             currYear--;
         }
+        date = new Date(currYear, currMonth, 1);
         renderCalendar();
     });
 
@@ -180,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currMonth = 0;
             currYear++;
         }
+        date = new Date(currYear, currMonth, 1);
         renderCalendar();
     });
 
