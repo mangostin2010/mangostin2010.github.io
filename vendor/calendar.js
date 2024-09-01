@@ -3,99 +3,98 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentMonthYear = document.getElementById('current-month-year');
     const eventList = {
         3: {
-            2: "Parents Meeting",
-            4: "Opening Camp",
-            5: "Opening Camp",
-            22: "CEC",
-            25: "Observed Holiday",
-            29: "Easter Event"
+            2: ["Parents Meeting", "#3d9fac"],
+            4: ["Opening Camp", "#3d9fac"],
+            5: ["Opening Camp", "#3d9fac"],
+            22: ["CEC", "#3d9fac"],
+            25: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            29: ["Easter Event", "#3d9fac"]
         },
         4: {
-            6: "Parents Meeting",
-            22: "Midterm Exam Week",
-            23: "Midterm Exam Week",
-            24: "Midterm Exam Week",
-            25: "Midterm Exam Week",
-            26: "Midterm Exam Week"
+            6: ["Parents Meeting", "#3d9fac"],
+            22: ["Midterm Exam Week", "#3d9fac"],
+            23: ["Midterm Exam Week", "#3d9fac"],
+            24: ["Midterm Exam Week", "#3d9fac"],
+            25: ["Midterm Exam Week", "#3d9fac"],
+            26: ["Midterm Exam Week", "#3d9fac"]
         },
         5: {
-            4: "Parents Meeting",
-            11: "Spring Sport Day",
-            31: "Field Trip"
+            4: ["Parents Meeting", "#3d9fac"],
+            11: ["Spring Sport Day", "#3d9fac"],
+            31: ["Field Trip", "#3d9fac"]
         },
         6: {
-            1: "Parents Meeting",
-            10: "Dress Up Week",
-            11: "Dress Up Week",
-            12: "Dress Up Week",
-            13: "Dress Up Week",
-            14: "Dress Up Week"
+            1: ["Parents Meeting", "#3d9fac"],
+            10: ["Dress Up Week", "#3d9fac"],
+            11: ["Dress Up Week", "#3d9fac"],
+            12: ["Dress Up Week", "#3d9fac"],
+            13: ["Dress Up Week", "#3d9fac"],
+            14: ["Dress Up Week", "#3d9fac"]
         },
         7: {
-            6: "Parents Meeting",
-            15: "Final Exam Week",
-            16: "Final Exam Week",
-            17: "Final Exam Week",
-            18: "Final Exam Week",
-            26: "Closing Ceremony"
+            6: ["Parents Meeting", "#3d9fac"],
+            15: ["Final Exam Week", "#3d9fac"],
+            16: ["Final Exam Week", "#3d9fac"],
+            17: ["Final Exam Week", "#3d9fac"],
+            18: ["Final Exam Week", "#3d9fac"],
+            26: ["Closing Ceremony", "#3d9fac"]
         },
         8: {
-            19: "Intensive Week",
-            20: "Intensive Week",
-            21: "Intensive Week",
-            22: "Intensive Week",
-            23: "Intensive Week",
-            24: "Intensive Week",
-            25: "Intensive Week",
-            26: "Intensive Week",
-            27: "Intensive Week",
-            28: "Intensive Week",
-            29: "Intensive Week",
-            30: "Intensive Week"
+            19: ["Intensive Week", "#3d9fac"],
+            20: ["Intensive Week", "#3d9fac"],
+            21: ["Intensive Week", "#3d9fac"],
+            22: ["Intensive Week", "#3d9fac"],
+            23: ["Intensive Week", "#3d9fac"],
+            24: ["Intensive Week", "#3d9fac"],
+            25: ["Intensive Week", "#3d9fac"],
+            26: ["Intensive Week", "#3d9fac"],
+            27: ["Intensive Week", "#3d9fac"],
+            28: ["Intensive Week", "#3d9fac"],
+            29: ["Intensive Week", "#3d9fac"],
+            30: ["Intensive Week", "#3d9fac"]
         },
         9: {
-            2: "Opening Camp",
-            3: "Opening Camp",
-            7: "Parents Meeting",
-            16: "Chuseok",
-            17: "Chuseok",
-            18: "Chuseok"
+            2: ["Opening Camp", "#3d9fac"],
+            3: ["Opening Camp", "#3d9fac"],
+            7: ["Parents Meeting", "#3d9fac"],
+            16: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
+            17: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
+            18: ["Chuseok", "rgb(233 89 89)"]  // No school event marked in red
         },
         10: {
-            5: "Parents Meeting",
-            12: "Fall Sport Day",
-            14: "Observed Holiday",
-            21: "Midterm Exam Week",
-            22: "Midterm Exam Week",
-            23: "Midterm Exam Week",
-            24: "Midterm Exam Week",
-            25: "Midterm Exam Week",
+            5: ["Parents Meeting", "#3d9fac"],
+            12: ["Fall Sport Day", "#3d9fac"],
+            14: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            21: ["Midterm Exam Week", "#3d9fac"],
+            22: ["Midterm Exam Week", "#3d9fac"],
+            23: ["Midterm Exam Week", "#3d9fac"],
+            24: ["Midterm Exam Week", "#3d9fac"],
+            25: ["Midterm Exam Week", "#3d9fac"]
         },
         11: {
-            1: "Hallelujah Day",
-            2: "Parents Meeting",
-            25: "AASC",
-            26: "AASC",
-            27: "AASC",
-            28: "AASC",
-            29: "AASC"
+            1: ["Hallelujah Day", "#3d9fac"],
+            2: ["Parents Meeting", "#3d9fac"],
+            25: ["AASC", "#3d9fac"],
+            26: ["AASC", "#3d9fac"],
+            27: ["AASC", "#3d9fac"],
+            28: ["AASC", "#3d9fac"],
+            29: ["AASC", "#3d9fac"]
         },
         12: {
-            7: "Parents Meeting",
-            20: "Secret Angels Day",
-            21: "Christmas Concert",
-            23: "Observed Holiday"
+            7: ["Parents Meeting", "#3d9fac"],
+            20: ["Secret Angels Day", "#3d9fac"],
+            21: ["Christmas Concert", "#3d9fac"],
+            23: ["Observed Holiday", "rgb(233 89 89)"] // No school event marked in red
         },
-        // Add all other months similarly up to January 2025
         1: { 
-            4: "Parents Meeting",
-            13: "Final Exam Week",
-            14: "Final Exam Week",
-            15: "Final Exam Week",
-            16: "Final Exam Week",
-            17: "Observed Holiday",
-            24: "Closing Ceremony",
-            25: "Graduation Ceremony"
+            4: ["Parents Meeting", "#3d9fac"],
+            13: ["Final Exam Week", "#3d9fac"],
+            14: ["Final Exam Week", "#3d9fac"],
+            15: ["Final Exam Week", "#3d9fac"],
+            16: ["Final Exam Week", "#3d9fac"],
+            17: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            24: ["Closing Ceremony", "#3d9fac"],
+            25: ["Graduation Ceremony", "#3d9fac"]
         }
     };
 
@@ -144,7 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (eventList[currMonth + 1] && eventList[currMonth + 1][i]) {
                 const eventDiv = document.createElement('div');
                 eventDiv.className = 'event';
-                eventDiv.textContent = eventList[currMonth + 1][i];
+                eventDiv.textContent = eventList[currMonth + 1][i][0]; // Set event name
+                eventDiv.style.backgroundColor = eventList[currMonth + 1][i][1] || '#3d9fac'; // Set event color, defaulting to #3d9fac
                 dayElement.appendChild(eventDiv);
             }
 
