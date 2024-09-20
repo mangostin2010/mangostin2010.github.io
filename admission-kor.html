@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 
     <title>SCIS(Suwon Christian International School)</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
@@ -22,6 +22,10 @@
   </head>
 
   <style>
+    /*    font-family: 'Poppins', sans-serif     */
+    p, a, select, h1, h2, h3, h4, h5, h6 {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+
     h3{
       text-align: left;
       color: white
@@ -54,6 +58,7 @@
         color: #1e1e1e;
         text-align: center;
         margin-top: 3rem;
+        margin-bottom: 0.7rem;
     }
 
     .div-between-steps {
@@ -97,23 +102,23 @@
         }
     }
 
-  @media (max-width: 768px) {
-    #languageSelect {
-      height: 50px;
-      background: transparent;
-      font-weight: bold;
-    }
+    @media (max-width: 768px) {
+      #languageSelect {
+        height: 50px;
+        background: transparent;
+        font-weight: bold;
+      }
 
-    .lang {
-      border-top: 1px solid #ddd;
-    }
+      .lang {
+        border-top: 1px solid #ddd;
+      }
 
-    #languageSelect {
-      height: 50px;
-      background: transparent;
-      font-weight: bold;
+      #languageSelect {
+        height: 50px;
+        background: transparent;
+        font-weight: bold;
+      }
     }
-  }
 
   </style>
 
@@ -143,9 +148,9 @@
                     <a href="index.html" class="logo">
 
                       <div style="display: flex; justify-content: center; align-items: center; ">
-                        <h1>SCIS</h1>
+                        <h1 style="font-family: 'Poppins', sans-serif">SCIS</h1>
                         <div style="border-right: solid 1px gray; height: 3rem; margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                        <p style="line-height: 13px; text-align: left; width: 150px;">Suwon Christian<br>International School</p>
+                        <p style="line-height: 13px; text-align: left; width: 150px; font-family: 'Poppins', sans-serif">Suwon Christian<br>International School</p>
                       </div>
 
 
@@ -153,16 +158,15 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html">About us</a></li>
-                      <li><a href="education.html">Education</a></li>
-                      <li><a href="admission.html" class="active">Admission</a></li>
-                      <li><a href="community.html">Community</a></li>
+                      <li><a href="index-kor.html">About us</a></li>
+                      <li><a href="education-kor.html">Education</a></li>
+                      <li><a href="admission-kor.html" class="active">Admission</a></li>
+                      <li><a href="community-kor.html">Community</a></li>
 
                       <div class="lang">
                         <select id="languageSelect" style="margin-top: 0.2rem; border: unset;" onchange="if(this.value) location.href=(this.value);">
-                          <option value="/admission.html">English</option>
                           <option value="/admission-kor.html">한국어</option>
-
+                          <option value="/admission.html">English</option>
                         </select>
                       </div>
 
@@ -184,7 +188,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>Admission</h3>
+          <h3 style="font-family: 'Poppins', sans-serif">Admission</h3>
           <span class="breadcrumb"><a href="index.html">Home</a> > <a href="#">Admission</a></span>
           
         </div>
@@ -195,26 +199,27 @@
 
  
   <div class="container">
-    <h1 id="admission-process" style="padding: 2rem 0 2rem 0;">Admission process</h1>
+    <h1 id="admission-process" style="padding: 2rem 0 2rem 0;">입학 절차</h1>
     <div style="margin-bottom: 1rem; border: solid 1px #ababab;"></div>
 
     <div class="steps">
         <div class="step step-1">
-            <h3 class="step-title">1. School Visit</h3>
-            <p style="text-align: center;">Now, we are taking applications for students over grade 4 from English spoken countries or transfer students from the SOT schools in South Korea and all low-level grade students.
-                Please call or email us and talk to the person in charge and set up an appointement to visit the school.
-                <br>Phone: 031-221-0098 <br>Mobile: 010-8875-0479 <br>E-mail: scis@outlook.kr</p>
+            <h3 class="step-title">1. 학교 방문</h3>
+            <p style="text-align: center;">이제 영어권 국가의 4학년 이상 학생이나 한국의 SOT 학교 편입생 및 모든 저학년 학생을 대상으로 지원을 받고 있습니다. 전화나 이메일로 담당자와 통화 후 학교 방문 일정을 잡으시기 바랍니다.
+                <br>전화: 031-221-0098 <br>휴대전화: 010-8875-0479 <br>이메일: scis@outlook.kr</p>
         </div>
 
         <div class="step step-2">
-            <h3 class="step-title">2. Application for Admission</h3>
-            <p style="text-align: center;">On the day of the appointment, after visiting the school and consulting witht he person in charge, get a copy of the application for admission and make an appointment for the diagnostic test.</p>
+            <h3 class="step-title">2. 입학원서접수</h3>
+            <p style="text-align: center;">예약 당일에, 학교를 방문하시고 담당자와 상담 후, 입학원서를 교부 받으시고, 진단테스트 일정을 확인합니다.</p>
         </div>
 
         <div class="step step-3">
-            <h3 class="step-title">3. Diagnostic test</h3>
-            <p style="text-align: center;">Please send in the fee for the diagnostic test by the day nefore the test day. Please submit the application for admission and required documents. The disgnostic test covers the four subjects of English, Word Building, Reading, Math, and is offered online by S.O.T.
-                Please be aware that testing usually takes 2 to 3 hours, and please set aside enough time in your schedule for the testing.</p>
+            <h3 class="step-title">3. 진단테스트</h3>
+            <p style="text-align: center;">시험 전날 까지 테스트 비용을 입금하시고, 준비하신 입학원서와 서류를 제출합니다.
+              진단테스트는 English, Word Building, Reading, Math
+              총 4과목을 S.O.T.에서 제공되는 온라인 Diagnostic Test를 통하여 치르게 됩니다.
+              시험에는 2-3시간 정도가 소요되므로 시간에 여유를 가지고 참여를 부탁드립니다.</p>
         </div>
     </div>
 
@@ -222,18 +227,32 @@
 
     <div class="steps">
         <div class="step step-4">
-            <h3 class="step-title">4. Parent Interview</h3>
-            <p style="text-align: center;">After a comprehensive examination of the submitted documents and the diagnostic test results, admission candidates will be notified of the interview schedule. The applicants and their parents will be interviewed separately accodring to the S.O.T. regulations. On the day of the interview, both parents must accompany the applicant. If one of the applicant's parents is unable to attend the interview, they must submit a proxy statement according to SCIS regulations.</p>
+            <h3 class="step-title">4. 학부모 면담</h3>
+            <p style="text-align: center;">제출해 주신 서류와 진단테스트 결과를 종합적으로 심사하여,
+              합격 예정자들에게는 면담 일정을 공지해 드립니다.
+              S.O.T.규정에 따라 학부모와 학생 개별 면담을 진행합니다.
+              면접 당일에는 반드시 부모님께서 함께 참석을 해셔야 하며,
+              혹시라도 한 쪽이 불참일 경우에는 SCIS규정에 따른 위임장을 제출해 주시기 바랍니다.
+              </p>
         </div>
 
         <div class="step step-5">
-            <h3 class="step-title">5. Student Interview</h3>
-            <p style="text-align: center;">After the parent interview, a final student interview will be conducted to verify the student's personal intent to enter SCIS. If the student does not show a clear intent to attend SCIS, admission will not be granted no matter how well he/she performed on the diagnostic test.</p>
+            <h3 class="step-title">5. 학생면담</h3>
+            <p style="text-align: center;">학부모 면담을 마친 후, 학생들과의 최종적인 개인면담을 통하여
+              SCIS에 입학하고자 하는 본인의 의지를 확인합니다.
+              아무리 진단테스트 결과가 우수하다 하더라도,
+              본인의 의지가 불명확할 경우, 입학은 허가되지 않습니다.</p>
         </div>
 
         <div class="step step-6">
-            <h3 class="step-title">6. Final Admission</h3>
-            <p style="text-align: center;">After a careful deliberation by all of the faculty of SCIS, the student and his/her parents who have gone through all the proceedings above will receive an acceptane notice through email or kakaotalk. Please follow all the processes by the deadline for admission procedure shown on the acceptance notice. If the progresses are not completed by the midnight of the deadline date, there will be a risk of the acceptance being canceled.</p>
+            <h3 class="step-title">6. 최종합격</h3>
+            <p style="text-align: center;">SCIS의 모든 선생님들의 신중한 심의 후에,
+              위의 모든 절차를 합격한 학생과 학부모님들께는
+              이메일 또는 카카오톡을 통하여 합격통보가 우송됩니다.
+              합격통지서에 기입된 입학절차 마감일까지 모든 절차를 신속하게 따라 주시기 바랍니다.
+              마감일 밤12시까지 입학 절차가 완결되지 않을 경우, 합격이 최소되는 경우가 발생할 수 있습니다.
+              
+              </p>
         </div>
     </div>
 

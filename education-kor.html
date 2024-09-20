@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 
     <title>SCIS(Suwon Christian International School)</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
@@ -23,6 +23,10 @@
   </head>
 
   <style>
+    /*    font-family: 'Poppins', sans-serif     */
+    p, a, select, h1, h2, h3, h4, h5, h6 {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+
     h3{
       text-align: left;
       color: white
@@ -74,7 +78,7 @@
     }
 
     .ace-img {
-      max-width: 15%; 
+      max-width: 10%; 
       border-radius: 2rem; 
       margin-top: 1rem;
     }
@@ -133,6 +137,7 @@
       }
 
 
+
       #languageSelect {
         height: 50px;
         background: transparent;
@@ -187,9 +192,9 @@
                     <a href="index.html" class="logo">
 
                       <div style="display: flex; justify-content: center; align-items: center; ">
-                        <h1>SCIS</h1>
+                        <h1 style="font-family: 'Poppins', sans-serif">SCIS</h1>
                         <div style="border-right: solid 1px gray; height: 3rem; margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                        <p style="line-height: 13px; text-align: left; width: 150px;">Suwon Christian<br>International School</p>
+                        <p style="line-height: 13px; text-align: left; width: 150px; font-family: 'Poppins', sans-serif">Suwon Christian<br>International School</p>
                       </div>
 
 
@@ -197,16 +202,15 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html">About us</a></li>
-                      <li><a href="education.html" class="active">Education</a></li>
-                      <li><a href="admission.html">Admission</a></li>
-                      <li><a href="community.html">Community</a></li>
+                      <li><a href="index-kor.html">About us</a></li>
+                      <li><a href="education-kor.html" class="active">Education</a></li>
+                      <li><a href="admission-kor.html">Admission</a></li>
+                      <li><a href="community-kor.html">Community</a></li>
 
                       <div class="lang">
                         <select id="languageSelect" style="margin-top: 0.2rem; border: unset;" onchange="if(this.value) location.href=(this.value);">
-                          <option value="/education.html">English</option>
                           <option value="/education-kor.html">한국어</option>
-                          
+                          <option value="/education.html">English</option>
                         </select>
                       </div>
 
@@ -230,9 +234,9 @@
       <div class="row">
         <div class="col-lg-8 col-md-8">
           <ul class="info">
-            <li><a href="#Curriculum">Curriculum</a></li>
-            <li><a href="#About S.O.T.">About S.O.T.</a></li>
-            <li><a href="#A.C.E. Program">A.C.E. Program</a></li>
+            <li><a href="#Curriculum">커리큘럼</a></li>
+            <li><a href="#About S.O.T.">S.O.T. 커리큘럼</a></li>
+            <li><a href="#A.C.E. Program">A.C.E. 프로그램</a></li>
             <li><a href="#ABCs for English Learners">ABCs for English Learners</a></li>
           </ul>
         </div>
@@ -246,7 +250,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>Education</h3>
+          <h3 style="font-family: 'Poppins', sans-serif">Education</h3>
           <span class="breadcrumb"><a href="index.html">Home</a> > <a href="#">Education</a></span>
           
         </div>
@@ -255,15 +259,12 @@
   </div>
 
   <div class="container">
-    <h1 id="Curriculum">Curriculum</h1>
+    <h1 id="Curriculum">커리큘럼</h1>
     <span class="breadcrumb" style="padding-bottom: 0.7rem; float: unset"><a href="education.html">Education</a> > <a href="#Curriculum">Curriculum</a></span>
 
     <div style="display: flex;">  <!--#ee626b -->
-      <p style="color: #ee626b; font-weight: 700; height: max-content; font-size: 4rem; margin-top: 1.5rem;">|</p>
-      <p style="margin-left: 1.5rem;">
-      For English study, students study PACEs consisting of five subjects:  Math, English, Social Studies, Science, and Word Building. Students will learn according to their level and according to the results of the diagnostic test. 
-
-      For Korean study, a balanced curriculum of both English and Korean is being conducted through  various subjects such as GED, mathematics, Korean history, Korean language, physical education, art, music, and science experiments.
+      <p style="color: #ee626b; font-weight: 700; height: max-content; font-size: 4rem; margin-top: 0.5rem; font-family: 'Poppins', sans-serif">|</p>
+      <p style="margin-left: 1.5rem;">영어 공부를 위해 학생들은 수학, 영어, 사회, 과학, 단어 만들기 등 5개 과목으로 구성된 PACE를 공부합니다. 학생들은 자신의 수준과 진단 테스트 결과에 따라 학습하게 됩니다. 한국어 학습은 검정고시, 수학, 한국사, 국어, 체육, 미술, 음악, 과학실험 등 다양한 과목을 통해 영어와 한국어의 균형잡힌 커리큘럼을 진행하고 있습니다.
       </p>
     </div>
 
@@ -272,29 +273,29 @@
       <div class="elective">
         <img src="assets/images/education/Bible.webp" style="display: block; width: 40%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Chapel</h3>
-        <p class="elective-desc">Through the weekly Chapel, students have a Christian worldview.</p>
+        <h3 class="elective-name">예배</h3>
+        <p class="elective-desc">매주 채플을 통해 학생들은 기독교 세계관을 갖게 됩니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/music.webp" style="display: block; width: 26%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Music</h3>
-        <p class="elective-desc">Students truly enjoy music through various instruments such as guitar, piano, and string instruments.</p>
+        <h3 class="elective-name">음악</h3>
+        <p class="elective-desc">학생들은 기타, 피아노, 현악기 등 다양한 악기를 통해 음악을 진정으로 즐깁니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/art.webp" style="display: block; width: 63%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Art</h3>
-        <p class="elective-desc">Developing art skill and make art works that use various materials which is easy to conduct in daily life.</p>
+        <h3 class="elective-name">미술</h3>
+        <p class="elective-desc">다양한 재료를 활용하여 일상생활에서 쉽게 할 수 있는 미술실력을 키우고 작품을 제작합니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/pe.webp" style="display: block; width: 57%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">P.E.</h3>
-        <p class="elective-desc">Increasing health and confidence through various sports activities, and to create positive energy through exercise.</p>
+        <h3 class="elective-name">체육</h3>
+        <p class="elective-desc">다양한 스포츠 활동을 통해 건강과 자신감을 높이고, 운동을 통해 긍정적인 에너지를 창출합니다.</p>
       </div>
     </div>
 
@@ -306,67 +307,70 @@
       <div class="elective">
         <img src="assets/images/education/korea.webp" style="border: solid 1px #ababab; display: block; width: 80%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Korean History</h3>
-        <p class="elective-desc">Aiming to provide students with a profound understanding of Korea's historical trajectory and cultural insights.</p>
+        <h3 class="elective-name">한국 역사</h3>
+        <p class="elective-desc">학생들에게 한국의 역사적 궤적에 대한 깊은 이해와 문화적 통찰력을 제공하는 것을 목표로 합니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/japan.webp" style="border: solid 1px #ababab; display: block; width: 80%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Japanese</h3>
-        <p class="elective-desc">Increasing trilingual talents necessary for the global society from basic Japanese to intermediate advanced.</p>
+        <h3 class="elective-name">일본어</h3>
+        <p class="elective-desc">일본어 기초부터 중급까지 글로벌 사회에 필요한 삼국어 인재를 육성합니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/reading.webp" style="display: block; width: 63%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Reading</h3>
-        <p class="elective-desc">Focusing on developing students' comprehension skills, critical thinking, and understanding of literary techniques and themes.</p>
+        <h3 class="elective-name">독서</h3>
+        <p class="elective-desc">학생들의 이해력, 비판적 사고, 문학 기법 및 주제에 대한 이해를 개발하는 데 중점을 둡니다.</p>
       </div>
 
       <div class="elective">
         <img src="assets/images/education/math.webp" style="display: block; width: 63%; margin: 0 auto;">
         <div style="margin: auto; padding-top: 1rem; border-bottom: solid 1px gray; width: 50%; justify-content: center;"></div>
-        <h3 class="elective-name">Math</h3>
-        <p class="elective-desc">Covering fundamental concepts up to intermediate mathematical techniques, focusing on fostering logical thinking and problem-solving skills.</p>
+        <h3 class="elective-name">수학</h3>
+        <p class="elective-desc">기초 개념부터 중급 수학적 기법까지 다루며, 논리적 사고력과 문제 해결 능력 함양에 중점을 두고 있습니다.</p>
       </div>
     </div>
 
-    <h1 id="About S.O.T." style="margin-top: 4rem;">About S.O.T.</h1>
+    <h1 id="About S.O.T." style="margin-top: 4rem;">S.O.T. 커리큘럼</h1>
     <span class="breadcrumb" style="padding-bottom: 0.7rem; float: unset"><a href="education.html">Education</a> > <a href="#About S.O.T.">About S.O.T.</a></span>
-    <h3 style="color: black; font-weight: 600;">What is S.O.T?</h3>
-    <p style="padding-bottom: 2rem;">S.O.T.(School of Tomorrow) started in 1963 as a reaction to the introduction of the theory of evolution and humanist John Dewey’s secular educational philosophy into the US public school system. Concerned Christian educators started by home-schooling their children and this eventually gave birth to the School of Tomorrow curriculum, which was officially launched by Dr. Donald Howard and Dr. Esther Howard in 1970. The entire curriculum is based on a biblical educational philosophy, from kindergarten to 12th grade, and the instruction is exclusively in English, which helps cultivate a firm international competitive edge and nurtures leaders of character in this global age. Students graduating from the S.O.T. curriculum have matriculated into 1,400 universities around the world including Harvard, Stanford, and Oxford.</p>
-    <h3 style="color: black; font-weight: 600;">Strength of the S.O.T. Curriculum</h3>
-    <p>A.C.E. curriculum provides students with academics, skill building, reading practice, character and wisdom training, and knowledge of God and His Word. This complete package begins with reading development and progresses through high school, giving students a solid foundation for pursuing their life goals. Each core subject consists of 12 PACEs (Packet of Accelerated Christian Education) per level. Typical students work daily on one PACE in each subject and may be working at varying levels. A diagnostic test helps to identify academic weaknesses and prescribes a path to help students catch up. Most students complete at least 70 PACEs per year, while maintaining an academic balance by completing about the same number of PACEs in each assigned subject.</p>
+    <h3 style="color: black; font-weight: 600;">S.O.T.이란?</h3>
+    <p style="padding-bottom: 2rem;">S.O.T. (School of Tomorrow)의 시초는 1963년 진화론을 주장한 휴머니스트 존 듀이의 세속적인 교육 철학이 미국 공립학교 시스템에 도입 된 것에 반발하여, 당시의 교육적 상황을 걱정한 기독교 교육자들이 자녀들을 직접 교육하기 시작한 것이 그 탄생의 배경이라 할 수 있습니다. 그리고 1970 년에 도널드하워드 박사와 에스더하워드 박사가 공식적으로 S.O.T. (School of Tomorrow) 교과 과정을 탄생 시켰습니다. 전체 커리큘럼은 유치원부터 12 학년에 이르기까지 성경 교육 철학을 토대로 하고 있으며, 국제적인 경쟁 우위를 확보하고 시대에 필요한 지도자를 양성하는 데 도움이 되도록 전 과정이 영어로 진행됩니다. S.O.T. 커리큘럼을 수료한 학생들은 하버드, 스탠포드, 옥스포드를 포함한 전 세계 9,000여 대학에 진학하고 있습니다.</p>
+    <h3 style="color: black; font-weight: 600;">S.O.T. 커리큘럼의 강점</h3>
+    <p>S.O.T.의 핵심 교과 과정은 학문, 기술 구축, 독서 실습, 인문 및 지혜 훈련, 그리고 하나님의 말씀과 그분의 말씀에 대한 지식으로 구성되어 있습니다. 전 과정을 통하여 초등학교 1학년부터 고등학교 까지 학생들에게 인생의 목표를 추구하기 위한 견고한 토대를 제공하고 있으며, 각 과목은 12권의 PACEs (Packet of Accelerated Christian Education)로 구성되어 있으며, 학생들은 자신의 레벨에 맞는 교재를 할당 받고 매일의 학습에 임하게 됩니다. 진단테스트를 통하여 자신의 약점을 보완하고 각 과목에 정해진 일정량을 끝내기 때문에 각자가 학문적 균형을 유지하면서 일년에 최소한 70권의 책을 끝낼 수 있도록 구성되어 있습니다.</p>
     
-    <p class="sot-good-thing" style="background-color: white">1. Integration of Biblical principles</p>
-    <p class="sot-good-thing" style="background-color: rgb(222 222 222)">2. Godly character building</p>
-    <p class="sot-good-thing" style="background-color: white">3. Mastery-based learning</p>
-    <p class="sot-good-thing" style="background-color: rgb(222 222 222) ">4. Built-in reinforced system</p>
-    <p class="sot-good-thing" style="background-color: white">5. Individualized learning</p>
-    <p class="sot-good-thing" style="background-color: rgb(222 222 222) ">6. Development of critical thinking</p>
-    <p class="sot-good-thing" style="background-color: white">7. Socialization</p>
+    <p class="sot-good-thing" style="background-color: white">1. 성경적 세계관</p>
+    <p class="sot-good-thing" style="background-color: rgb(222 222 222)">2. 하나님의 성품을 닮는 목표</p>
+    <p class="sot-good-thing" style="background-color: white">3. 단계별 완전 학습 목표</p>
+    <p class="sot-good-thing" style="background-color: rgb(222 222 222) ">4. 철저한 단계별 자기 배움 시스템</p>
+    <p class="sot-good-thing" style="background-color: white">5. 자기주도적 학습</p>
+    <p class="sot-good-thing" style="background-color: rgb(222 222 222) ">6. 합리적인 사고 계발</p>
+    <p class="sot-good-thing" style="background-color: white">7. 사회성의 계발</p>
     <div style="padding-bottom: 2rem; border-bottom: solid 1px #ababab"></div>
 
 
-    <h1 id="A.C.E. Program" style="margin-top: 4rem;">A.C.E. Program</h1>
+    <h1 id="A.C.E. Program" style="margin-top: 4rem;">A.C.E. 프로그램</h1>
     <span class="breadcrumb" style="padding-bottom: 0.7rem; float: unset"><a href="education.html">Education</a> > <a href="#A.C.E. Program">A.C.E. Program</a></span>
-    <h3 style="color: black; font-weight: 600;">About A.C.E. Program</h3>
+    <h3 style="color: black; font-weight: 600;">A.C.E. 프로그램이란?</h3>
 
     <div class="ace-program">
       <img src="assets/images/education/ace.jpg" class="ace-img">
-      <p class="ace-desc-1">Conventional educational programs take the student through a spiral of material while introducing him to new skills in sequence. Since students are grouped chronologically, they are lockstepped and receive the same material at the same time. However, students do not necessarily all have the same level of maturity as others of their chronological age, and their natural learning rates are not lockstepped with other students. The above-average student may master the skill the first time he is exposed to it, the average student may pick up part of it, and the below-average student will often grasp only a minimum amount or fail to understand it entirely. As the spiral continues, some students stay out in front while others are left behind for a season (or for good).</p>
+      <p class="ace-desc-1">기존의 교육 프로그램은 학생에게 새로운 기술을 순차적으로 소개하면서 나선형 자료를 통해 학생을 안내합니다. 학생들은 시간순으로 그룹화되어 있기 때문에 서로 고정되어 동시에 동일한 자료를 받습니다. 그러나 학생들이 모두 같은 연령의 다른 학생들과 동일한 수준의 성숙도를 가질 필요는 없으며 자연 학습 속도는 다른 학생들과 동일하지 않습니다. 평균 이상의 학생은 처음 접했을 때 기술을 습득할 수 있고, 평균 학생은 그 기술의 일부를 습득할 수 있으며, 평균 이하의 학생은 종종 최소한의 양만 파악하거나 완전히 이해하지 못하는 경우가 많습니다. 나선형이 계속되면서 일부 학생들은 선두에 머물고 다른 학생들은 한 시즌 동안(또는 영원히) 뒤처지게 됩니다.</p>
     </div>
-    <p style="padding-top: 1rem; padding-bottom: 2rem; border-bottom: solid 1px #ababab">The A.C.E. program is designed around a new format: that of building skill upon skill. The scope and sequence ignore the concept of grade level and moves with continuous progress beginning with the first skill to be mastered. Depending on their ability and motivation levels, students may move ahead rapidly or take as long as necessary, but each student masters the material. 
-      As the student moves upward, level after level, and moves into new concepts, he is far better prepared to learn because he has mastered the skill on the previous level. He does not advance until he has mastered each concept. He is not lockstepped with his classmates but is learning individually and completely before advancing. A.C.E. implements a unique and effective system.</p>
+    <p style="padding-top: 1rem; padding-bottom: 2rem; border-bottom: solid 1px #ababab">A.C.E. 프로그램은 기술에 기술을 더하는 새로운 형식을 중심으로 설계되었습니다. 범위와 순서는 등급 레벨의 개념을 무시하고 처음 마스터하는 스킬부터 계속해서 진행됩니다. 능력과 동기 부여 수준에 따라 학생들은 빠르게 발전할 수도 있고 필요한 만큼 시간이 걸릴 수도 있지만 각 학생은 자료를 마스터합니다. 
+      학생이 한 단계 더 위로 올라가고 새로운 개념으로 이동함에 따라 이전 단계의 기술을 숙달했기 때문에 학습 준비가 훨씬 더 잘됩니다. 그는 각 개념을 숙달할 때까지 발전하지 않습니다. 그는 급우들과 한데 얽매이지 않고 발전하기 전에 개별적으로 완전하게 학습하고 있습니다. 에이스. 독특하고 효과적인 시스템을 구현합니다.</p>
 
 
 
     
     <h1 id="ABCs for English Learners" style="margin-top: 4rem;">ABCs for English Learners</h1>
     <span class="breadcrumb" style="padding-bottom: 0.7rem; float: unset"><a href="education.html">Education</a> > <a href="#ABCs for English Learners">ABCs for English Learners</a></span>
-    <h3 style="color: black; font-weight: 600;">What is ABCs for English Learners?</h3>
-    <p>  ABCs for English Learner is a modified form of ACE's conventional "ABCs with ACE and Christi" and "Speaking with Ace and Christi" that has been re-designed to meet the needs of students whose native language is not English and do not live in an English-speaking environment. It helps young children learn to speak and read English in an ESL setting. It is generally suitable for children aged 8 to 10 and covers a 30 to 36-week-long period. At our SCIS, this program is mandatory for students who are not very used to English so they can be ready for their PACEs. The year-long course runs from September of every year to the following July. As part of the ABCs curriculum, Children begin their PACEs which correspond to the first-grade level. When they complete the process, they are normally able to read and answer questions in beginning PACEs. Children learn phonics, the order of the letters of the Roman alphabet, the relationships among English words, writing, etc. through various fun-filled activities involving games, songs, storytelling, poems, etc. Through this learning process children acquire the ability to communicate their opinions, questions, needs, etc. in the English language.</p>
+    <h3 style="color: black; font-weight: 600;">ABCs for English Learners이 무엇인가요?</h3>
+    <p>ABCs for English Learners는 기존 ABCs with Ace and Christi와
+      Speaking with Ace and Christi를 영어가 모국어가 아닌 환경에 맞게 재구성한 것입니다. ESL환경 속에서 어린들이 영어로 말하고, 읽는 것을 배우도록 도와줍니다. 보통 만8세-10세 어린이들에게 적합하며 30-36주 프로그램으로 진행됩니다. 본교에서는 영어가 아직 익숙하지 못한 학생들이 PACEs에 적응하기위한 필수 과정으로 진행하고 있습니다. 매년 9월 시작부터 돌아오는 7월까지 1년 코스로 진행됩니다.
+      
+      ABCs 과정 속에서 어린이들은 첫 번째 레벨에 해당하는 PACEs를 시작하게 되며, 이 과정이 끝나게 되면, 스스로 PACEs를 읽고 풀어나갈 수 있습니다. 게임, 노래, 스토리텔링, 시, 그 외 흥미로운 활동을 통해서 어린이들은 파닉스, 알파벳 순서, 단어간의 관계, 쓰기등을 배웁니다. 이 과정을 배우며, 어린이들은 자신의 생각, 질문, 필요에 관해 영어로 의사소통할 수 있게 됩니다.</p>
 
 
   </div>
