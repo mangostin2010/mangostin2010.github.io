@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcement Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #announcement-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #announcement-form textarea {
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #announcement-form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #announcement-form button:hover {
+            background-color: #45a049;
+        }
+        #current-announcement {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        #status-message {
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <h1>Announcement Manager</h1>
+    
+    <form id="announcement-form">
+        <textarea id="announcement-text" placeholder="Enter your announcement here" required></textarea>
+        <button type="submit">Update Announcement</button>
+    </form>
+
+    <div id="status-message"></div>
+
+    <div id="current-announcement">
+        <h2>Current Announcement:</h2>
+        <p id="announcement-content">No announcement set.</p>
+    </div>
+
+    <script>
+        const API_URL = 'https://scisjustin.pythonanywhere.com/api/announcements';
+        const form = document.getElementById('announcement-form');
+        const announcementContent = document.getElementById('announcement-content');
+        const statusMessage = document.getElementById('status-message');
+
+        function showStatus(message, isError = false) {
+            statusMessage.textContent = message;
+            statusMessage.className = isError ? 'error' : 'success';
+            setTimeout(() => {
+                statusMessage.textContent = '';
+                statusMessage.className = '';
+            }, 3000);
+        }
+
+        async function fetchAnnouncement() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Failed to fetch announcement');
+                const data = await response.json();
+                return data.message || '';
+            } catch (error) {
+                console.error('Error:', error);
+                showStatus('Failed to load announcement', true);
+                return '';
+            }
+        }
+
+        async function updateAnnouncement(text) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: text }),
+                });
+                if (!response.ok) throw new Error('Failed to update announcement');
+                showStatus('Announcement updated successfully');
+                loadAnnouncement();
+            } catch (error) {
+                console.error('Error:', error);
+                showStatus('Failed to update announcement', true);
+            }
+        }
+
+        async function loadAnnouncement() {
+            const announcement = await fetchAnnouncement();
+            announcementContent.textContent = announcement || 'No announcement set.';
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = document.getElementById('announcement-text').value;
+            await updateAnnouncement(text);
+            form.reset();
+        });
+
+        // Initial load of announcement
+        loadAnnouncement();
+    </script>
+</body>
+</html>
