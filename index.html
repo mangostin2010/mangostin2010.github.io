@@ -771,28 +771,4 @@ const clickWord = document.getElementById('clickWord');
       }
 });
 </script>
-<script>
-let secretInput2 = '';
-const secretCode2 = 'scis';
-
-document.addEventListener('keyup', function(event) {
-  secretInput2 += event.key.toLowerCase();
-  
-  if (secretInput2.includes(secretCode2)) {
-    // Remove all content from the page
-    document.body.innerHTML = '';
-    document.body.style.backgroundImage = 'assets/images/rsc_all.jpg';
-
-
-    
-    // Reset the input
-    secretInput2 = '';
-  }
-  
-  // Keep only the last 20 characters to avoid memory issues
-  if (secretInput2.length > 20) {
-    secretInput2 = secretInput2.slice(-20);
-  }
-});
-</script>
 </html>
