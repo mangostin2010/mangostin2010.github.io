@@ -8,29 +8,59 @@
 
 
 <url>
-  <loc>http://121.136.246.248/</loc>
-  <lastmod>2024-10-22T10:42:43+00:00</lastmod>
+  <loc>https://scis.kro.kr/</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://121.136.246.248/index.html</loc>
-  <lastmod>2024-10-22T10:42:43+00:00</lastmod>
+  <loc>https://scis.kro.kr/ko/</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://121.136.246.248/education.html</loc>
-  <lastmod>2024-10-06T12:14:50+00:00</lastmod>
+  <loc>https://scis.kro.kr/en/</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://121.136.246.248/admission.html</loc>
-  <lastmod>2024-10-06T12:13:55+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://scis.kro.kr/ko/index.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://121.136.246.248/community.html</loc>
-  <lastmod>2024-10-06T12:14:04+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://scis.kro.kr/ko/education.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/ko/admission.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/ko/community.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/en/index.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/en/education.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/en/admission.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://scis.kro.kr/en/community.html</loc>
+  <lastmod>2024-10-22T11:25:45+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
