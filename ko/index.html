@@ -23,7 +23,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="../assets/css/stylesheet.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
@@ -280,7 +280,7 @@
 
     </style>
   </head>
-<body>
+<body oncontextmenu="return false;">
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
@@ -687,5 +687,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', setRandomBackground);
+</script>
+<script>
+document.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+});
 </script>
 </html>

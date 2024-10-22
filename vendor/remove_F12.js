@@ -39,6 +39,14 @@
         return false;
     }, false);
 
+    document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+    });
+    
+    document.querySelectorAll('.disabled').forEach(element => {
+        element.style.pointerEvents = 'none';
+    });
+
     // Attempt to prevent common keyboard shortcuts
     document.addEventListener('keydown', function(e) {
         // Prevent F12
