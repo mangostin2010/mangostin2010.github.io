@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수원기독국제학교</title>
+    <meta property="og:type" content="website">
+    <meta property="og:article" content="수원기독국제학교">
+    <meta property="og:description" content="우리는 이 세상을 빛낼 기독교 지도자로 학생들을 성장시키기 위해 최고의 기독교 교육을 제공합니다.">
+    <meta property="og:url" content="https://scis.kro.kr">
+    <meta property="og:site_name" content="수원기독국제학교">
+    <meta property="og:title" content="수원기독국제학교">
+    <meta name="description" content="우리는 이 세상을 빛낼 기독교 지도자로 학생들을 성장시키기 위해 최고의 기독교 교육을 제공합니다.">
+    
+    <link rel="alternate" hreflang="en" href="https://scis.kro.kr/en/">
+    <link rel="alternate" hreflang="ko" href="https://scis.kro.kr/ko/">
+    
+    <script>
+        function redirectBasedOnGeolocation() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const country = data.country_code;
+                    if (country === 'KR') {
+                        window.location.href = '/ko/';
+                    } else {
+                        window.location.href = '/en/';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Default to Korean version if there's an error
+                    window.location.href = '/ko/';
+                });
+        }
+
+        // Call the function when the page loads
+        window.onload = redirectBasedOnGeolocation;
+    </script>
+</head>
+<body>
+    <noscript>
+        <p>자바스크립트가 비활성화되어 있습니다. 수동으로 언어를 선택해주세요:</p>
+        <ul>
+            <li><a href="/ko/">한국어</a></li>
+            <li><a href="/en/">English</a></li>
+        </ul>
+    </noscript>
+    <p>잠시만 기다려주세요. 적절한 언어 버전으로 리다이렉트됩니다...</p>
+</body>
+</html>
