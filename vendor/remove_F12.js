@@ -21,10 +21,10 @@
 
     function closeTab() {
         // Attempt to close the current tab
-        window.close();
+        //window.close();
         
         // If window.close() doesn't work, try to replace the content
-        document.body.innerHTML = 'This tab has been closed due to unauthorized access. <br>If you have turned off the developer mode, please refresh the page.';
+        //document.body.innerHTML = 'This tab has been closed due to unauthorized access. <br>If you have turned off the developer mode, please refresh the page.';
         
         // You could also redirect to another page
         // window.location.href = 'https://example.com';
