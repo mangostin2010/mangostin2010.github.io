@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
 
-    <title>SCIS - Community</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
+    <title>Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="..//assets/images/logo.png">
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,10 @@
 </head>
 
 <style>
+    /*    font-family: 'Poppins', sans-serif     */
+    p, a, select, h1, h2, h3, h4, h5, h6 {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+
     h3 {
         text-align: left;
         color: white
@@ -372,7 +376,35 @@
 }
 
 
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+}
+#thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+.event {
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+}
 </style>
 
 <body>
@@ -400,26 +432,19 @@
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
                             <div style="display: flex; justify-content: center; align-items: center;">
-                                <h1>SCIS</h1>
+                                <h1 style="font-family: 'Poppins', sans-serif">SCIS</h1>
                                 <div style="border-right: solid 1px gray; height: 3rem; margin-left: 0.5rem; margin-right: 0.5rem;">
                                 </div>
-                                <p style="line-height: 13px; text-align: left; width: 150px;">Suwon Christian<br>International School</p>
+                                <p style="line-height: 13px; text-align: left; width: 150px; font-family: 'Poppins', sans-serif">Suwon Christian<br>International School</p>
                             </div>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="index.html">About us</a></li>
-                            <li><a href="education.html">Education</a></li>
-                            <li><a href="admission.html">Admission</a></li>
-                            <li><a href="community.html" class="active">Community</a></li>
+                            <li><a href="index.html">Main Page</a></li>
+                            <li><a href="#" class="active">Admin Panel</a></li>
 
-                            <div class="lang">
-                                <select id="languageSelect" style="margin-top: 0.2rem; border: unset;" onchange="if(this.value) location.href=(this.value);">
-                                    <option value="/community.html">English</option>
-                                    <option value="../ko/community.html">한국어</option>
-                                </select>
-                              </div>
+                            
 
 
                             <li></li>
@@ -436,12 +461,12 @@
     <!-- ***** Header Area End ***** -->
 
 
-    <div class="page-heading header-text" style="background-image: url(../assets/images/boys.png); background-position-x: center; background-position-y: center; object-fit: cover;">
+    <div class="page-heading header-text" style="background-image: url(assets/images/rsc_teachers_darken.png); background-position-x: center; background-position-y: center; object-fit: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Community</h3>
-                    <span class="breadcrumb"><a href="index.html">Home</a> > <a href="#">Community</a></span>
+                    <h3 style="font-family: 'Poppins', sans-serif">Admin Panel</h3>
+                    <span class="breadcrumb"><a href="index.html">SCIS</a> > <a href="#">Admin Panel</a></span>
                 </div>
             </div>
         </div>
@@ -450,55 +475,269 @@
 
 
     <div class="container">
-        <h1 id="Community" style="padding: 2rem 0 2rem 0;">Community</h1>
+        <h1 id="Community" style="padding: 2rem 0 2rem 0;">어드민 패널</h1>
         <div style="margin-bottom: 1rem; border: solid 1px #ababab;">
         </div>
 
         <!-- Tab links -->
         <div class="tab">
-            <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Gallery');">Gallery</button>
-            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">Calendar</button>
+            <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Gallery');">갤러리 업로드&삭제</button>
+            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">캘린더</button>
             <!--<button class="tablinks" onclick="openCity(event, 'Recruitment information')">Recruitment Information</button>-->
             <!--<button class="tablinks" onclick="openCity(event, 'Post')">Post</button>-->
         </div>
 
+        
         <!-- Tab content -->
         <div id="Gallery" class="tabcontent">
-            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">Gallery</h4>
-            <p>Galleries of SCIS students.</p>
+            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">갤러리 업로드&삭제</h4>
+            <p>이미지를 선택하고 업로드하세요.</p>
 
-            <div id="folders-container"></div>
-            <div id="images-container" class="images-container"></div>
+            <div style="padding:1rem;"></div>
+
+            <form id="uploadForm">
+                <label for="title">폴더 제목:</label>
+                <br>
+                <input type="text" name="title" id="title" required style="width: 100%; max-width: 35rem;">
+                <br>
+                <br>
+                <label for="date" style="margin-top: 1rem;">날짜:</label>
+                <input type="date" name="date" id="date" value="" required>
+                <br>
+                <br>
+                <label for="images">이미지 선택하기:</label>
+                <input type="file" name="images" id="images" multiple accept="image/*" required>
+                <p>Tip: 이미지를 선택할때 ctrl키를 누르고 선택하면 여러게의 이미지를 선택할 수 있습니다.</p>
+                <div id="thumbnail-container"></div>
+                <br><br>
+                <button type="submit">이미지 업로드</button>
+            </form>
+
+            <div style="margin-top: 1rem; margin-bottom: 2rem; border-top: solid 1px #ababab;"></div>
+
+            <p>아래 버튼을 클릭후 삭제할 폴더를 선택해주세요.</p>
+            <ul id="folderList" style="text-align: left; padding-top: 1rem;"></ul>
+            <button id="deleteFolders" style="display:none;">선택된 항목 삭제하기</button>
+
 
         </div>
 
         <div id="Calendar_tab" class="tabcontent">
-            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">Calendar</h4>
-            <p>Calendar of SCIS in 2024</p>
-            
-            <h1 class="calendar-title"></h1>
+            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">캘린더</h4>
+            <p>일정을 눌러 수정하세요.</p>
 
-            
-            <div class="calendar-container">
-                <div class="calendar-controls">
-                    <button id="prev-month">Previous</button>
-                    <span id="current-month-year" style="font-size: 1.3rem;"></span>
-                    <button id="next-month">Next</button>
-                </div>
-                <div id="calendar"></div>
-            </div>
-            
-        </div>
-
-        <div id="Recruitment information" class="tabcontent">
-            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">Recruitment Information</h4>
-
-            <p>Recruitment information is still developing... (by justin😀)</p>
-        </div>
-
-        <div id="Post" class="tabcontent">
-            <h3>Post</h3>
-            <p>Post is still developing... (by justin😀)</p>
+            <button onclick="createNewEvent()">Create New Event</button>
+            <table id="calendarTable"></table>
+        
+            <script>
+const eventList = {
+        3: {
+            2: ["Parents Meeting", "#3d9fac"],
+            4: ["Opening Camp", "#3d9fac"],
+            5: ["Opening Camp", "#3d9fac"],
+            22: ["CEC", "#3d9fac"],
+            25: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            29: ["Easter Event", "#3d9fac"]
+        },
+        4: {
+            6: ["Parents Meeting", "#3d9fac"],
+            22: ["Midterm Exam Week", "#3d9fac"],
+            23: ["Midterm Exam Week", "#3d9fac"],
+            24: ["Midterm Exam Week", "#3d9fac"],
+            25: ["Midterm Exam Week", "#3d9fac"],
+            26: ["Midterm Exam Week", "#3d9fac"]
+        },
+        5: {
+            4: ["Parents Meeting", "#3d9fac"],
+            11: ["Spring Sport Day", "#3d9fac"],
+            31: ["Field Trip", "#3d9fac"]
+        },
+        6: {
+            1: ["Parents Meeting", "#3d9fac"],
+            10: ["Dress Up Week", "#3d9fac"],
+            11: ["Dress Up Week", "#3d9fac"],
+            12: ["Dress Up Week", "#3d9fac"],
+            13: ["Dress Up Week", "#3d9fac"],
+            14: ["Dress Up Week", "#3d9fac"]
+        },
+        7: {
+            6: ["Parents Meeting", "#3d9fac"],
+            15: ["Final Exam Week", "#3d9fac"],
+            16: ["Final Exam Week", "#3d9fac"],
+            17: ["Final Exam Week", "#3d9fac"],
+            18: ["Final Exam Week", "#3d9fac"],
+            26: ["Closing Ceremony", "#3d9fac"]
+        },
+        8: {
+            19: ["Intensive Week", "#3d9fac"],
+            20: ["Intensive Week", "#3d9fac"],
+            21: ["Intensive Week", "#3d9fac"],
+            22: ["Intensive Week", "#3d9fac"],
+            23: ["Intensive Week", "#3d9fac"],
+            24: ["Intensive Week", "#3d9fac"],
+            25: ["Intensive Week", "#3d9fac"],
+            26: ["Intensive Week", "#3d9fac"],
+            27: ["Intensive Week", "#3d9fac"],
+            28: ["Intensive Week", "#3d9fac"],
+            29: ["Intensive Week", "#3d9fac"],
+            30: ["Intensive Week", "#3d9fac"]
+        },
+        9: {
+            2: ["Opening Camp", "#3d9fac"],
+            3: ["Opening Camp", "#3d9fac"],
+            7: ["Parents Meeting", "#3d9fac"],
+            16: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
+            17: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
+            18: ["Chuseok", "rgb(233 89 89)"]  // No school event marked in red
+        },
+        10: {
+            5: ["Parents Meeting", "#3d9fac"],
+            12: ["Fall Sport Day", "#3d9fac"],
+            14: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            21: ["Midterm Exam Week", "#3d9fac"],
+            22: ["Midterm Exam Week", "#3d9fac"],
+            23: ["Midterm Exam Week", "#3d9fac"],
+            24: ["Midterm Exam Week", "#3d9fac"],
+            25: ["Midterm Exam Week", "#3d9fac"]
+        },
+        11: {
+            1: ["Hallelujah Day", "#3d9fac"],
+            2: ["Parents Meeting", "#3d9fac"],
+            25: ["AASC", "#3d9fac"],
+            26: ["AASC", "#3d9fac"],
+            27: ["AASC", "#3d9fac"],
+            28: ["AASC", "#3d9fac"],
+            29: ["AASC", "#3d9fac"]
+        },
+        12: {
+            7: ["Parents Meeting", "#3d9fac"],
+            20: ["Secret Angels Day", "#3d9fac"],
+            21: ["Christmas Concert", "#3d9fac"],
+            23: ["Observed Holiday", "rgb(233 89 89)"] // No school event marked in red
+        },
+        1: { 
+            4: ["Parents Meeting", "#3d9fac"],
+            13: ["Final Exam Week", "#3d9fac"],
+            14: ["Final Exam Week", "#3d9fac"],
+            15: ["Final Exam Week", "#3d9fac"],
+            16: ["Final Exam Week", "#3d9fac"],
+            17: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
+            24: ["Closing Ceremony", "#3d9fac"],
+            25: ["Graduation Ceremony", "#3d9fac"]
+        }
+    };
+        
+                function createCalendarTable() {
+                    const table = document.getElementById('calendarTable');
+                    table.innerHTML = '';
+        
+                    const headerRow = table.insertRow();
+                    ['Month', 'Day', 'Event', 'Color', 'Action'].forEach(header => {
+                        const th = document.createElement('th');
+                        th.textContent = header;
+                        headerRow.appendChild(th);
+                    });
+        
+                    for (const [month, events] of Object.entries(eventList)) {
+                        for (const [day, eventData] of Object.entries(events)) {
+                            const row = table.insertRow();
+                            
+                            const monthCell = row.insertCell();
+                            monthCell.textContent = month;
+                            monthCell.className = 'editable';
+                            monthCell.onclick = () => editMonthDay(month, day, 'month');
+        
+                            const dayCell = row.insertCell();
+                            dayCell.textContent = day;
+                            dayCell.className = 'editable';
+                            dayCell.onclick = () => editMonthDay(month, day, 'day');
+                            
+                            const eventCell = row.insertCell();
+                            eventCell.textContent = eventData[0];
+                            eventCell.style.backgroundColor = eventData[1];
+                            eventCell.className = 'event';
+                            eventCell.onclick = () => editEvent(month, day, 0);
+        
+                            const colorCell = row.insertCell();
+                            colorCell.style.backgroundColor = eventData[1];
+                            colorCell.className = 'event';
+                            colorCell.onclick = () => editColor(month, day);
+        
+                            const actionCell = row.insertCell();
+                            const removeBtn = document.createElement('button');
+                            removeBtn.textContent = 'Remove';
+                            removeBtn.className = 'remove-btn';
+                            removeBtn.onclick = () => removeEvent(month, day);
+                            actionCell.appendChild(removeBtn);
+                        }
+                    }
+                }
+        
+                function editEvent(month, day, index) {
+                    const currentValue = eventList[month][day][index];
+                    const newValue = prompt(`Edit event:`, currentValue);
+                    
+                    if (newValue !== null && newValue !== '') {
+                        eventList[month][day][index] = newValue;
+                        createCalendarTable();
+                    }
+                }
+        
+                function editColor(month, day) {
+                    const colorPicker = document.createElement('input');
+                    colorPicker.type = 'color';
+                    colorPicker.value = eventList[month][day][1];
+                    
+                    colorPicker.addEventListener('change', function() {
+                        eventList[month][day][1] = this.value;
+                        createCalendarTable();
+                    });
+        
+                    colorPicker.click();
+                }
+        
+                function editMonthDay(currentMonth, currentDay, type) {
+                    const newValue = prompt(`Enter new ${type}:`, type === 'month' ? currentMonth : currentDay);
+                    if (newValue !== null && newValue !== '') {
+                        const event = eventList[currentMonth][currentDay];
+                        delete eventList[currentMonth][currentDay];
+                        
+                        if (type === 'month') {
+                            if (!eventList[newValue]) eventList[newValue] = {};
+                            eventList[newValue][currentDay] = event;
+                        } else {
+                            eventList[currentMonth][newValue] = event;
+                        }
+        
+                        createCalendarTable();
+                    }
+                }
+        
+                function createNewEvent() {
+                    const month = prompt("Enter month (1-12):");
+                    const day = prompt("Enter day (1-31):");
+                    const event = prompt("Enter event name:");
+                    const color = prompt("Enter color (e.g., #3d9fac):");
+        
+                    if (month && day && event && color) {
+                        if (!eventList[month]) eventList[month] = {};
+                        eventList[month][day] = [event, color];
+                        createCalendarTable();
+                    }
+                }
+        
+                function removeEvent(month, day) {
+                    if (confirm(`Are you sure you want to remove the event on ${month}/${day}?`)) {
+                        delete eventList[month][day];
+                        if (Object.keys(eventList[month]).length === 0) {
+                            delete eventList[month];
+                        }
+                        createCalendarTable();
+                    }
+                }
+        
+                createCalendarTable();
+            </script>
         </div>
 
     </div>
@@ -752,5 +991,116 @@
         fetchFolders();
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        // Set current date
+        $('#date').val(new Date().toISOString().split('T')[0].replace(/-/g, '.'));
+    
+        // Thumbnail preview of selected images
+        $('#images').on('change', function() {
+            $('#thumbnail-container').empty();
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#thumbnail-container').append(
+                        `<img src="${e.target.result}" class="thumbnail" alt="${file.name}">`
+                    );
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    
+        // Upload images
+        $('#uploadForm').on('submit', function(e) {
+            e.preventDefault();
+            const title = $('#title').val();
+            const date = $('#date').val();
+            const file = $('#images')[0].files[0];
+    
+            if (!file) {
+                alert('Please select an image to upload.');
+                return;
+            }
+    
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                $.ajax({
+                    url: 'https://scisjustin.pythonanywhere.com/upload',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    crossOrigin: true,
+                    data: JSON.stringify({
+                        title: title,
+                        date: date,
+                        image: imageData
+                    }),
+                    success: function(response) {
+                        alert('Image uploaded successfully!');
+                        $('#uploadForm')[0].reset();
+                        $('#thumbnail-container').empty();
+                        loadFolders(); // Refresh folder list after upload
+                    },
+                    error: function() {
+                        alert('Failed to upload image.');
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    
+        // Function to load folders
+        function loadFolders() {
+            $.get("https://scisjustin.pythonanywhere.com/list_folders", function(data) {
+                $("#folderList").empty();
+                data.forEach(folder => {
+                    const folderName = folder.split('[]')[1] || folder;  // Remove the date and [] part if present
+                    $("#folderList").append(
+                        `<li>
+                            <input type="checkbox" class="folder-checkbox" value="${folder}">
+                            ${folderName}
+                        </li>`
+                    );
+                });
+                $("#deleteFolders").show();
+            });
+        }
+    
+        // Load folders automatically when page loads
+        loadFolders();
+    
+        // Keep the click event handler for manual refresh if needed
+        $("#loadFolders").on("click", loadFolders);
+    
+        // Delete selected folders with confirmation
+        $("#deleteFolders").on("click", function() {
+            let selectedFolders = [];
+            $(".folder-checkbox:checked").each(function() {
+                selectedFolders.push($(this).val());
+            });
+            if (selectedFolders.length > 0) {
+                if (confirm("Are you sure you want to remove the following folders?\n" + selectedFolders.join("\n"))) {
+                    $.ajax({
+                        url: "https://scisjustin.pythonanywhere.com/delete_folders",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({ folders: selectedFolders }),
+                        success: function(response) {
+                            alert(response.message);
+                            loadFolders();  // Refresh the list after deletion
+                        },
+                        error: function() {
+                            alert("Failed to delete folders.");
+                        }
+                    });
+                }
+            } else {
+                alert("Please select folders to delete.");
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>
