@@ -528,141 +528,55 @@ th, td {
 
             <button onclick="createNewEvent()">Create New Event</button>
             <table id="calendarTable"></table>
-        
+            
             <script>
-const eventList = {
-        3: {
-            2: ["Parents Meeting", "#3d9fac"],
-            4: ["Opening Camp", "#3d9fac"],
-            5: ["Opening Camp", "#3d9fac"],
-            22: ["CEC", "#3d9fac"],
-            25: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
-            29: ["Easter Event", "#3d9fac"]
-        },
-        4: {
-            6: ["Parents Meeting", "#3d9fac"],
-            22: ["Midterm Exam Week", "#3d9fac"],
-            23: ["Midterm Exam Week", "#3d9fac"],
-            24: ["Midterm Exam Week", "#3d9fac"],
-            25: ["Midterm Exam Week", "#3d9fac"],
-            26: ["Midterm Exam Week", "#3d9fac"]
-        },
-        5: {
-            4: ["Parents Meeting", "#3d9fac"],
-            11: ["Spring Sport Day", "#3d9fac"],
-            31: ["Field Trip", "#3d9fac"]
-        },
-        6: {
-            1: ["Parents Meeting", "#3d9fac"],
-            10: ["Dress Up Week", "#3d9fac"],
-            11: ["Dress Up Week", "#3d9fac"],
-            12: ["Dress Up Week", "#3d9fac"],
-            13: ["Dress Up Week", "#3d9fac"],
-            14: ["Dress Up Week", "#3d9fac"]
-        },
-        7: {
-            6: ["Parents Meeting", "#3d9fac"],
-            15: ["Final Exam Week", "#3d9fac"],
-            16: ["Final Exam Week", "#3d9fac"],
-            17: ["Final Exam Week", "#3d9fac"],
-            18: ["Final Exam Week", "#3d9fac"],
-            26: ["Closing Ceremony", "#3d9fac"]
-        },
-        8: {
-            19: ["Intensive Week", "#3d9fac"],
-            20: ["Intensive Week", "#3d9fac"],
-            21: ["Intensive Week", "#3d9fac"],
-            22: ["Intensive Week", "#3d9fac"],
-            23: ["Intensive Week", "#3d9fac"],
-            24: ["Intensive Week", "#3d9fac"],
-            25: ["Intensive Week", "#3d9fac"],
-            26: ["Intensive Week", "#3d9fac"],
-            27: ["Intensive Week", "#3d9fac"],
-            28: ["Intensive Week", "#3d9fac"],
-            29: ["Intensive Week", "#3d9fac"],
-            30: ["Intensive Week", "#3d9fac"]
-        },
-        9: {
-            2: ["Opening Camp", "#3d9fac"],
-            3: ["Opening Camp", "#3d9fac"],
-            7: ["Parents Meeting", "#3d9fac"],
-            16: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
-            17: ["Chuseok", "rgb(233 89 89)"], // No school event marked in red
-            18: ["Chuseok", "rgb(233 89 89)"]  // No school event marked in red
-        },
-        10: {
-            5: ["Parents Meeting", "#3d9fac"],
-            12: ["Fall Sport Day", "#3d9fac"],
-            14: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
-            21: ["Midterm Exam Week", "#3d9fac"],
-            22: ["Midterm Exam Week", "#3d9fac"],
-            23: ["Midterm Exam Week", "#3d9fac"],
-            24: ["Midterm Exam Week", "#3d9fac"],
-            25: ["Midterm Exam Week", "#3d9fac"]
-        },
-        11: {
-            1: ["Hallelujah Day", "#3d9fac"],
-            2: ["Parents Meeting", "#3d9fac"],
-            25: ["AASC", "#3d9fac"],
-            26: ["AASC", "#3d9fac"],
-            27: ["AASC", "#3d9fac"],
-            28: ["AASC", "#3d9fac"],
-            29: ["AASC", "#3d9fac"]
-        },
-        12: {
-            7: ["Parents Meeting", "#3d9fac"],
-            20: ["Secret Angels Day", "#3d9fac"],
-            21: ["Christmas Concert", "#3d9fac"],
-            23: ["Observed Holiday", "rgb(233 89 89)"] // No school event marked in red
-        },
-        1: { 
-            4: ["Parents Meeting", "#3d9fac"],
-            13: ["Final Exam Week", "#3d9fac"],
-            14: ["Final Exam Week", "#3d9fac"],
-            15: ["Final Exam Week", "#3d9fac"],
-            16: ["Final Exam Week", "#3d9fac"],
-            17: ["Observed Holiday", "rgb(233 89 89)"], // No school event marked in red
-            24: ["Closing Ceremony", "#3d9fac"],
-            25: ["Graduation Ceremony", "#3d9fac"]
-        }
-    };
-        
+                let eventList = {};
+            
+                // Fetch eventList.json from the backend
+                fetch('https://raw.githubusercontent.com/mangostin2010/mangostin2010.github.io/main/assets/eventList.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        eventList = data;
+                        createCalendarTable();
+                    });
+                console.log(eventList + 'gi')
+            
                 function createCalendarTable() {
                     const table = document.getElementById('calendarTable');
                     table.innerHTML = '';
-        
+            
                     const headerRow = table.insertRow();
                     ['Month', 'Day', 'Event', 'Color', 'Action'].forEach(header => {
                         const th = document.createElement('th');
                         th.textContent = header;
                         headerRow.appendChild(th);
                     });
-        
+            
                     for (const [month, events] of Object.entries(eventList)) {
                         for (const [day, eventData] of Object.entries(events)) {
                             const row = table.insertRow();
-                            
+            
                             const monthCell = row.insertCell();
                             monthCell.textContent = month;
                             monthCell.className = 'editable';
                             monthCell.onclick = () => editMonthDay(month, day, 'month');
-        
+            
                             const dayCell = row.insertCell();
                             dayCell.textContent = day;
                             dayCell.className = 'editable';
                             dayCell.onclick = () => editMonthDay(month, day, 'day');
-                            
+            
                             const eventCell = row.insertCell();
                             eventCell.textContent = eventData[0];
                             eventCell.style.backgroundColor = eventData[1];
                             eventCell.className = 'event';
                             eventCell.onclick = () => editEvent(month, day, 0);
-        
+            
                             const colorCell = row.insertCell();
                             colorCell.style.backgroundColor = eventData[1];
                             colorCell.className = 'event';
                             colorCell.onclick = () => editColor(month, day);
-        
+            
                             const actionCell = row.insertCell();
                             const removeBtn = document.createElement('button');
                             removeBtn.textContent = 'Remove';
@@ -672,72 +586,113 @@ const eventList = {
                         }
                     }
                 }
-        
+            
+                async function updateEventListOnServer() {
+                    try {
+                        const response = await fetch('https://scisjustin.pythonanywhere.com/update_event_list', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ eventList })
+                        });
+            
+                        if (!response.ok) {
+                            throw new Error('Failed to update event list on server');
+                        }
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+            
                 function editEvent(month, day, index) {
                     const currentValue = eventList[month][day][index];
                     const newValue = prompt(`Edit event:`, currentValue);
-                    
+            
                     if (newValue !== null && newValue !== '') {
                         eventList[month][day][index] = newValue;
                         createCalendarTable();
+                        updateEventListOnServer();
                     }
                 }
-        
+            
                 function editColor(month, day) {
                     const colorPicker = document.createElement('input');
                     colorPicker.type = 'color';
                     colorPicker.value = eventList[month][day][1];
-                    
+            
                     colorPicker.addEventListener('change', function() {
                         eventList[month][day][1] = this.value;
                         createCalendarTable();
+                        updateEventListOnServer();
                     });
-        
+            
                     colorPicker.click();
                 }
-        
+            
                 function editMonthDay(currentMonth, currentDay, type) {
                     const newValue = prompt(`Enter new ${type}:`, type === 'month' ? currentMonth : currentDay);
                     if (newValue !== null && newValue !== '') {
                         const event = eventList[currentMonth][currentDay];
                         delete eventList[currentMonth][currentDay];
-                        
+            
                         if (type === 'month') {
                             if (!eventList[newValue]) eventList[newValue] = {};
                             eventList[newValue][currentDay] = event;
                         } else {
                             eventList[currentMonth][newValue] = event;
                         }
-        
+            
                         createCalendarTable();
+                        updateEventListOnServer();
                     }
                 }
-        
+            
                 function createNewEvent() {
                     const month = prompt("Enter month (1-12):");
                     const day = prompt("Enter day (1-31):");
                     const event = prompt("Enter event name:");
                     const color = prompt("Enter color (e.g., #3d9fac):");
-        
+            
                     if (month && day && event && color) {
                         if (!eventList[month]) eventList[month] = {};
                         eventList[month][day] = [event, color];
                         createCalendarTable();
+                        updateEventListOnServer();
                     }
                 }
-        
-                function removeEvent(month, day) {
+            
+                async function removeEvent(month, day) {
                     if (confirm(`Are you sure you want to remove the event on ${month}/${day}?`)) {
                         delete eventList[month][day];
                         if (Object.keys(eventList[month]).length === 0) {
                             delete eventList[month];
                         }
                         createCalendarTable();
+            
+                        // Send a delete request to the backend
+                        try {
+                            const response = await fetch('https://scisjustin.pythonanywhere.com/remove_event', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ month, day })
+                            });
+            
+                            if (!response.ok) {
+                                throw new Error('Failed to delete event on server');
+                            }
+                        } catch (error) {
+                            console.error(error);
+                        }
                     }
                 }
-        
+            
                 createCalendarTable();
             </script>
+            
+            
         </div>
 
     </div>
