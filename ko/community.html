@@ -658,84 +658,91 @@
         const foldersContainer = document.getElementById('folders-container');
         const imagesContainer = document.getElementById('images-container');
 
+        // Fetch folders and display each with a random image
         function fetchFolders() {
+            foldersContainer.innerHTML = 'Loading folders...'; // Initial loading message
+
             fetch('https://scisjustin.pythonanywhere.com/list_folders')
                 .then(response => response.json())
                 .then(folders => {
-                    foldersContainer.innerHTML = ''; // Clear previous buttons
+                    foldersContainer.innerHTML = ''; // Clear loading message
 
-                    // Check if folders array is empty
                     if (folders.length === 0) {
                         showRefreshButton();
                         return;
                     }
 
+                    // Display folders with "Fetching..." until random images load
                     folders.forEach(folder => {
-                        // Split the folder name and use the part after '[]' for the display name
                         const [_, displayName] = folder.split('[]');
 
-                        // Create a parent container for the button and span
                         const folderContainer = document.createElement('div');
                         folderContainer.className = 'folder-container';
 
-                        // Create the button
                         const button = document.createElement('button');
                         button.className = 'folder-button';
+                        button.textContent = 'Fetching...'; // Display initial "Fetching..." text
 
-                        // Fetch a random image for the folder using the original folder name
-                        fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
-                            .then(response => response.json())
-                            .then(randomImage => {
-                                const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
-                                button.style.backgroundImage = `url(${imgUrl})`;
-                            })
-                            .catch(error => console.error('Error fetching random image:', error));
-
-                        // Use the original folder name for fetching images when the button is clicked
-                        button.addEventListener('click', () => {
-                            showImages(folder);
-                            scrollToCommunity(); // Scroll to the community section
-                            document.getElementById("defaultOpen").click(); // Trigger the default tab to open
-                        });
-
-                        // Create the span with the display name
                         const textSpan = document.createElement('span');
                         textSpan.className = 'folder-button-text';
                         textSpan.textContent = displayName;
 
-                        // Append the button and span to the folder container
                         folderContainer.appendChild(button);
                         folderContainer.appendChild(textSpan);
-
-                        // Append the folder container to the folders container
                         foldersContainer.appendChild(folderContainer);
+
+                        // Fetch a random image for each folder
+                        fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                            .then(response => response.json())
+                            .then(randomImage => {
+                                if (randomImage && !randomImage.error) {
+                                    const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
+                                    button.style.backgroundImage = `url(${imgUrl})`;
+                                    button.textContent = ''; // Remove "Fetching..." text when image is loaded
+                                } else {
+                                    button.textContent = 'Image not available'; // Display if no image found
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching random image:', error);
+                                button.textContent = 'Error loading image';
+                            });
+
+                        button.addEventListener('click', () => {
+                            showImages(folder);
+                            scrollToCommunity(); // Scroll to the community section
+                            document.getElementById("defaultOpen").click(); // Open the default tab
+                        });
                     });
                 })
-                .catch(error => console.error('Error fetching folders:', error));
+                .catch(error => {
+                    console.error('Error fetching folders:', error);
+                    foldersContainer.innerHTML = 'Failed to load folders.';
+                });
         }
 
+        // Show all images in the selected folder
         function showImages(folder) {
             const encodedFolder = encodeURIComponent(folder);
+            imagesContainer.innerHTML = 'Loading images...';
+
             fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
                 .then(response => response.json())
                 .then(images => {
-                    imagesContainer.innerHTML = ''; // Clear previous images
-                    foldersContainer.innerHTML = ''; // Clear previous folder buttons
+                    imagesContainer.innerHTML = ''; 
+                    foldersContainer.innerHTML = ''; 
 
-                    // Check if images array is empty
                     if (images.length === 0) {
                         showRefreshButton();
                         return;
                     }
 
-                    // Show images
                     images.forEach(image => {
                         const imgElement = document.createElement('img');
                         imgElement.src = `/assets/images/community/${encodedFolder}/${image}`;
                         imagesContainer.appendChild(imgElement);
                     });
 
-                    // Create and show Go Back button
                     const goBackButton = document.createElement('button');
                     goBackButton.textContent = 'Go Back';
                     goBackButton.id = 'go-back-button';
@@ -745,7 +752,10 @@
                     });
                     foldersContainer.appendChild(goBackButton);
                 })
-                .catch(error => console.error('Error fetching images:', error));
+                .catch(error => {
+                    console.error('Error fetching images:', error);
+                    imagesContainer.innerHTML = 'Failed to load images.';
+                });
         }
 
         function showRefreshButton() {

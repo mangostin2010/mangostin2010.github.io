@@ -34,7 +34,7 @@
           "areaServed": "수원시",
           "image": "https://scis.kro.kr/assets/images/logo.png"
       }
-    </script>
+  </script>
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -349,7 +349,7 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 500px;
+  max-width: 400px;
   text-align: center;
   position: relative;
 }
@@ -357,7 +357,7 @@
 /* 이미지 크기 제한 */
 #notice-image {
   max-width: 100%; /* 모달 너비에 맞추어 이미지가 조정됩니다 */
-  max-height: 300px; /* 최대 높이 설정 */
+  max-height: 200px; /* 최대 높이 설정 */
   object-fit: contain; /* 이미지 비율 유지 */
 }
 
@@ -369,53 +369,7 @@
   cursor: pointer;
 }
 
-/* CSS */
-.button-6 {
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-  margin-top: 0.5rem;
-}
 
-.button-6:hover,
-.button-6:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.button-6:hover {
-  transform: translateY(-1px);
-}
-
-.button-6:active {
-  background-color: #F0F0F1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
 
     </style>
   </head>
@@ -483,20 +437,16 @@
     <!-- 모달 내용 -->
     <div class="modal-content">
         <span id="close-btn" class="close">&times;</span>
-        <h3>공지 | Announcement</h3>
-        <hr>
-        <img id="notice-image" src="" alt="공지 이미지" style="border-radius: 2rem;">
-        <p id="notice-message" style="font-size:17px; padding: 1rem 0 1rem 0"></p>
-
+        <img id="notice-image" src="" alt="공지 이미지">
+        <p id="notice-message"></p>
         <label>
             <input type="checkbox" id="dont-show-today"> 오늘 하루 보지 않기
         </label>
-        <button id="confirm-btn" class="button-6">확인</button>
-
+        <button id="confirm-btn">확인</button>
     </div>
 </div>
 
-  <script src="../vendor/announce.js"></script>
+  <script src="vendor/announce.js"></script>
 
       <!-- ***** Sub Navigation Start ***** -->
   <div class="sub-header">
