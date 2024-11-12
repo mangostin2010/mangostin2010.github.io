@@ -1,447 +1,138 @@
 <!DOCTYPE html>
 <html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>수원기독국제학교 | Suwon Christian International School</title>
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-
-    <title>수원기독국제학교</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
-
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "수원기독국제학교",
+            "alternateName": ["Suwon Christian International School", "SCIS", "수원기독학교", "기독학교", "수원학교"],
+            "url": "https://scis.kro.kr",
+            "logo": "https://scis.kro.kr/assets/images/logo.png",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "학교 주소",
+                "addressLocality": "수원시",
+                "addressRegion": "경기도",
+                "postalCode": "16668",
+                "addressCountry": "KR"
+            },
+            "telephone": "031-548-2198",
+            "email": "scis@outlook.kr",
+            "description": "수원기독국제학교는 기독교 가치관을 바탕으로 글로벌 리더를 양성하는 국제학교입니다.",
+            "educationalAlignments": "기독교 교육, S.O.T., A.C.E. 교육과정",
+            "teaches": ["기독교 교육", "영어", "수학", "과학", "사회", "예술"],
+            "areaServed": "수원시",
+            "image": "https://scis.kro.kr/assets/images/logo.png"
+        }
+    </script>
+    
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/favicon.ico">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../assets/css/stylesheet.css">
-    <link rel="stylesheet" href="../assets/css/owl.css">
-    <link rel="stylesheet" href="../assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
-    <style>
-    p, a, select, h1, h2, h3, h4, h5, h6 {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-
-    .three {
-      justify-content: center;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* Allows elements to wrap to the next line if needed */
-    }
-
-    .three:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    .each-element {
-      border: solid rgb(161, 161, 161) 1px;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      width: 18%;
-      margin: 1rem 0.2rem 0 0.2rem;
-      float: left;
-    }
-
-    .top-padding {
-      padding-top: 8rem;
-    }
-
-    .philosophy-responsive {
-      width: 50%
-    }
-
-    .bible-img {
-      padding-left: 0px; 
-      border-radius: 10px; 
-      border: solid 1px #ababab;
-      width: unset;
-      height: 22rem;
-      margin-bottom: 3rem;
-    }
-
-    .teachers {
-      display: flex;
-    }
-
-    .teacher {
-      width: 25%
-    }
-
-    .school-image {
-      width: 80%;
-    }
-
-    .founder-message {
-      width: 25rem;
-    }
-
-    .school-logo {
-      max-width: 15%; 
-      border-radius: 2rem; 
-      margin-top: 1rem;
-      display: block;
-      margin: 0 auto;
-      margin-top: 1rem;
-      border-radius: 0;
-    }
-
-    .div-school-logo {
-      text-align: center; 
-    }
-
-    .each-element-things {
-      color: #ee626b;
-      color: #002a90;
-    }
-
-    #languageSelect {
-      font-weight: bold;
-      height: 33px;
-    }
-
-
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .each-element {
-        width: 23%; /* Slightly larger width for medium screens */
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .philosophy-responsive {
-        width: 100%;
-      }
-      
-      .bible-img {
-        padding-left: 0px; 
-        border-radius: 10px; 
-        border: solid 1px #ababab;
-        width: unset;
-        height: 20rem;
-        margin-bottom: 3rem;
-      }
-
-      .school-image {
-        width: 450px;
-        margin-bottom: 3rem; 
-      }
-
-
-      
-    }
-
-    @media (max-width: 992px) {
-      .each-element {
-        width: 31%; /* Larger width for tablet screens */
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .teachers {
-        display: unset;
-      }
-      .teacher {
-        width:100%;
-        margin-bottom: 2.5rem;
-      }
-
-      .founder-message {
-        width: unset;
-      }
-      .school-image, .bible-img {
-        margin-bottom: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .each-element {
-        width: 48%; /* Two elements per row on smaller screens */
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-logo {
-        max-width: 50%;
-      }
-
-      #languageSelect {
-        height: 50px;
-        background: transparent;
-        font-weight: bold;
-      }
-
-      .lang {
-        border-top: 1px solid #ddd;
-      }
-
-      #languageSelect {
-        height: 50px;
-        background: transparent;
-        font-weight: bold;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .each-element {
-        width: 100%; /* Full width for small mobile screens */
-        margin: 1rem 0; /* Adjust margin for full-width elements */
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-image {
-        width: 100%;
-      }
-
-      .bible-img {
-        width: 100%;
-      }
-    }
-
-
-
-
-    .profile-image {
-      max-width: 12rem;
-      border-radius: 10000rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      background-position: center;
-      object-fit: cover;
-      aspect-ratio: 1
-    }
-
-
-
-    .teacher-name {
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .teacher-desc {
-      line-height: 1.5;
-      text-align: center;
-    }
-
-
-
-
-
-
-
-
-    .page-heading {
-    position: relative;
-    overflow: hidden;
-    }
-
-    .page-heading img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .page-heading::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
-        pointer-events: none;
-    }
-  
-.homepage-image {
-  /*background-image: url(assets/images/rsc_all.jpg); */
-  background-position: center;
-}
-
-/* CSS */
-.button-28 {
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #3B3B3B;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
-}
-
-.button-28:disabled {
-  pointer-events: none;
-}
-
-.button-28:hover {
-  color: #fff;
-  background-color: #1A1A1A;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
-}
-
-.button-28:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-
-    </style>
-  </head>
-<body oncontextmenu="return false;">
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-
-                      <div style="display: flex; justify-content: center; align-items: center; ">
-                        <h1 style="font-family: 'Poppins', sans-serif">SCIS</h1>
-                        <div style="border-right: solid 1px gray; height: 3rem; margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                        <p style="line-height: 13px; text-align: left; width: 150px; font-family: 'Poppins', sans-serif">Suwon Christian<br>International School</p>
-                      </div>
-
-
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-  
-
-  <div class="page-heading header-text" style="padding: 170px 0">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 style="font-family: 'Poppins', sans-serif">Oops! We can't find that page.</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- School Description Start -->
-  <div class="featured section" style="margin-top: 0; padding: 2rem 0rem 4rem 0rem;">
-    <div class="container">
-      <div class="row" style="display: unset;">
-        <h1 style="padding-top: 1rem; text-align: center;">Please consider visiting..</h1>
-
-        <!-- HTML !-->
-        <div style="width: 100%; text-align: center; display: grid">
-            <a href="/index.html" style="display: unset; margin: auto; max-width: fit-content;">
-                <button class="button-28" role="button" style="margin-top: 2rem">Main Page of Suwon Christian International School</button>
-            </a>
-
-            <a href="/en/index.html" style="display: unset; margin: auto; max-width: fit-content;">
-                <button class="button-28" role="button" style="margin-top: 2rem">Education Page of Suwon Christian International School in English</button>
-            </a>
-
-            <a href="/ko/index.html" style="display: unset; margin: auto; max-width: fit-content;">
-                <button class="button-28" role="button" style="margin-top: 2rem">Main Page of Suwon Christian International School in Korean</button>
-            </a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- School Description End -->  
-
-
-  <!-- School Description Start -->
-  <div class="featured section" style="margin-top: 0; padding: 2rem 0rem 4rem 0rem; border-top: solid 1px #ababab">
-    <div class="container">
-      <div class="row" style="display: unset;">
-        <h1 style="padding-top: 1rem; text-align: center;">What is SCIS?</h1>
-
-        <div class="div-school-logo">
-          <img src="../assets/images/logo.png" class="school-logo">
-          <p>SCIS stands for Suwon Christian International School, a Christian alternative school established by Suwon Full Gospel Church. SCIS offers education from 1st grade to 12th grade based on the School of Tomorrow curriculum, grounded in a biblical worldview. Inspired by Isaiah 40:8, "The grass withereth, the flower fadeth: but the word of our God shall stand for ever," the school was founded on February 1, 2018, with the mission of nurturing global leaders who are truly needed in today's world, rooted in the eternal word of God.</p>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- School Description End -->  
-
-
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p style="padding: 1rem 0 1rem 0;">Suwon Christian International School</p>
-        <p>TEL : 031-548-2198<br>E-mail: scis@outlook.kr</p>
-        <p style="padding: 1rem 0 1rem 0;"><a href="https://bit.ly/inoahbabo" target="_blank">Designed</a> and developed with faith by<br><a href="https://www.instagram.com/yg201009/" target="_blank">Justin Kang</a> & <a rel="nofollow" href="https://www.instagram.com/leeyena120" target="_blank">Laura Lee</a>.</p>
-      </div>
-    </div>
-  </footer>
-
-
-
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PLV5TKBK');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Essential Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="수원기독국제학교">
+    <meta name="description" content="수원기독국제학교는 기독교 가치관을 바탕으로 글로벌 리더를 양성하는 국제학교입니다. S.O.T., A.C.E. 교육과정을 통해 최고의 기독교 교육을 제공합니다.">
+    <meta name="keywords" content="수원기독국제학교, 기독교 교육, 국제학교, 수원, 기독교 지도자, 기독교 가치, 국제 교육, 영어 교육, 글로벌 교육, 기독교 학교, 사립학교, S.O.T. 교육, A.C.E. 교육, ACE 교육">
     
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/js/isotope.min.js"></script>
-  <script src="../assets/js/owl-carousel.js"></script>
-  <script src="../assets/js/counter.js"></script>
-  <script src="../assets/js/custom.js"></script>
-  <script src="../vendor/remove_F12.js"></script>
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="수원기독국제학교 | Suwon Christian International School">
+    <meta property="og:description" content="수원기독국제학교는 기독교 가치관을 바탕으로 글로벌 리더를 양성하는 국제학교입니다. S.O.T., A.C.E. 교육과정을 통해 최고의 기독교 교육을 제공합니다.">
+    <meta property="og:url" content="https://scis.kro.kr">
+    <meta property="og:site_name" content="수원기독국제학교">
+    <meta property="og:image" content="https://scis.kro.kr/assets/images/logo.png">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="수원기독국제학교 | Suwon Christian International School">
+    <meta name="twitter:description" content="수원기독국제학교는 기독교 가치관을 바탕으로 글로벌 리더를 양성하는 국제학교입니다. S.O.T., A.C.E. 교육과정을 통해 최고의 기독교 교육을 제공합니다.">
+    <meta name="twitter:image" content="https://scis.kro.kr/assets/images/logo.png">
+    
+    <!-- Language Alternatives -->
+    <link rel="alternate" hreflang="en" href="https://scis.kro.kr/en/">
+    <link rel="alternate" hreflang="ko" href="https://scis.kro.kr/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://scis.kro.kr">
+    <link rel="canonical" href="https://scis.kro.kr">
+    
+    <!-- Preconnect to required origins -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <!-- Language Redirect Script -->
+    <script>
+        function redirectBasedOnGeolocation() {
+            try {
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        const country = data.country_code;
+                        const path = country === 'KR' ? '/ko/' : '/en/';
+                        window.location.href = path;
+                    })
+                    .catch(() => {
+                        window.location.href = '/ko/';
+                    });
+            } catch (error) {
+                window.location.href = '/ko/';
+            }
+        }
+
+        window.onload = redirectBasedOnGeolocation;
+    </script>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLV5TKBK"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    <header>
+        <img src="https://scis.kro.kr/assets/images/logo.png" alt="수원기독국제학교 로고" width="100" height="100">
+        <h1>수원기독국제학교 | Suwon Christian International School</h1>
+    </header>
+    
+    <main>
+        <noscript>
+            <div class="language-selection">
+                <h2>언어 선택 | Language Selection</h2>
+                <p>자바스크립트가 비활성화되어 있습니다. 수동으로 언어를 선택해주세요:</p>
+                <ul>
+                    <li><a href="/ko/" hreflang="ko" title="한국어 버전">한국어</a></li>
+                    <li><a href="/en/" hreflang="en" title="English Version">English</a></li>
+                </ul>
+            </div>
+        </noscript>
+        
+        <div class="loading-message" aria-live="polite">
+            <p>잠시만 기다려주세요. 적절한 언어 버전으로 이동중입니다...</p>
+            <p lang="en">Please wait while we redirect you to the appropriate language version...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> 수원기독국제학교. All rights reserved.</p>
+    </footer>
+</body>
 </html>
