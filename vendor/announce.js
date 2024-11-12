@@ -8,7 +8,7 @@ window.onload = function () {
         return; // 모달 표시를 중지
     }
 
-    fetch('https://scisjustin.pythonanywhere.com/announce')
+    fetch('https://www.swcis.kr/announce.json')
         .then(response => response.json())
         .then(data => {
             // 공지 데이터가 없는 경우 모달을 표시하지 않음
