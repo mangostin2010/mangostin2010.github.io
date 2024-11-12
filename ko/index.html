@@ -168,6 +168,12 @@
       height: 33px;
     }
 
+    .homepage-image {
+      /*background-image: url(assets/images/rsc_all.jpg); */
+      background-position: center;
+      padding: 170px 0;
+    }
+
 
     /* Responsive adjustments */
     @media (max-width: 1200px) {
@@ -225,6 +231,12 @@
     }
 
     @media (max-width: 768px) {
+
+      .homepage-image {
+        /*background-image: url(assets/images/rsc_all.jpg); */
+        background-position: center;
+        padding: 120px 0;
+      }
       .each-element {
         width: 48%; /* Two elements per row on smaller screens */
       }
@@ -327,10 +339,7 @@
         pointer-events: none;
     }
   
-.homepage-image {
-  /*background-image: url(assets/images/rsc_all.jpg); */
-  background-position: center;
-}
+
 
 /* 모달 스타일 */
 .modal {
@@ -523,7 +532,7 @@ p {
   <!-- ***** Sub Navigation End ***** -->
   
 
-  <div class="page-heading header-text homepage-image" style="padding: 170px 0">
+  <div class="page-heading header-text homepage-image">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -843,7 +852,7 @@ p {
         // Function to update background position based on screen width
         function updateBackgroundPosition() {
             if (selectedImage.endsWith('da_boys.png')) {
-                if (window.innerWidth >= 768) { // Adjust this breakpoint as needed
+                if (window.innerWidth >= 992) { // Adjust this breakpoint as needed
                     homepageImage.style.backgroundPositionY = '-11rem';
                 } else {
                     homepageImage.style.backgroundPositionY = 'center';
