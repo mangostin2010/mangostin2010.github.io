@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.chat-header {
+    padding: 10px;
+    background: #0078d7;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background: #fff;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="chat-button" id="chatButton">💬</div>
+    <div class="chat-container hidden" id="chatContainer">
+        <div class="chat-header">
+            <h3>Chatbot</h3>
+            <button id="closeChat">X</button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+    <script>document.getElementById('chatButton').addEventListener('click', () => {
+        document.getElementById('chatContainer').classList.toggle('hidden');
+    });
+    
+    document.getElementById('closeChat').addEventListener('click', () => {
+        document.getElementById('chatContainer').classList.add('hidden');
+    });
+    
+    const messagesContainer = document.getElementById('chatMessages');
+    const inputField = document.getElementById('userInput');
+    const sendButton = document.getElementById('sendMessage');
+    
+    let conversations = [];
+    
+    const addMessage = (role, content) => {
+        const message = document.createElement('div');
+        message.className = role;
+        message.textContent = content;
+        messagesContainer.appendChild(message);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    };
+    
+    sendButton.addEventListener('click', async () => {
+        const userMessage = inputField.value;
+        if (!userMessage.trim()) return;
+    
+        addMessage('user', userMessage);
+        conversations.push({ role: 'user', content: userMessage });
+        inputField.value = '';
+    
+        try {
+            const response = await fetch('https://scisjustin.pythonanywhere.com/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ conversations }),
+            });
+            const data = await response.json();
+            const botMessage = data.reply;
+    
+            addMessage('assistant', botMessage);
+            conversations.push({ role: 'assistant', content: botMessage });
+        } catch (error) {
+            addMessage('assistant', 'Error connecting to the chatbot.');
+        }
+    });
+    </script>
+</body>
+</html>
