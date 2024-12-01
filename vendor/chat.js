@@ -15,10 +15,10 @@
             --message-bg-bot: #f5f5f5;
         }
 
-        :root {
+        /*:root {
             --primary-color: linear-gradient(135deg, #4776E6E8, #8E54E9CF);
             --message-bg-user: linear-gradient(135deg, #4776E6E8, #8E54E9CF);
-        }
+        }*/
 
         * {
             margin: 0;
