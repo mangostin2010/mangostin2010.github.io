@@ -6,12 +6,18 @@
         <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
         <style>
         :root {
-            --primary-color: #2962ff;
+            /*--primary-color: #2962ff;*/
+            --primary-color: #356afd;
             --secondary-color: #0039cb;
             --background-color: #ffffff;
             --text-color: #333333;
             --message-bg-user: var(--primary-color);
             --message-bg-bot: #f5f5f5;
+        }
+
+        :root {
+            --primary-color: linear-gradient(135deg, #4776E6E8, #8E54E9CF);
+            --message-bg-user: linear-gradient(135deg, #4776E6E8, #8E54E9CF);
         }
 
         * {
@@ -32,7 +38,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             color: white;
             border: none;
             cursor: pointer;
@@ -45,7 +51,7 @@
         }
 
         #chat-button:hover {
-            background-color: var(--secondary-color);
+            background: var(--secondary-color);
             transform: scale(1.1);
         }
 
@@ -55,7 +61,7 @@
             right: 20px;
             width: 380px;
             height: 600px;
-            background-color: var(--background-color);
+            background: var(--background-color);
             border-radius: 20px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
             display: none;
@@ -83,7 +89,7 @@
 
         #chat-header {
             padding: 20px;
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             color: white;
             border-radius: 20px 20px 0 0;
             display: flex;
@@ -156,7 +162,7 @@
         }
 
         .user-message {
-            background-color: var(--message-bg-user);
+            background: var(--message-bg-user);
             color: white;
             margin-left: auto;
             border-bottom-right-radius: 5px;
@@ -168,7 +174,7 @@
         }
 
         .bot-message {
-            background-color: var(--message-bg-bot);
+            background: var(--message-bg-bot);
             color: var(--text-color);
             margin-right: auto;
             border-bottom-left-radius: 5px;
@@ -237,7 +243,7 @@
             padding: 10px;
             min-width: 44px;
             height: 44px;
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 22px;
@@ -250,7 +256,7 @@
         }
 
         #send-button:hover {
-            background-color: var(--secondary-color);
+            background: var(--secondary-color);
             transform: scale(1.05);
         }
 
