@@ -82,24 +82,49 @@
 
     <!-- Language Redirect Script -->
     <script>
-        function redirectBasedOnGeolocation() {
-            try {
-                fetch('https://ipapi.co/json/')
-                    .then(response => response.json())
-                    .then(data => {
-                        const country = data.country_code;
-                        const path = country === 'KR' ? '/ko/' : '/en/';
-                        window.location.href = path;
-                    })
-                    .catch(() => {
-                        window.location.href = '/ko/';
-                    });
-            } catch (error) {
-                window.location.href = '/ko/';
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function setCookie(name, value, days) {
+            const expiration = new Date();
+            expiration.setTime(expiration.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value}; expires=${expiration.toUTCString()}; path=/;`;
+        }
+
+        function redirectUser() {
+            // Check for an existing language preference cookie
+            const languagePath = getCookie('userLang');
+            if (languagePath) {
+                // Redirect to the saved language path
+                window.location.href = languagePath;
+            } else {
+                // If no cookie exists, detect user's location and set a cookie
+                try {
+                    fetch('https://ipapi.co/json/')
+                        .then(response => response.json())
+                        .then(data => {
+                            const country = data.country_code;
+                            const path = country === 'KR' ? '/ko/' : '/en/';
+                            setCookie('userLang', path, 30); // Remember user's language preference for 30 days
+                            window.location.href = path;    // Redirect to the appropriate language version
+                        })
+                        .catch(() => {
+                            const fallbackPath = '/ko/';
+                            setCookie('userLang', fallbackPath, 30);
+                            window.location.href = fallbackPath;
+                        });
+                } catch (error) {
+                    const fallbackPath = '/ko/';
+                    setCookie('userLang', fallbackPath, 30);
+                    window.location.href = fallbackPath;
+                }
             }
         }
 
-        window.onload = redirectBasedOnGeolocation;
+        window.onload = redirectUser;
     </script>
 </head>
 <body>
