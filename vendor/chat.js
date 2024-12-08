@@ -385,20 +385,222 @@
             text-decoration: underline;
             cursor: pointer;
         }
-        </style>
 
+        /* Styles specific to the custom form */
+.custom-form {
+  max-width: 800px; /* Wider form on larger screens */
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.custom-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-form p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.custom-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="number"],
+.custom-form textarea,
+.custom-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.custom-form input[type="radio"] {
+  margin-right: 8px;
+}
+
+.custom-form textarea {
+  resize: none;
+}
+
+.custom-form button {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-form button:hover {
+  background-color: #45a049;
+}
+
+.custom-form .form-group {
+  margin-bottom: 20px;
+}
+
+.custom-form .form-group.inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-form footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For larger screens (e.g., desktops) */
+@media (min-width: 1024px) {
+  .custom-form {
+    max-width: unset; /* Wider form for desktops */
+    padding: 30px; /* Add more padding for spaciousness */
+  }
+
+  .custom-form h1 {
+    font-size: 2em; /* Larger heading */
+  }
+
+  .custom-form p {
+    font-size: 16px; /* Slightly larger text for better readability */
+  }
+
+  .custom-form input[type="text"],
+  .custom-form input[type="number"],
+  .custom-form textarea,
+  .custom-form select {
+    padding: 15px; /* Increase padding for larger inputs */
+    font-size: 18px; /* Slightly larger text */
+  }
+
+  .custom-form button {
+    font-size: 18px;
+    padding: 15px;
+  }
+}
+
+/* For smaller screens (e.g., tablets and mobile phones) */
+@media (max-width: 768px) {
+  .custom-form {
+    max-width: 95%; /* Take almost full width on small devices */
+    margin: 20px auto; /* Reduce top/bottom margin */
+    padding: 15px; /* Compact padding */
+  }
+
+  .custom-form h1 {
+    font-size: 1.5em; /* Slightly smaller heading */
+  }
+
+  .custom-form input[type="text"],
+  .custom-form input[type="number"],
+  .custom-form textarea,
+  .custom-form select {
+    font-size: 14px; /* Reduce input size for smaller screens */
+    padding: 8px;
+  }
+
+  .custom-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+        </style>
+        
         <button id="chat-button" class="pulse">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
         </button>
 
-        <div id="chat-container">
+        <div id="chat-container" style="padding: 0;">
             <div id="chat-header">
-                <h2 style='color: white'>SCIS Introducer</h2>
-                <button id="clear-chat">Clear Chat</button>
+                <h2 style='color: white'>입학하기</h2>
+                <!--<h2 style='color: white'>SCIS Introducer</h2>
+                <button id="clear-chat">Clear Chat</button>-->
             </div>
-            <div id="chat-messages">
+
+            <div class="custom-form" style="overflow-y: scroll; margin: 0;">
+            <h1 style="padding-top: 1rem;">문의 양식</h1>
+            <p>아래 양식을 기입하신 후, 제출을 클릭해 주시면 담당자가 확인하고 연락을 드립니다.</p>
+            
+            <!-- Form starts here -->
+            <form id="form" method="POST">
+                <div class="form-group">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                <label>성별:</label>
+                <div class="form-group inline">
+                    <input type="radio" id="male" name="gender" value="남성" required>
+                    <label for="male">남성</label>
+                    <input type="radio" id="female" name="gender" value="여성" required>
+                    <label for="female">여성</label>
+                </div>
+                </div>
+                <div class="form-group">
+                <label for="age">나이:</label>
+                <input type="number" id="age" name="age" min="1" required>
+                </div>
+                <div class="form-group">
+                <label for="admission-date">입학을 원하는 시기:</label>
+                <input type="text" id="admission-date" name="admission_date" placeholder="예: 2024년 3월" required>
+                </div>
+                <div class="form-group">
+                <label for="current-school">현재 다니는 학교:</label>
+                <input type="text" id="current-school" name="current_school" required>
+                </div>
+                <div class="form-group">
+                <label for="english-level">영어 이해도:</label>
+                <select id="english-level" name="english_level">
+                    <option value="상">상</option>
+                    <option value="중">중</option>
+                    <option value="하">하</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="questions">기타 질문:</label>
+                <textarea id="questions" name="questions" rows="4" placeholder="여기에 질문을 입력하세요."></textarea>
+                </div>
+                <div class="form-group">
+                <label for="contact-preference">연락 받기를 원하는 방법을 기입 (이메일 또는 전화):</label>
+                <input type="text" id="contact-preference" name="contact_preference" placeholder="예: scis@outlook.kr 혹은 031-548-2198" required>
+                </div>
+                <button type="submit">제출</button>
+            </form>
+            </div>
+
+
+
+            
+            <div id="chat-messages" style="display: none;">
+            </div>
+
+            <!--<div id="chat-messages">
                 <div class="message bot-message">Hello! Welcome to the SCIS website. You can ask anything about SCIS!
 
 안녕하세요! 수원기독국제학교 웹사이트에 오신것을 환영합니다. 학교에 대해 무엇이든 물어보세요!</div>
@@ -413,7 +615,7 @@
                         </svg>
                     </button>
                 </div>
-            </div>
+            </div>-->
         </div>
     `;
 

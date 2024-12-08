@@ -493,7 +493,7 @@ th, td {
             <p>원하는 문구와 이미지를 공지하세요! 공지를 업데이트하는데 1-3분정도 소요될 수 있습니다.</p>
 
             <div style="padding:1rem;"></div>
-            <form action="https://scisjustin.pythonanywhere.com/add_announce" method="post" onsubmit="resetValue();">
+            <form action="https://mangostin2010-scisjustin.hf.space/add_announce" method="post" onsubmit="resetValue();">
                 <label for="message">공지 문구를 작성해주세요:</label>
                 <input type="text" id="message" name="message" >
                 <br>
@@ -609,7 +609,7 @@ th, td {
             
                 async function updateEventListOnServer() {
                     try {
-                        const response = await fetch('https://scisjustin.pythonanywhere.com/update_event_list', {
+                        const response = await fetch('https://mangostin2010-scisjustin.hf.space/update_event_list', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -758,7 +758,7 @@ th, td {
             const imagesContainer = document.getElementById('images-container');
 
             function fetchFolders() {
-                fetch('https://scisjustin.pythonanywhere.com/list_folders')
+                fetch('https://mangostin2010-scisjustin.hf.space/list_folders')
                     .then(response => response.json())
                     .then(folders => {
                         foldersContainer.innerHTML = ''; // Clear previous buttons
@@ -775,7 +775,7 @@ th, td {
                             button.className = 'folder-button';
 
                             // Fetch a random image for the folder using the original folder name (without modification)
-                            fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                            fetch(`https://mangostin2010-scisjustin.hf.space/random_images/${encodeURIComponent(folder)}`)
                                 .then(response => response.json())
                                 .then(randomImage => {
                                     const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
@@ -809,7 +809,7 @@ th, td {
 
             function showImages(folder) {
                 const encodedFolder = encodeURIComponent(folder);
-                fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+                fetch(`https://mangostin2010-scisjustin.hf.space/list_images/${encodedFolder}`)
                     .then(response => response.json())
                     .then(images => {
                         // Clear previous images and folder buttons
@@ -854,7 +854,7 @@ th, td {
         const imagesContainer = document.getElementById('images-container');
 
         function fetchFolders() {
-            fetch('https://scisjustin.pythonanywhere.com/list_folders')
+            fetch('https://mangostin2010-scisjustin.hf.space/list_folders')
                 .then(response => response.json())
                 .then(folders => {
                     foldersContainer.innerHTML = ''; // Clear previous buttons
@@ -878,7 +878,7 @@ th, td {
                         button.className = 'folder-button';
 
                         // Fetch a random image for the folder using the original folder name
-                        fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                        fetch(`https://mangostin2010-scisjustin.hf.space/random_images/${encodeURIComponent(folder)}`)
                             .then(response => response.json())
                             .then(randomImage => {
                                 const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
@@ -911,7 +911,7 @@ th, td {
 
         function showImages(folder) {
             const encodedFolder = encodeURIComponent(folder);
-            fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+            fetch(`https://mangostin2010-scisjustin.hf.space/list_images/${encodedFolder}`)
                 .then(response => response.json())
                 .then(images => {
                     imagesContainer.innerHTML = ''; // Clear previous images
@@ -990,7 +990,7 @@ th, td {
             reader.onload = function(e) {
                 const imageData = e.target.result;
                 $.ajax({
-                    url: 'https://scisjustin.pythonanywhere.com/upload',
+                    url: 'https://mangostin2010-scisjustin.hf.space/upload',
                     type: 'POST',
                     contentType: 'application/json',
                     crossOrigin: true,
@@ -1015,7 +1015,7 @@ th, td {
     
         // Function to load folders
         function loadFolders() {
-            $.get("https://scisjustin.pythonanywhere.com/list_folders", function(data) {
+            $.get("https://mangostin2010-scisjustin.hf.space/list_folders", function(data) {
                 $("#folderList").empty();
                 data.forEach(folder => {
                     const folderName = folder.split('[]')[1] || folder;  // Remove the date and [] part if present
@@ -1045,7 +1045,7 @@ th, td {
             if (selectedFolders.length > 0) {
                 if (confirm("Are you sure you want to remove the following folders?\n" + selectedFolders.join("\n"))) {
                     $.ajax({
-                        url: "https://scisjustin.pythonanywhere.com/delete_folders",
+                        url: "https://mangostin2010-scisjustin.hf.space/delete_folders",
                         type: "POST",
                         contentType: "application/json",
                         data: JSON.stringify({ folders: selectedFolders }),
@@ -1073,7 +1073,7 @@ th, td {
 
         // Send password to the server for verification
         try {
-            const response = await fetch('https://scisjustin.pythonanywhere.com/check_password', {
+            const response = await fetch('https://mangostin2010-scisjustin.hf.space/check_password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

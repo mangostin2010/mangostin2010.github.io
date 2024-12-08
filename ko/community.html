@@ -502,17 +502,6 @@ p {
             
         </div>
 
-        <div id="Recruitment information" class="tabcontent">
-            <h4 style="padding-top: 1rem; padding-bottom: 1rem; border-bottom: solid 1px #ababab;">Recruitment Information</h4>
-
-            <p>Recruitment information is still developing... (by justin😀)</p>
-        </div>
-
-        <div id="Post" class="tabcontent">
-            <h3>Post</h3>
-            <p>Post is still developing... (by justin😀)</p>
-        </div>
-
     </div>
 
     <footer>
@@ -568,7 +557,7 @@ p {
             const imagesContainer = document.getElementById('images-container');
 
             function fetchFolders() {
-                fetch('https://scisjustin.pythonanywhere.com/list_folders')
+                fetch('https://mangostin2010-scisjustin.hf.space/list_folders')
                     .then(response => response.json())
                     .then(folders => {
                         foldersContainer.innerHTML = ''; // Clear previous buttons
@@ -585,7 +574,7 @@ p {
                             button.className = 'folder-button';
 
                             // Fetch a random image for the folder using the original folder name (without modification)
-                            fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                            fetch(`https://mangostin2010-scisjustin.hf.space/random_images/${encodeURIComponent(folder)}`)
                                 .then(response => response.json())
                                 .then(randomImage => {
                                     const imgUrl = `/assets/images/community/${encodeURIComponent(folder)}/${randomImage}`;
@@ -619,7 +608,7 @@ p {
 
             function showImages(folder) {
                 const encodedFolder = encodeURIComponent(folder);
-                fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+                fetch(`https://mangostin2010-scisjustin.hf.space/list_images/${encodedFolder}`)
                     .then(response => response.json())
                     .then(images => {
                         // Clear previous images and folder buttons
@@ -667,7 +656,7 @@ p {
         function fetchFolders() {
             foldersContainer.innerHTML = 'Loading folders...'; // Initial loading message
 
-            fetch('https://scisjustin.pythonanywhere.com/list_folders')
+            fetch('https://mangostin2010-scisjustin.hf.space/list_folders')
                 .then(response => response.json())
                 .then(folders => {
                     foldersContainer.innerHTML = ''; // Clear loading message
@@ -697,7 +686,7 @@ p {
                         foldersContainer.appendChild(folderContainer);
 
                         // Fetch a random image for each folder
-                        fetch(`https://scisjustin.pythonanywhere.com/random_images/${encodeURIComponent(folder)}`)
+                        fetch(`https://mangostin2010-scisjustin.hf.space/random_images/${encodeURIComponent(folder)}`)
                             .then(response => response.json())
                             .then(randomImage => {
                                 if (randomImage && !randomImage.error) {
@@ -731,7 +720,7 @@ p {
             const encodedFolder = encodeURIComponent(folder);
             imagesContainer.innerHTML = 'Loading images...';
 
-            fetch(`https://scisjustin.pythonanywhere.com/list_images/${encodedFolder}`)
+            fetch(`https://mangostin2010-scisjustin.hf.space/list_images/${encodedFolder}`)
                 .then(response => response.json())
                 .then(images => {
                     imagesContainer.innerHTML = ''; 
