@@ -397,6 +397,13 @@
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
+  overflow: hidden; /* Hide scroll bar */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.custom-form::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
 }
 
 .custom-form h1 {
@@ -482,11 +489,12 @@
   }
 
   .custom-form h1 {
-    font-size: 2em; /* Larger heading */
+    font-size: 1.7em; /* Larger heading */
   }
 
   .custom-form p {
     font-size: 16px; /* Slightly larger text for better readability */
+    margin-bottom: 20px; 
   }
 
   .custom-form input[type="text"],
@@ -494,11 +502,11 @@
   .custom-form textarea,
   .custom-form select {
     padding: 15px; /* Increase padding for larger inputs */
-    font-size: 18px; /* Slightly larger text */
+    font-size: 15px; /* Slightly larger text */
   }
 
   .custom-form button {
-    font-size: 18px;
+    font-size: 16px;
     padding: 15px;
   }
 }
@@ -506,7 +514,7 @@
 /* For smaller screens (e.g., tablets and mobile phones) */
 @media (max-width: 768px) {
   .custom-form {
-    max-width: 95%; /* Take almost full width on small devices */
+    /*max-width: 95%; *//* Take almost full width on small devices */
     margin: 20px auto; /* Reduce top/bottom margin */
     padding: 15px; /* Compact padding */
   }
@@ -543,7 +551,7 @@
                 <button id="clear-chat">Clear Chat</button>-->
             </div>
 
-            <div class="custom-form" style="overflow-y: scroll; margin: 0;">
+            <div class="custom-form" style="overflow-y: scroll; margin: 1rem;">
             <h1 style="padding-top: 1rem;">문의 양식</h1>
             <p>아래 양식을 기입하신 후, 제출을 클릭해 주시면 담당자가 확인하고 연락을 드립니다.</p>
             
@@ -627,31 +635,28 @@
         chatWrapper.id = 'scis-chat-wrapper';
         chatWrapper.innerHTML = chatHTML;
         document.body.appendChild(chatWrapper);
-
+    
         // Initialize all the variables and event listeners
         const chatButton = document.getElementById('chat-button');
         const chatContainer = document.getElementById('chat-container');
-        const chatInput = document.getElementById('chat-input');
         const sendButton = document.getElementById('send-button');
         const chatMessages = document.getElementById('chat-messages');
         const clearChatButton = document.getElementById('clear-chat');
         let isOpen = false;
         let conversationHistory = [];
         let isTyping = false;
-
+    
         window.isSystemPromptAdded = false;
-
+    
         if (!isSystemPromptAdded) {
             conversationHistory.unshift({
                 role: "system",
                 content: SYSTEM_PROMPT
             });
             isSystemPromptAdded = true; // Update the flag
-            console.log('System prompt added:', SYSTEM_PROMPT,);
+            console.log('System prompt added:', SYSTEM_PROMPT);
         }
-
-
-
+    
         // Load conversation history from localStorage
         const savedHistory = localStorage.getItem('chatHistory');
         if (savedHistory) {
@@ -662,8 +667,7 @@
                     addMessage(msg.content, msg.role === 'user' ? 'user' : 'bot', false);
                 });
         }
-        
-
+    
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
             typingDiv.className = 'typing-indicator';
@@ -676,30 +680,29 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
             return typingDiv;
         }
-
+    
         function removeTypingIndicator(indicator) {
             if (indicator && indicator.parentNode) {
                 indicator.parentNode.removeChild(indicator);
             }
         }
-
+    
         function printHistory() {
             console.group('Conversation History');
             console.log(JSON.stringify(conversationHistory, null, 2));
             console.groupEnd();
         }
-
+    
         async function sendMessage() {
-            const message = chatInput.value.trim();
+            const message = "Some message"; // Replace this with logic to get the message if needed
             if (!message || isTyping) return;
-        
+            
             addMessage(message, 'user', true);
             printHistory();
-            chatInput.value = '';
             isTyping = true;
-        
+            
             const typingIndicator = showTypingIndicator();
-        
+            
             if (conversationHistory.length === 0) {
                 if (typeof SYSTEM_PROMPT === 'undefined') {
                     console.error('SYSTEM_PROMPT is not defined!');
@@ -711,7 +714,7 @@
                     });
                 }
             }
-                        
+                            
             try {
                 const response = await fetch('https://gpt4omini-6ucx5cuf.b4a.run/v1/chat/completions', {
                     method: 'POST',
@@ -724,7 +727,7 @@
                         messages: conversationHistory
                     })
                 });
-        
+            
                 const data = await response.json();
                 removeTypingIndicator(typingIndicator);
                 
@@ -739,8 +742,7 @@
             }
             isTyping = false;
         }
-        
-
+    
         function addMessage(text, sender, saveToHistory = true) {
             // Skip rendering system messages in the chat interface
             if (sender === 'system') {
@@ -752,10 +754,10 @@
                 }
                 return; // Do not render in the UI
             }
-        
+            
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message', `${sender}-message`);
-        
+            
             if (text.includes('<') && text.includes('>')) {
                 // For rendering HTML content
                 messageDiv.innerHTML = text;
@@ -763,11 +765,10 @@
                 // For regular text messages
                 messageDiv.textContent = text;
             }
-        
+            
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        
+            
             if (saveToHistory) {
                 const role = sender === 'user' ? 'user' : 'assistant';
                 conversationHistory.push({
@@ -777,44 +778,46 @@
                 localStorage.setItem('chatHistory', JSON.stringify(conversationHistory));
             }
         }
-        
-        
-
+    
         // Event Listeners
         chatButton.addEventListener('click', () => {
             isOpen = !isOpen;
             chatContainer.classList.toggle('open');
             chatButton.classList.remove('pulse');
-            if (isOpen) {
-                chatInput.focus();
-            }
-        });
 
+            if (isOpen) {
+                // Disable body scrolling only on mobile devices
+                if (window.matchMedia("(max-width: 768px)").matches) { // Mobile condition
+                    document.body.style.overflow = 'hidden'; // Disable scrolling
+                }
+            } else {
+                // Re-enable scrolling when chat is closed
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+
+            console.log(`Chat is ${isOpen ? 'open' : 'closed'}`);
+        });
+    
         clearChatButton.addEventListener('click', () => {
             chatMessages.innerHTML = `<div class="message bot-message">Hello! Welcome to the SCIS website. You can ask anything about SCIS!
-
-안녕하세요! 수원기독국제학교 웹사이트에 오신것을 환영합니다. 학교에 대해 무엇이든 물어보세요!</div>`;
+    
+    안녕하세요! 수원기독국제학교 웹사이트에 오신것을 환영합니다. 학교에 대해 무엇이든 물어보세요!</div>`;
             window.isSystemPromptAdded = false;
             conversationHistory = [];
-
+    
             if (!isSystemPromptAdded) {
                 conversationHistory.unshift({
                     role: "system",
                     content: SYSTEM_PROMPT
                 });
                 isSystemPromptAdded = true; // Update the flag
-                console.log('System prompt added:', SYSTEM_PROMPT,);
+                console.log('System prompt added:', SYSTEM_PROMPT);
             }
             localStorage.removeItem('chatHistory');
         });
-
+    
         sendButton.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
+    
         // Add pulse animation to chat button periodically
         setInterval(() => {
             if (!isOpen) {
@@ -822,7 +825,7 @@
             }
         }, 10000);
     }
-
+    
     // Initialize the chat when the DOM is fully loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initChat);
