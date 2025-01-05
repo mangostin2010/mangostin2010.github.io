@@ -466,6 +466,19 @@
   transform: translateY(0);
 }
 
+.welcome-message {
+  color: #dbdbdb; 
+  border: solid 1px white; 
+  background: rgb(30, 30, 30); 
+  padding: 0 1rem; 
+  border-radius: 2rem;
+}
+
+.welcome-message:hover {
+  border: solid 1px rgb(30, 30, 30); 
+  text-decoration: underline;
+}
+
     </style>
   </head>
 <body>
@@ -568,12 +581,23 @@
   <!-- ***** Sub Navigation End ***** -->
   
 
-  <div class="page-heading header-text homepage-image">
+  <div class="page-heading header-text homepage-image" style="background-image: url(../assets/images/transition_background/AASC.png);">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>Welcome To <span id="clickWord" class="highlight" style="background-color: unset; color: unset; font-size: unset; font-weight: unset; text-transform: unset; padding-left: unset; padding-right: unset; display:unset; margin-bottom: unset;">SCIS</span></h3>
-          <span class="breadcrumb"><p style="color: #7a7a7a">We welcome new students!</p></span>
+          <h3 style="font-family: 'Poppins', sans-serif">Welcome To SCIS</h3>
+          <span class="breadcrumb" style="background-color: unset;">
+            <p class='welcome-message' onclick="window.location.href='./admission.html'" style="cursor: pointer;">
+SCIS Admission Information
+              <svg fill="#FFFFFF" height="8" width="8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+              viewBox="0 0 330 330" xml:space="preserve">
+              <path id="XMLID_222_" d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
+                      c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213
+                      C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
+                      C255,161.018,253.42,157.202,250.606,154.389z"/>
+              </svg>
+            </p>
+          </span>
         </div>
       </div>
     </div>
@@ -835,42 +859,73 @@
     </div>
   </footer>
 
+  <style>
+    /* 가장 바깥 배경 영역 */
+    .homepage-image {
+        width: 100%;
+        background-size: cover; /* 배경 이미지 크기를 요소에 맞게 조정 */
+        background-position: center; /* 배경 이미지 중앙 정렬 */
+        background-repeat: no-repeat; /* 배경 이미지 반복 금지 */
+        transition: background-image 1s ease-in-out; /* 배경 이미지 변경 효과 */
+        position: relative; /* 다른 요소와 겹치지 않도록 설정 */
+    }
+  </style>
+  
   <script>
     const images = [
-        '../assets/images/rsc_all.jpg',
-        '../assets/images/rsc_teachers_darken.png',
-        '../assets/images/da_boys.png'
-        // Add more image URLs as needed
+        '../assets/images/transition_background/rsc_all.jpg',
+        '../assets/images/transition_background/rsc_teachers_darken.png',
+        //'../assets/images/transition_background/da_boys.png',
+        '../assets/images/transition_background/AASC.png',
+        '../assets/images/transition_background/AASC_Students.png',
+        '../assets/images/transition_background/Sports.png',
+        '../assets/images/transition_background/Hallelujah.png'
     ];
-
-    function setRandomBackground() {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        const selectedImage = images[randomIndex];
-        const homepageImage = document.querySelector('.homepage-image');
-        
-        homepageImage.style.backgroundImage = `url(${selectedImage})`;
-        
-        // Function to update background position based on screen width
-        function updateBackgroundPosition() {
-            if (selectedImage.endsWith('da_boys.png')) {
-                if (window.innerWidth >= 992) { // Adjust this breakpoint as needed
-                    homepageImage.style.backgroundPositionY = '-11rem';
-                } else {
-                    homepageImage.style.backgroundPositionY = 'center';
-                }
-            } else {
-                homepageImage.style.backgroundPositionY = 'center';
-            }
-        }
-
-        // Initial call to set the correct position
-        updateBackgroundPosition();
-
-        // Add event listener for window resize
-        window.addEventListener('resize', updateBackgroundPosition);
+  
+    let currentImageIndex = 0; // 현재 표시 중인 이미지 인덱스
+    const homepageImage = document.querySelector('.homepage-image'); // 배경 이미지가 적용될 요소
+  
+    // 이미지 로드 함수
+    function preloadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = url;
+            img.onload = () => resolve(img); // 이미지 로드 성공 시 Promise 이행
+            img.onerror = (err) => reject(err); // 이미지 로드 실패 시 Promise 거부
+        });
     }
-
-    document.addEventListener('DOMContentLoaded', setRandomBackground);
+  
+    // 배경 이미지 변경 함수
+    function changeBackground() {
+        // 다음 이미지 인덱스 계산 (순환)
+        const nextImageIndex = (currentImageIndex + 1) % images.length;
+        const nextImageUrl = images[nextImageIndex];
+  
+        // 다음 이미지 미리 로드
+        preloadImage(nextImageUrl)
+            .then(() => {
+                // 이미지가 로드되면 배경 변경
+                homepageImage.style.backgroundImage = `url(${nextImageUrl})`;
+                homepageImage.style.backgroundSize = 'cover'; // 항상 동일한 크기
+                homepageImage.style.backgroundPosition = 'center'; // 항상 중앙 정렬
+  
+                // 현재 이미지 인덱스 업데이트
+                currentImageIndex = nextImageIndex;
+            })
+            .catch((err) => {
+                console.error('이미지를 로드하는 중 오류가 발생했습니다:', err);
+            });
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+        // 첫 번째 배경 이미지 설정
+        homepageImage.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        homepageImage.style.backgroundSize = 'cover';
+        homepageImage.style.backgroundPosition = 'center';
+  
+        // 3초마다 배경 이미지 변경
+        setInterval(changeBackground, 3000); // 3000ms = 3초
+    });
   </script>
 
   <!-- Easter Egg !!!!!! -->
