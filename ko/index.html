@@ -479,6 +479,82 @@ p {
   border: solid 1px rgb(30, 30, 30); 
 }
 
+/* FAQ */
+
+.faq-container {
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 2rem 20rem 4rem 20rem;
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 2rem 3rem 4rem 3rem;
+  }
+}
+@media (max-width: 992px) {
+  .faq-container {
+    padding: 2rem 5rem 4rem 5rem;
+  }
+}
+@media (max-width: 1200px) {
+  .faq-container {
+    padding: 4rem 5rem;
+  }
+}
+@media (max-width: 576px) {
+  .faq-container {
+    padding: 2rem 1.5rem 4rem 1.5rem;
+  }
+}
+
+
+
+.faq-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.faq-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.faq-question {
+    background-color: #f4f4f4;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.faq-question:hover {
+    background-color: #e4e4e4;
+}
+.faq-answer {
+    padding: 0 15px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+.faq-item.active .faq-answer {
+    height: auto;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.faq-question::after {
+    content: '\25BC';
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+.faq-item.active .faq-question::after {
+    transform: rotate(180deg);
+}
+
     </style>
   </head>
 <body oncontextmenu="return false;">
@@ -618,6 +694,29 @@ p {
     </div> 
   </div>
 
+  <div class="faq-container" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203);">
+    <h1 style="padding-bottom: 1rem;">자주 물어보는 질문</h1>
+    <div class="faq-item">
+        <div class="faq-question">이 학교에는 몇 명의 학생이 있나요?</div>
+        <div class="faq-answer">현재 우리 학교에는 32명의 학생이 모든 학년에 걸쳐 재학 중입니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">학생들은 대학 및 진로 결정을 어떻게 하나요?</div>
+        <div class="faq-answer">저희는 포괄적인 상담과, 맞춤형 멘토링을 제공하여 학생들이 미래를 위한 올바른 결정을 내릴 수 있도록 돕습니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">이 학교의 학교생활은 어떤가요?</div>
+        <div class="faq-answer">저희 학교는 가족 같은 분위기 속에서 학문적 성취뿐만 아니라 다양한 예술 활동, 스포츠, 그리고 봉사활동을 통해 학생들의 전인적인 성장을 지원합니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">이 학교에서 학생들은 무엇을 배우나요?</div>
+        <div class="faq-answer">희는 기독교적 가치를 바탕으로 한 교과 과정을 통해 수학, 과학, 영어, 사회와 같은 핵심 과목을 배우며, 음악, 예술, 컴퓨터 등 다양한 선택 과목도 제공합니다. 학생들의 창의력과 비판적 사고력을 개발하는 데 중점을 둡니다.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">이 학교에서는 어떤 학습 자료를 사용하나요?</div>
+        <div class="faq-answer">저희는 School of Tomorrow의 PACEs(개별 학습 자료)를 사용하여 학생들에게 체계적이고 효과적인 학습 환경을 제공합니다. 이 과정은 학생들이 자율성과 책임감을 기르도록 설계되었습니다.</div>
+    </div>
+  </div>
 
 
   <!-- School Description Start -->
@@ -630,8 +729,6 @@ p {
           <img src="../assets/images/logo.png" class="school-logo">
           <p>SCIS는 Suwon Christian International School (수원기독국제학교)의 약자로, 수원순복음교회에서 설립한 기독교 대안학교입니다. SCIS는 초등학교 1학년부터 고등학교 3학년까지 School of Tomorrow 커리큘럼을 토대로 성경적 세계관에 기반한 교육을 제공합니다. "풀은 마르고 꽃은 시드나 우리 하나님 말씀은 영원히 서리라 하라" 라는 이사야서 40:8의 말씀 처럼 영원한 하나님의 말씀 안에서 이 시대에 진정으로 필요한 글로벌 리더를 양성하기 위하여 2018년 2월1일에 세워졌습니다. </p>
         </div>
-
-
       </div>
     </div>
   </div>
@@ -893,6 +990,24 @@ p {
   <script src="../vendor/remove_F12.js"></script>
 
   <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+            otherItem.classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isOpen) {
+            item.classList.add('active');
+        }
+    });
+});
+  </script>
+
+  <script>
     const images = [
         '../assets/images/rsc_all.jpg',
         '../assets/images/rsc_teachers_darken.png',
@@ -935,7 +1050,5 @@ document.addEventListener("contextmenu", (event) => {
 });
 </script>
 <script src="../vendor/systemPrompt.js"></script>
-
-
 <script src="../vendor/chat.js"></script>
 </html>

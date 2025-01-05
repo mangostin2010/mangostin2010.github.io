@@ -536,6 +536,47 @@
     padding: 12px;
   }
 }
+
+/* 버튼 내 스피너 스타일 */
+.spinner {
+    display: none;
+    border: 3px solid #f3f3f3; /* 배경색 */
+    border-top: 3px solid #3498db; /* 돌아가는 부분의 색깔 (파란색으로 변경) */
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 버튼 스타일 */
+.submit button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit button:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
         </style>
         
         <button id="chat-button" class="pulse">
@@ -553,52 +594,56 @@
 
             <div class="custom-form" style="overflow-y: scroll; margin: 1rem;">
             <h1 style="padding-top: 1rem;">문의 양식</h1>
-            <p>아래 양식을 기입하신 후, 제출을 클릭해 주시면 담당자가 확인하고 연락을 드립니다.</p>
+            <p style="margin-bottom: 0;">아래 양식을 기입하신 후, 제출을 클릭해 주시면 담당자가 확인하고 연락을 드립니다.</p>
+            <p style="color: gray; font-size: 12px;">Please fill out the form below and click submit to contact the person in charge and contact us.</p>
             
-            <!-- Form starts here -->
-            <form id="form" method="POST">
+            <form id="form" onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                <label>성별:</label>
-                <div class="form-group inline">
-                    <input type="radio" id="male" name="gender" value="남성" required>
-                    <label for="male">남성</label>
-                    <input type="radio" id="female" name="gender" value="여성" required>
-                    <label for="female">여성</label>
-                </div>
+                    <label for="name">이름(Name):</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                <label for="age">나이:</label>
-                <input type="number" id="age" name="age" min="1" required>
+                    <label>성별(Gender):</label>
+                    <div class="form-group inline">
+                        <input type="radio" id="male" name="gender" value="남성" required>
+                        <label for="male">남성(Male)</label>
+                        <input type="radio" id="female" name="gender" value="여성" required>
+                        <label for="female">여성(Female)</label>
+                    </div>
                 </div>
                 <div class="form-group">
-                <label for="admission-date">입학을 원하는 시기:</label>
-                <input type="text" id="admission-date" name="admission_date" placeholder="예: 2024년 3월" required>
+                    <label for="age">나이(Age):</label>
+                    <input type="number" id="age" name="age" min="1" required>
                 </div>
                 <div class="form-group">
-                <label for="current-school">현재 다니는 학교:</label>
-                <input type="text" id="current-school" name="current_school" required>
+                    <label for="admission-date">입학을 원하는 시기(Desired time of admission):</label>
+                    <input type="text" id="admission-date" name="admission_date" placeholder="예: 2024년 3월" required>
                 </div>
                 <div class="form-group">
-                <label for="english-level">영어 이해도:</label>
-                <select id="english-level" name="english_level">
-                    <option value="상">상</option>
-                    <option value="중">중</option>
-                    <option value="하">하</option>
-                </select>
+                    <label for="current-school">현재 다니는 학교(Currently attending school):</label>
+                    <input type="text" id="current-school" name="current_school" required>
                 </div>
                 <div class="form-group">
-                <label for="questions">기타 질문:</label>
-                <textarea id="questions" name="questions" rows="4" placeholder="여기에 질문을 입력하세요."></textarea>
+                    <label for="english-level">영어 이해도(English proficiency):</label>
+                    <select id="english-level" name="english_level">
+                        <option value="상">상(High)</option>
+                        <option value="중">중(Medium)</option>
+                        <option value="하">하(Low)</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                <label for="contact-preference">연락 받기를 원하는 방법을 기입 (이메일 또는 전화):</label>
-                <input type="text" id="contact-preference" name="contact_preference" placeholder="예: scis@outlook.kr 혹은 031-548-2198" required>
+                    <label for="questions">기타 질문(Additional questions):</label>
+                    <textarea id="questions" name="questions" rows="4" placeholder="여기에 질문을 입력하세요 (Please write your questions here)"></textarea>
                 </div>
-                <button type="submit">제출</button>
+                <div class="form-group">
+                    <label for="contact-preference">연락 받기를 원하는 방법을 기입 (이메일 또는 전화):</label>
+                    <label for="contact-preference">Preferred method of contact (email or phone)</label>
+                    <input type="text" id="contact-preference" name="contact_preference" placeholder="예: scis@outlook.kr 혹은 031-548-2198" required>
+                </div>
+                <button id="submit-button" type="submit" class="submit">
+                    제출
+                    <div id="spinner" class="spinner"></div>
+                </button>
             </form>
             </div>
 
@@ -833,3 +878,80 @@
         initChat();
     }
 })();
+
+async function handleSubmit(event) {
+    event.preventDefault(); // 폼 기본 제출 동작 방지
+
+    const form = document.getElementById("form");
+    const formData = new FormData(form);
+
+    // FormData 객체를 JSON으로 변환
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    try {
+        const response = await fetch("https://scisjustin.pythonanywhere.com/submit_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(result.message || "Form submitted successfully!");
+        } else {
+            const error = await response.json();
+            alert(error.message || "Failed to submit the form. Please try again.");
+        }
+    } catch (err) {
+        alert("An error occurred: " + err.message);
+    }
+}
+
+
+async function handleSubmit(event) {
+    event.preventDefault(); // 폼 기본 제출 동작 방지
+
+    const form = document.getElementById("form");
+    const formData = new FormData(form);
+    const submitButton = document.getElementById("submit-button");
+    const spinner = document.getElementById("spinner");
+
+    // FormData 객체를 JSON으로 변환
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // 버튼 비활성화 및 스피너 표시
+    submitButton.disabled = true;
+    spinner.style.display = "inline-block";
+
+    try {
+        const response = await fetch("https://scisjustin.pythonanywhere.com/submit_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(result.message || "Form submitted successfully!");
+        } else {
+            const error = await response.json();
+            alert(error.message || "Failed to submit the form. Please try again.");
+        }
+    } catch (err) {
+        alert("An error occurred: " + err.message);
+    } finally {
+        // 버튼 활성화 및 스피너 숨기기
+        spinner.style.display = "none";
+        submitButton.disabled = false;
+    }
+}
