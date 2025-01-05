@@ -880,44 +880,14 @@
 })();
 
 async function handleSubmit(event) {
-    event.preventDefault(); // 폼 기본 제출 동작 방지
-
+    event.preventDefault();
     const form = document.getElementById("form");
     const formData = new FormData(form);
 
-    // FormData 객체를 JSON으로 변환
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-
-    try {
-        const response = await fetch("https://scisjustin.pythonanywhere.com/submit_form", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            alert(result.message || "Form submitted successfully!");
-        } else {
-            const error = await response.json();
-            alert(error.message || "Failed to submit the form. Please try again.");
-        }
-    } catch (err) {
-        alert("An error occurred: " + err.message);
+    // Debug: Check form data
+    for (let [key, value] of formData.entries()) {
+        console.log(key, value);
     }
-}
-
-
-async function handleSubmit(event) {
-    event.preventDefault(); // 폼 기본 제출 동작 방지
-
-    const form = document.getElementById("form");
-    const formData = new FormData(form);
     const submitButton = document.getElementById("submit-button");
     const spinner = document.getElementById("spinner");
 
