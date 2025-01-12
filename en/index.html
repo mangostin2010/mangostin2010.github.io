@@ -585,7 +585,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3 style="font-family: 'Poppins', sans-serif">Welcome To SCIS</h3>
+          <h3 style="font-family: 'Poppins', sans-serif">Welcome To <span id="clickWord" class="highlight" style="background-color: unset; color: unset; font-size: unset; font-weight: unset; text-transform: unset; padding-left: unset; padding-right: unset; display:unset; margin-bottom: unset;">SCIS</span></h3>
           <span class="breadcrumb" style="background-color: unset;">
             <p class='welcome-message' onclick="window.location.href='./admission.html'" style="cursor: pointer;">
 SCIS Admission Information
@@ -930,101 +930,113 @@ SCIS Admission Information
 
   <!-- Easter Egg !!!!!! -->
   <script>
-
-  // 'justin' Easter Egg
-  let secretInput = '';
-  const secretCode = 'justin';
-
-  document.addEventListener('keyup', function(event) {
-    secretInput += event.key.toLowerCase();
-    
-    if (secretInput.includes(secretCode)) {
-      // Remove all content from the page
-      document.body.innerHTML = '';
+    // 'justin' Easter Egg
+    let secretInput = '';
+    const secretCode = 'justin';
+  
+    // 'blog' redirection
+    let blogInput = '';
+    const blogCode = 'blog';
+  
+    document.addEventListener('keyup', function(event) {
+      // Add the pressed key to the secret input
+      secretInput += event.key.toLowerCase();
       
-      // Create and add the new header
-      const scis = document.createElement('h1');
-      scis.textContent = 'SCIS Website';
-      scis.style.textAlign = 'center';
-      scis.style.marginTop = '15%';
-      scis.style.fontSize = '3rem';
-
-      document.body.appendChild(scis);
-
-      // Create and add the new header
-      const myname = document.createElement('h1');
-      myname.innerHTML = 'is developed by <strong>Justin</strong>';
-      myname.style.textAlign = 'center';
-      myname.style.fontSize = '300%';
-      myname.style.fontWeight = 'normal';
-
-      document.body.appendChild(myname);
-
-      const description_of_laura = document.createElement('p');
-      description_of_laura.innerHTML = 'Also <strong>Laura</strong> too!!';
-      description_of_laura.style.textAlign = 'center';
-      description_of_laura.style.margin = '0 0 0 30%';
-
-      document.body.appendChild(description_of_laura)
-
-      const div = document.createElement('div');
-      div.style.border = 'solid 1px #ababab';
-
-      document.body.appendChild(div)
-
-      const description_of_justin = document.createElement('p');
-      description_of_justin.innerHTML = 'I made this website almost 70% or 80% That means..... Laura prepared some words and layout ONLY!! and you can see the all the things that Laura did. Here it is: <a href="https://www.canva.com/design/DAGDf8HYE5I/9HrDFEk91vcpPi2sSeUSeA/edit">Laura\'s canva</a><br>Well, I did hard on working this website(project), and you know what?? This is my first ever website!!! I\'ve always programmed something fun with python, but few months ago, there was a kind of rally or something that every school that uses S.O.T. curriculum gathers at certain place and have some rally, which is called RSC(Regional Student Convertion), ISC(International School Convention), or AASC(All Asia Student Convention). And this was the AASC and I was attending the website design with Laura. But I had almost 0% of knowledge about creating a website. Honesntly, I don\'t know how I get to this level of website. Like I don\'t know how I created this website!! Laura also did her best and I also did my best. But I want to say I did a more of work than Laura(honestly)... Just kidding!! So with the teamwork of Laura and I, we have finished this WEBSITE!!!<br><br><strong>p.s. There\'s a lot more easter eggs hidden in this website!!</strong>';
-      description_of_justin.className = 'my-story';
-
-      document.body.appendChild(description_of_justin)
-
-
+      // Check if the secret input includes the secret code
+      if (secretInput.includes(secretCode)) {
+        // Remove all content from the page
+        document.body.innerHTML = '';
+        
+        // Create and add the new header
+        const scis = document.createElement('h1');
+        scis.textContent = 'SCIS Website';
+        scis.style.textAlign = 'center';
+        scis.style.marginTop = '15%';
+        scis.style.fontSize = '3rem';
+  
+        document.body.appendChild(scis);
+  
+        // Create and add the new header
+        const myname = document.createElement('h1');
+        myname.innerHTML = 'is developed by <strong>Justin</strong>';
+        myname.style.textAlign = 'center';
+        myname.style.fontSize = '300%';
+        myname.style.fontWeight = 'normal';
+  
+        document.body.appendChild(myname);
+  
+        const description_of_laura = document.createElement('p');
+        description_of_laura.innerHTML = 'Also <strong>Laura</strong> too!!';
+        description_of_laura.style.textAlign = 'center';
+        description_of_laura.style.margin = '0 0 0 30%';
+  
+        document.body.appendChild(description_of_laura)
+  
+        const div = document.createElement('div');
+        div.style.border = 'solid 1px #ababab';
+  
+        document.body.appendChild(div)
+  
+        const description_of_justin = document.createElement('p');
+        description_of_justin.innerHTML = 'I made this website almost 70% or 80% That means..... Laura prepared some words and layout ONLY!! and you can see the all the things that Laura did. Here it is: <a href="https://www.canva.com/design/DAGDf8HYE5I/9HrDFEk91vcpPi2sSeUSeA/edit">Laura\'s canva</a><br>Well, I did hard on working this website(project), and you know what?? This is my first ever website!!! I\'ve always programmed something fun with python, but few months ago, there was a kind of rally or something that every school that uses S.O.T. curriculum gathers at certain place and have some rally, which is called RSC(Regional Student Convertion), ISC(International School Convention), or AASC(All Asia Student Convention). And this was the AASC and I was attending the website design with Laura. But I had almost 0% of knowledge about creating a website. Honesntly, I don\'t know how I get to this level of website. Like I don\'t know how I created this website!! Laura also did her best and I also did my best. But I want to say I did a more of work than Laura(honestly)... Just kidding!! So with the teamwork of Laura and I, we have finished this WEBSITE!!!<br><br><strong>p.s. There\'s a lot more easter eggs hidden in this website!!</strong>';
+        description_of_justin.className = 'my-story';
+  
+        document.body.appendChild(description_of_justin)
+  
+        // Reset the input
+        secretInput = '';
+      }
       
-      // Reset the input
-      secretInput = '';
-    }
-    
-    // Keep only the last 20 characters to avoid memory issues
-    if (secretInput.length > 20) {
-      secretInput = secretInput.slice(-20);
-    }
-  });
-
-  // SCIS Click Easter Egg
-  const clickWord = document.getElementById('clickWord');
+      // Keep only the last 20 characters to avoid memory issues
+      if (secretInput.length > 20) {
+        secretInput = secretInput.slice(-20);
+      }
+  
+      // Add the pressed key to the blog input
+      blogInput += event.key.toLowerCase();
+  
+      // Check if the blog input includes the blog code
+      if (blogInput.includes(blogCode)) {
+        // Redirect to the /blog page
+        window.location.href = '/blog/index.html';
+      }
+  
+      // Keep only the last 20 characters to avoid memory issues
+      if (blogInput.length > 20) {
+        blogInput = blogInput.slice(-20);
+      }
+    });
+  
+    // SCIS Click Easter Egg
+    const clickWord = document.getElementById('clickWord');
     let clickCount = 0;
-
+  
     clickWord.addEventListener('click', function() {
-        clickCount++;
-
-        if (clickCount === 5) {
-            alert('Congratulations!! You\'ve just found an easter egg!!');
-            clickCount = 0;
-            document.body.innerHTML = '';
-
-
-            const scis = document.createElement('h1');
-            scis.textContent = 'About SCIS in detail';
-            scis.style.textAlign = 'center';
-            scis.style.marginTop = '15%';
-            scis.style.fontSize = '3rem';
-            document.body.appendChild(scis);
-
-            const div = document.createElement('div');
-            div.style.borderBottom = 'solid 1px #ababab';
-            div.style.margin = '2rem 0 2rem 0';
-            document.body.appendChild(div);
-
-            const description_of_scis = document.createElement('p');
-            description_of_scis.innerHTML = '\
-            I (Justin, the dev of this website) am too lazy to write these thingss lol...'
-            description_of_scis.className = 'description_of_scis';
-            document.body.appendChild(description_of_scis);
-
-
-
-        }
-  });
+      clickCount++;
+  
+      if (clickCount === 5) {
+        alert('Congratulations!! You\'ve just found an easter egg!!');
+        clickCount = 0;
+        document.body.innerHTML = '';
+  
+        const scis = document.createElement('h1');
+        scis.textContent = 'About SCIS in detail';
+        scis.style.textAlign = 'center';
+        scis.style.marginTop = '15%';
+        scis.style.fontSize = '3rem';
+        document.body.appendChild(scis);
+  
+        const div = document.createElement('div');
+        div.style.borderBottom = 'solid 1px #ababab';
+        div.style.margin = '2rem 0 2rem 0';
+        document.body.appendChild(div);
+  
+        const description_of_scis = document.createElement('p');
+        description_of_scis.innerHTML = 'I (Justin, the dev of this website) am too lazy to write these thingss lol...'
+        description_of_scis.className = 'description_of_scis';
+        document.body.appendChild(description_of_scis);
+      }
+    });
   </script>
 
   <!-- Scripts -->

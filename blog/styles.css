@@ -1,0 +1,283 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px auto; /* 중앙 정렬 */
+    padding: 0 20px; /* 옆에 공간 추가 */
+    background-color: #f5f5f5;
+    max-width: 800px; /* 페이지 최대 너비 설정 */
+}
+
+h1 {
+    color: #333;
+}
+
+#posts {
+    margin-top: 20px;
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer; /* 포스트를 클릭 가능한 것처럼 표시 */
+    display: flex; /* Flexbox를 사용하여 레이아웃 조정 */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post h2 {
+    margin: 0 0 5px 0;
+    color: #555;
+}
+
+.post p {
+    margin: 0;
+    color: #777;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%; /* 부모 요소의 너비에 맞춤 */
+}
+
+#post .post p {
+    margin: 0;
+    color: #393939;
+    overflow: visible;
+    white-space: normal; /* 텍스트가 여러 줄로 표시되도록 설정 */
+    text-overflow: clip;
+    max-width: none; /* 포스트 상세 페이지에서는 max-width 제거 */
+    word-wrap: break-word; /* 긴 단어가 줄바꿈되도록 설정 */
+    word-break: keep-all;
+}
+
+
+.post:hover h2 {
+    text-decoration: underline;
+}
+
+#post .post:hover h2 {
+    text-decoration: none;
+}
+
+#post .post:hover {
+    text-decoration: unset;
+}
+
+
+
+a {
+    color: #555;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.create-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #555;
+    text-decoration: none;
+}
+
+.create-link:hover {
+    text-decoration: underline;
+}
+
+/* 포스트 상세 페이지 스타일 */
+#post .post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    white-space: normal; /* 텍스트가 여러 줄로 표시되도록 설정 */
+    cursor: auto; /* 포스트 상세 페이지에서는 cursor를 기본값으로 설정 */
+    word-wrap: break-word; /* 긴 단어가 줄바꿈되도록 설정 */
+}
+
+#post .post h2 {
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+/* 반응형 디자인: 핸드폰에서 패딩 조정 */
+@media (max-width: 600px) {
+    body {
+        padding: 0 15px; /* 핸드폰에서 옆에 공간 추가 */
+    }
+}
+
+/* 기존 스타일은 그대로 유지 */
+
+/* 새 포스트 작성 폼 스타일 */
+#create-post-form {
+    margin-top: 20px;
+}
+
+#create-post-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+#create-post-form input[type="text"],
+#create-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#create-post-form textarea {
+    height: 150px;
+    resize: vertical; /* 세로로만 크기 조정 가능 */
+}
+
+#create-post-form button {
+    padding: 10px 20px;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#create-post-form button:hover {
+    background-color: #444;
+}
+
+/* 기존 스타일은 그대로 유지 */
+
+#create-post-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 기존 스타일은 그대로 유지 */
+
+/* 드롭다운 메뉴 스타일 */
+#sort {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 삭제 섹션 스타일 */
+#delete-section {
+    margin-top: 20px;
+    float: right;
+}
+
+#delete-password {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+#delete-button {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#delete-button:hover {
+    background-color: #cc0000;
+}
+
+.no-posts-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+    font-style: italic;
+}
+
+/* 기존 스타일은 그대로 유지 */
+
+/* 새 포스트 작성 폼 스타일 */
+#create-post-form {
+    margin-top: 20px;
+    padding: 0 15px; /* 폼 내부에 패딩 추가 */
+}
+
+#create-post-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+#create-post-form input[type="text"],
+#create-post-form textarea,
+#create-post-form input[type="password"] {
+    width: calc(100% - 20px); /* 패딩을 고려한 너비 조정 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#create-post-form textarea {
+    height: 150px;
+    resize: vertical; /* 세로로만 크기 조정 가능 */
+}
+
+#create-post-form button {
+    width: 100%; /* 버튼 너비를 100%로 설정 */
+    padding: 10px 20px;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#create-post-form button:hover {
+    background-color: #444;
+}
+
+/* 반응형 디자인: 핸드폰에서 폼 요소 조정 */
+@media (max-width: 600px) {
+    body {
+        padding: 0 10px; /* 핸드폰에서 옆에 공간 추가 */
+    }
+
+    #create-post-form {
+        padding: 0 10px; /* 폼 내부 패딩 조정 */
+    }
+
+    #create-post-form input[type="text"],
+    #create-post-form textarea,
+    #create-post-form input[type="password"] {
+        width: calc(100% - 20px); /* 패딩을 고려한 너비 조정 */
+    }
+
+    #create-post-form button {
+        width: 100%; /* 버튼 너비를 100%로 설정 */
+    }
+
+    #delete-section {
+        float: unset;
+        padding-bottom: 1rem;
+    }
+}

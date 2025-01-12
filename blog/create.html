@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새 포스트 작성</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>새 포스트 작성</h1>
+    <form id="create-post-form">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="content">내용:</label>
+        <textarea id="content" name="content" required></textarea>
+        <br>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">작성</button>
+    </form>
+    <a href="index.html" class="create-link">홈으로 돌아가기</a>
+
+    <script src="script.js"></script>
+    <script>
+        // beforeunload 이벤트 리스너 추가
+        window.addEventListener('beforeunload', function (e) {
+            // 표준에 따라 기본 동작을 취소하고 반환 값 설정
+            e.preventDefault();
+            e.returnValue = ''; // Chrome에서는 빈 문자열을 반환해야 함
+        });
+
+        // 삭제 버튼 클릭 이벤트 처리 (예시)
+        document.getElementById('delete-button').addEventListener('click', function() {
+            const password = document.getElementById('delete-password').value;
+            if (password === 'correctpassword') {
+                // 삭제 로직 수행
+                alert('포스트가 삭제되었습니다.');
+            } else {
+                alert('비밀번호가 틀렸습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
