@@ -7,13 +7,34 @@
         #copyButton {
             transition: opacity 1s;
             padding: 0;
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-weight: 400;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            min-height: 2.5rem;
+            margin: 0px;
+            line-height: 1.6;
+            text-decoration: none;
+            width: 100%;
+            user-select: none;
+            background-color: rgb(255, 255, 255);
+            color: rgb(49, 51, 63);
+            border: 1px solid rgba(49, 51, 63, 0.2);
+        }
+        #copyButton:hover {
+            border-color: rgb(255, 75, 75);
+            color: rgb(255, 75, 75);
         }
     </style>
 </head>
-<body>
+<body style="margin: 0">
     <input type="text" id="textToCopy" value="" style="position: absolute; left: -9999px;">
 
-    <button id="copyButton" onclick="copyToClipboard()">📋</button>
+    <button id="copyButton" onclick="copyToClipboard()">링크 복사</button>
 
     <script>
         function getQueryParam(name) {
@@ -38,7 +59,7 @@
 
             copyButton.textContent = "✔";
             setTimeout(function () {
-                copyButton.textContent = "📋";
+                copyButton.textContent = "링크 복사";
                 copyButton.title = textToCopy.value;
             }, 1000);
         }
