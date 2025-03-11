@@ -1,79 +1,138 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Speech Bubble with Button</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0; /* Light gray background */
-    }
-
-    .container {
-      position: relative; /* Needed for positioning the bubble relative to the button */
-      display: inline-block;
-    }
-
-    /* Speech Bubble */
-    .speech-bubble {
-      position: absolute;
-      bottom: 120%; /* Move the bubble higher above the button */
-      right: 0; /* Connect to the right side of the button */
-      background: #4CAF50; /* Green background */
-      color: white;
-      padding: 10px 20px;
-      border-radius: 15px; /* Rounded corners */
-      font-size: 16px;
-      font-weight: bold;
-      white-space: nowrap; /* Prevent text wrapping */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
-    }
-
-    /* Speech Bubble Tail */
-    .speech-bubble::after {
-      content: '';
-      position: absolute;
-      top: 94%; /* Position the tail just below the bubble */
-      right: 10px; /* Align the tail with the right side of the button */
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 10px 10px 0 10px; /* Tail dimensions */
-      border-color: #4CAF50 transparent transparent transparent; /* Match bubble color */
-    }
-
-    /* Button */
-    .action-button {
-      background: #007BFF; /* Blue background */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
-      transition: background-color 0.3s ease;
-    }
-
-    .action-button:hover {
-      background: #0056b3; /* Darker blue on hover */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 관리</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .preview {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .preview img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Speech Bubble -->
-    <div class="speech-bubble">입학 지원은 여기로!</div>
+    <h1>공지사항 관리</h1>
     
-    <!-- Button -->
-    <button class="action-button">Click Me</button>
-  </div>
+    <div class="form-group">
+        <label for="message">공지사항 메시지:</label>
+        <textarea id="message" rows="4"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="imageUrl">이미지 URL:</label>
+        <input type="text" id="imageUrl">
+    </div>
+    
+    <div class="form-group">
+        <label for="password">관리자 비밀번호:</label>
+        <input type="password" id="password">
+    </div>
+    
+    <button onclick="previewAnnouncement()">미리보기</button>
+    <button onclick="submitAnnouncement()">공지사항 업데이트</button>
+    
+    <div class="preview" id="preview" style="display: none;">
+        <h3>미리보기</h3>
+        <p id="previewMessage"></p>
+        <img id="previewImage" src="" alt="공지사항 이미지">
+    </div>
+    
+    <script>
+        function previewAnnouncement() {
+            const message = document.getElementById('message').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            
+            document.getElementById('previewMessage').textContent = message;
+            document.getElementById('previewImage').src = imageUrl;
+            document.getElementById('preview').style.display = 'block';
+        }
+        
+        function submitAnnouncement() {
+            const message = document.getElementById('message').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            const password = document.getElementById('password').value;
+            
+            if (!message && !imageUrl) {
+                alert('메시지 또는 이미지 URL을 입력해주세요.');
+                return;
+            }
+            
+            if (!password) {
+                alert('관리자 비밀번호를 입력해주세요.');
+                return;
+            }
+            
+            fetch('https://scisjustin.pythonanywhere.com/api/announcement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    image: imageUrl
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('공지사항이 성공적으로 업데이트되었습니다.');
+                } else {
+                    alert('공지사항 업데이트에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('공지사항 업데이트 중 오류 발생:', error);
+                alert('공지사항 업데이트 중 오류가 발생했습니다.');
+            });
+        }
+        
+        // 현재 공지사항 불러오기
+        fetch('https://scisjustin.pythonanywhere.com/api/announcement')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').value = data.message || '';
+                document.getElementById('imageUrl').value = data.image || '';
+                
+                if (data.message || data.image) {
+                    previewAnnouncement();
+                }
+            })
+            .catch(error => console.error('공지사항을 불러오는 중 오류 발생:', error));
+    </script>
 </body>
 </html>
