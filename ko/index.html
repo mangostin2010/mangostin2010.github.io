@@ -77,6 +77,8 @@
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet"href="../assets/css/AboutUsPage.css"/>
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/stylesheet.css">
@@ -85,257 +87,13 @@
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
     <style>
-    p, a, select, h1, h2, h3, h4, h5, h6 {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+    body {font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 
-    .three {
-      justify-content: center;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* Allows elements to wrap to the next line if needed */
-    }
-
-    .three:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    .each-element {
-      border: solid rgb(161, 161, 161) 1px;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-      width: 18%;
-      margin: 1rem 0.2rem 0 0.2rem;
-      float: left;
-    }
-
-    .each-element:hover {
-      width: 20%;
-      touch-action: manipulation;
-      will-change: transform;
-    }
-
-    .top-padding {
-      padding-top: 8rem;
-    }
-
-    .philosophy-responsive {
-      width: 50%
-    }
-
-    .bible-img {
-      padding-left: 0px; 
-      border-radius: 10px; 
-      border: solid 1px #ababab;
-      width: unset;
-      height: 22rem;
-      margin-bottom: 3rem;
-    }
-
-    .teachers {
-      display: flex;
-    }
-
-    .teacher {
-      width: 25%
-    }
-
-    .school-image {
-      width: 80%;
-    }
-
-    .founder-message {
-      width: 25rem;
-    }
-
-    .school-logo {
-      max-width: 15%; 
-      border-radius: 2rem; 
-      margin-top: 1rem;
-      display: block;
-      margin: 0 auto;
-      margin-top: 1rem;
-      border-radius: 0;
-    }
-
-    .div-school-logo {
-      text-align: center; 
-    }
-
-    .each-element-things {
-      color: #ee626b;
-      color: #002a90;
-    }
-
-    #languageSelect {
-      font-weight: bold;
-      height: 33px;
-    }
-
-    .homepage-image {
-      background-position: center;
-      padding: 170px 0;
-    }
-
-
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .each-element {
-        width: 23%; /* Slightly larger width for medium screens */
-      }
-
-      .each-element:hover {
-        width: 25%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .philosophy-responsive {
-        width: 100%;
-      }
-      
-      .bible-img {
-        padding-left: 0px; 
-        border-radius: 10px; 
-        border: solid 1px #ababab;
-        width: unset;
-        height: 20rem;
-        margin-bottom: 3rem;
-      }
-
-      .school-image {
-        width: 450px;
-        margin-bottom: 3rem; 
-      }
-
-
-      
-    }
 
     @media (max-width: 992px) {
-      .each-element {
-        width: 31%; /* Larger width for tablet screens */
-      }
-      .each-element:hover {
-        width: 34%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .teachers {
-        display: unset;
-      }
-      .teacher {
-        width:100%;
-        margin-bottom: 2.5rem;
-      }
-
-      .founder-message {
-        width: unset;
-      }
       .school-image, .bible-img {
         margin-bottom: 0;
       }
-    }
-
-    @media (max-width: 768px) {
-
-      .homepage-image {
-        /*background-image: url(assets/images/rsc_all.jpg); */
-        background-position: center;
-        padding: 140px 0;
-        padding: 100px 0;
-      }
-      .each-element {
-        width: 48%; /* Two elements per row on smaller screens */
-      }
-
-      .each-element:hover {
-        width: 50%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-logo {
-        max-width: 50%;
-      }
-
-      #languageSelect {
-        height: 50px;
-        background: transparent;
-        font-weight: bold;
-      }
-
-      .lang {
-        border-top: 1px solid #ddd;
-      }
-
-      #languageSelect {
-        height: 50px;
-        background: transparent;
-        font-weight: bold;
-      }
-    }
-
-    @media (max-width: 576px) {
-
-
-      .each-element {
-        width: 95%; /* Full width for small mobile screens */
-        margin-top: 0.7rem
-      }
-
-      .each-element:hover {
-        width: 95%;
-        touch-action: unset;
-        will-change: unset;
-      }
-
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-image {
-        width: 100%;
-      }
-
-      .bible-img {
-        width: 100%;
-      }
-    }
-
-
-
-
-    .profile-image {
-      max-width: 12rem;
-      border-radius: 10000rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      background-position: center;
-      object-fit: cover;
-      aspect-ratio: 1
-    }
-
-
-
-    .teacher-name {
-      font-weight: 700;
-      text-align: center;
     }
 
     .teacher-desc {
@@ -343,219 +101,9 @@
       text-align: center;
     }
 
-
-
-
-
-
-
-
-    .page-heading {
-    position: relative;
-    overflow: hidden;
+    p {
+      word-break: keep-all;
     }
-
-    .page-heading img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .page-heading::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
-        pointer-events: none;
-    }
-  
-
-
-/* 모달 스타일 */
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: opacity 1s ease, filter 1s ease; /* Smooth transition for opacity and blur */
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-  width: 93%;
-}
-
-/* 이미지 크기 제한 */
-#notice-image {
-  max-width: 100%; /* 모달 너비에 맞추어 이미지가 조정됩니다 */
-  max-height: 250px; /* 최대 높이 설정 */
-  object-fit: contain; /* 이미지 비율 유지 */
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* CSS */
-.button-6 {
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-  margin-top: 0.5rem;
-}
-
-.button-6:hover,
-.button-6:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.button-6:hover {
-  transform: translateY(-1px);
-}
-
-.button-6:active {
-  background-color: #F0F0F1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
-
-
-p {
-  word-break: keep-all;
-}
-
-.welcome-message {
-  color: #dbdbdb; 
-  border: solid 1px white; 
-  background: rgb(30, 30, 30); 
-  padding: 0 1rem; 
-  border-radius: 2rem;
-}
-
-.welcome-message:hover {
-  border: solid 1px rgb(30, 30, 30); 
-  text-decoration: underline;
-}
-
-/* FAQ */
-
-.faq-container {
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 2rem 20rem 4rem 20rem;
-}
-
-@media (max-width: 768px) {
-  .faq-container {
-    padding: 2rem 3rem 4rem 3rem;
-  }
-}
-@media (max-width: 992px) {
-  .faq-container {
-    padding: 2rem 5rem 4rem 5rem;
-  }
-}
-@media (max-width: 1200px) {
-  .faq-container {
-    padding: 4rem 5rem;
-  }
-}
-@media (max-width: 576px) {
-  .faq-container {
-    padding: 2rem 1.5rem 4rem 1.5rem;
-  }
-}
-
-
-
-.faq-item {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    font-family: 'Spoqa Han Sans Neo';
-}
-.faq-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.faq-question {
-    background-color: #f4f4f4;
-    padding: 15px;
-    cursor: pointer;
-    font-weight:normal;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    font-family: 'Spoqa Han Sans Neo';
-}
-.faq-question:hover {
-    background-color: #e4e4e4;
-}
-.faq-answer {
-    padding: 0 15px;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-}
-.faq-item.active .faq-answer {
-    height: auto;
-    opacity: 1;
-    padding-top: 10px;
-    padding-bottom: 15px;
-}
-.faq-question::after {
-    content: '\25BC';
-    font-size: 0.8em;
-    transition: transform 0.3s ease;
-}
-.faq-item.active .faq-question::after {
-    transform: rotate(180deg);
-}
 
     </style>
   </head>
@@ -824,17 +372,14 @@ p {
           <h1 style="padding-top: 2rem;" id="Faculty Staff">교직원</h1>
           <span class="breadcrumb" style="padding-bottom: 0.7rem; padding-left: calc(var(--bs-gutter-x) * .5);"><a href="index.html">Home</a> > <a href="#Faculty Staff">Faculty&Staff</a></span>
 
-
-
           <div class="section-heading">
             <div class="teachers">
-
               <div class="teacher">
                 <img src="../assets/images/teachers/head_pastor.png" class="profile-image">
                 <p class="teacher-name">REV. YOHAN LEE</p>
                 <p class="teacher-desc">교장</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/김성한목사님컷.png" class="profile-image" style="background-color:  #eeeeee; object-position: 0rem -15px; filter: saturate(1.8);">
                 <p class="teacher-name">REV. SUNGHAN KIM</p>
@@ -842,7 +387,7 @@ p {
                   학교 운영 전반<br>
                   채플 인도</p>
               </div>
-
+              
               <div class="teacher">
                 <img src="../assets/images/teachers/Yoon.jpg" class="profile-image">
                 <p class="teacher-name">MRS. YUNA CHANG</p>
@@ -850,7 +395,7 @@ p {
                   초중고 독서 지도<br>
                   피아노 반주 지도</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/오은영사모님컷.png" class="profile-image" style="background-color: #eeeeee;">
                 <p class="teacher-name">MRS. EUNICE OH</p>
@@ -858,12 +403,8 @@ p {
                   Supervisor for Grades 4-6 (초등고학년)<br>
                   일본어, 한국사, 합창 지도</p>
               </div>
-
-            </div>
-
-            <div style="margin-top: 1.5rem;"></div>
-
-            <div class="teachers">
+          
+              <!-- Comment for Kevin remains intact -->
               <!--
               Thank you very much Tr. Kevin.
               <div class="teacher">
@@ -875,7 +416,7 @@ p {
                   코딩 지도</p>
               </div>
               -->
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Jake.jpg" class="profile-image">
                 <p class="teacher-name">MR. JONGHYUN LEE </p>
@@ -885,7 +426,7 @@ p {
                   Guitar class, 찬양 지도<br>
                   초등&중등 수학 지도</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Janny.jpg" class="profile-image" style="object-position: 0 0px">
                 <p class="teacher-name">MRS. JENNY JANG</p>
@@ -894,7 +435,7 @@ p {
                   Supervisor for Grades 7-9 (중등)<br>
                   피아노</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/pe.jpg" class="profile-image" style="object-position: top;">
                 <p class="teacher-name">MRS. BOREUM PARK</p>
@@ -903,32 +444,26 @@ p {
                   배구 코치
                 </p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/face_too_much.png" class="profile-image">
                 <p class="teacher-name">MRS. MOONY CHOI</p>
                 <p class="teacher-desc">Art (미술)<br>
                   초중 미술 지도</p>
               </div>
-              
-            </div>
-
-
-            <div style="margin-top: 1.5rem;"></div>
-
-            <div class="teachers">
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/KakaoTalk_20240824_135313479.jpg" class="profile-image">
                 <p class="teacher-name">MRS. JIYEON KWON</p>
                 <p class="teacher-desc">첼로 지도</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Violin.png" class="profile-image">
                 <p class="teacher-name">MR. JAEYOUNG PARK</p>
                 <p class="teacher-desc">바이올린 지도</p>
               </div>
-
+          
               <div class="teacher">
                 <a href="../ryan.html" style="cursor: default;">
                   <img src="../assets/images/teachers/KakaoTalk_20240824_135313479_01.jpg" class="profile-image" style="background: white;">
@@ -936,13 +471,12 @@ p {
                 <p class="teacher-name">MR. YOUNGGWANG JOO</p>
                 <p class="teacher-desc">축구 코치</p>
               </div>
-
+          
               <div class="teacher">
-                <img src="../assets/images/teachers/gimo.png" class="profile-image" style="margin-top: 2rem;">
+                <img src="../assets/images/teachers/gimo.png" class="profile-image">
                 <p class="teacher-name">MR. GEEMO KIM</p>
                 <p class="teacher-desc">학생진로상담</p>
               </div>
-              
             </div>
           </div>
 
@@ -1006,24 +540,8 @@ p {
   <script src="../assets/js/counter.js"></script>
   <script src="../assets/js/custom.js"></script>
   <script src="../vendor/remove_F12.js"></script>
+  <script src="../assets/js/FAQ.js"></script>
 
-  <script>
-    document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-question').addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-item').forEach(otherItem => {
-            otherItem.classList.remove('active');
-        });
-
-        // Toggle current item
-        if (!isOpen) {
-            item.classList.add('active');
-        }
-    });
-});
-  </script>
 
 <style>
   /* 가장 바깥 배경 영역 */

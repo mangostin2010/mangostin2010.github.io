@@ -71,6 +71,8 @@
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet"href="../assets/css/AboutUsPage.css"/>
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/stylesheet.css">
@@ -78,408 +80,6 @@
     <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
-    <style>
-    .three {
-      justify-content: center;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* Allows elements to wrap to the next line if needed */
-    }
-
-    .three:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    .each-element {
-      border: solid rgb(161, 161, 161) 1px;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-      width: 18%;
-      margin: 1rem 0.2rem 0 0.2rem;
-      float: left;
-    }
-
-    .each-element:hover {
-      width: 20%;
-      touch-action: manipulation;
-      will-change: transform;
-    }
-
-
-    .top-padding {
-      padding-top: 8rem;
-    }
-
-    .philosophy-responsive {
-      width: 50%
-    }
-
-    .bible-img {
-      padding-left: 0px; 
-      border-radius: 10px; 
-      border: solid 1px #ababab;
-      width: unset;
-      height: 22rem;
-      margin-bottom: 3rem;
-    }
-
-    .teachers {
-      display: flex;
-    }
-
-    .teacher {
-      width: 25%
-    }
-
-    .school-image {
-      width: 80%;
-    }
-
-    .founder-message {
-      width: 25rem;
-    }
-
-    .school-logo {
-      max-width: 15%; 
-      border-radius: 2rem; 
-      margin-top: 1rem;
-      display: block;
-      margin: 0 auto;
-      margin-top: 1rem;
-      border-radius: 0;
-    }
-
-    .div-school-logo {
-      text-align: center; 
-    }
-
-    .each-element-things {
-      color: #ee626b;
-      color: #002a90;
-    }
-
-    #languageSelect {
-      font-weight: bold;
-      height: 33px;
-    }
-
-    .homepage-image {
-      /*background-image: url(assets/images/rsc_all.jpg); */
-      background-position: center;
-      padding: 170px 0;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .each-element {
-        width: 23%; /* Slightly larger width for medium screens */
-      }
-
-      .each-element:hover {
-        width: 25%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .philosophy-responsive {
-        width: 100%;
-      }
-      
-      .bible-img {
-        padding-left: 0px; 
-        border-radius: 10px; 
-        border: solid 1px #ababab;
-        width: unset;
-        height: 20rem;
-        margin-bottom: 3rem;
-      }
-
-      .school-image {
-        width: 450px;
-        margin-bottom: 3rem; 
-      }
-
-
-      
-    }
-
-    @media (max-width: 992px) {
-      .each-element {
-        width: 31%; /* Larger width for tablet screens */
-      }
-      .each-element:hover {
-        width: 34%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .teachers {
-        display: unset;
-      }
-      .teacher {
-        width:100%;
-        margin-bottom: 2.5rem;
-      }
-
-      .founder-message {
-        width: unset;
-      }
-    }
-
-    @media (max-width: 768px) {
-
-      .homepage-image {
-        /*background-image: url(assets/images/rsc_all.jpg); */
-        background-position: center;
-        padding: 140px 0;
-        padding: 100px 0;
-      }
-      .each-element {
-        width: 48%; /* Two elements per row on smaller screens */
-      }
-
-      .each-element:hover {
-        width: 50%;
-        touch-action: manipulation;
-        will-change: transform;
-      }
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-logo {
-        max-width: 50%;
-      }
-
-      .lang {
-        border-top: 1px solid #ddd;
-      }
-
-      #languageSelect {
-        height: 50px;
-        background: transparent;
-        font-weight: bold;
-      }
-
-      .school-image, .bible-img {
-        margin-bottom: 0;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .each-element {
-        width: 95%; /* Full width for small mobile screens */
-        margin-top: 0.7rem
-      }
-
-      .each-element:hover {
-        width: 95%;
-        touch-action: unset;
-        will-change: unset;
-      }
-
-      .top-padding {
-        padding-top: 0rem;
-      }
-
-      .school-image {
-        width: 100%;
-      }
-
-      .bible-img {
-        width: 100%;
-      }
-    }
-
-
-
-
-    .profile-image {
-      max-width: 12rem;
-      border-radius: 10000rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      background-position: center;
-      object-fit: cover;
-      aspect-ratio: 1;
-    }
-
-
-
-    .teacher-name {
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .teacher-desc {
-      line-height: 1;
-      line-height: 1.3;
-      text-align: center;
-    }
-
-
-
-
-
-
-
-
-    .page-heading {
-    position: relative;
-    overflow: hidden;
-    }
-
-    .page-heading img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .page-heading::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
-        pointer-events: none;
-    }
-  
-.homepage-image {
-  /*background-image: url(assets/images/rsc_all.jpg); */
-  background-position: center;
-}
-
-/* Easter Egg!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-.my-story {
-  text-align: center;
-  margin: 1.5rem 10rem 0 10rem;
-}
-
-.highlight {
-    cursor: text;
-}
-
-.description_of_scis {
-  text-align: left;
-  width: 50%;
-  margin: auto;
-
-}
-/* 모달 스타일 */
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-  width: 95%
-}
-
-/* 이미지 크기 제한 */
-#notice-image {
-  max-width: 100%; /* 모달 너비에 맞추어 이미지가 조정됩니다 */
-  max-height: 250px; /* 최대 높이 설정 */
-  object-fit: contain; /* 이미지 비율 유지 */
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* CSS */
-.button-6 {
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-  margin-top: 0.5rem;
-}
-
-.button-6:hover,
-.button-6:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.button-6:hover {
-  transform: translateY(-1px);
-}
-
-.button-6:active {
-  background-color: #F0F0F1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
-
-.welcome-message {
-  color: #dbdbdb; 
-  border: solid 1px white; 
-  background: rgb(30, 30, 30); 
-  padding: 0 1rem; 
-  border-radius: 2rem;
-}
-
-.welcome-message:hover {
-  border: solid 1px rgb(30, 30, 30); 
-  text-decoration: underline;
-}
-
-    </style>
   </head>
 <body>
 
@@ -554,14 +154,10 @@
             <input type="checkbox" id="dont-show-today"> Do not see this today
         </label>
         <button id="confirm-btn" class="button-6">Okay</button>
-
-
-
     </div>
 </div>
 
   <script src="../vendor/announce.js"></script>
-
       <!-- ***** Sub Navigation Start ***** -->
   <div class="sub-header">
     <div class="container">
@@ -580,7 +176,6 @@
   </div>
   <!-- ***** Sub Navigation End ***** -->
   
-
   <div class="page-heading header-text homepage-image" style="background-image: url(../assets/images/transition_background/AASC.png);">
     <div class="container">
       <div class="row">
@@ -604,23 +199,61 @@ SCIS Admission Information
   </div>
 
   <h1 id="Vision" style="text-align: center; font-weight: 600; padding-top: 3rem; text-shadow: 2px 4px 3px rgba(0,0,0,0.07);;">Empowering Christian<br>Transformation</h1>
-  <p style="text-align: center; padding-top: 1rem;">To be a strong Christian spiritually, physically, and academically in the faith of Jesus Christ.</p>
-  <div class="three" style="padding-bottom: 4rem;">
-    <div class="each-element">
-      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Spiritual Power</p>
-      <p style="text-align: center;">A spiritually powerful Christian who armed with the characters of Jesus Christ, breaks the world's values with the sword of the Word.</p>
+    <p style="text-align: center; padding-top: 1rem;">To be a strong Christian spiritually, physically, and academically in the faith of Jesus Christ.</p>
+    <div class="three" style="padding-bottom: 4rem;">
+      <div class="each-element">
+        <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Spiritual Power</p>
+        <p style="text-align: center;">A spiritually powerful Christian who armed with the characters of Jesus Christ, breaks the world's values with the sword of the Word.</p>
+      </div>
+      <div class="each-element">
+        <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Mental Health</p>
+        <p style="text-align: center;">A mentally healthy Christian by breaking through the values of the world with insights based on the Biblical worldview.</p>
+      </div> 
+      <div class="each-element">
+        <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Academic Excellence</p>
+        <p style="text-align: center;">An academically healthy Christian through the education based on the Christian worldview of the elementary, middle, and high school curriculum</p>
+      </div> 
     </div>
-    <div class="each-element">
-      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Mental Health</p>
-      <p style="text-align: center;">A mentally healthy Christian by breaking through the values of the world with insights based on the Biblical worldview.</p>
-    </div> 
-    <div class="each-element">
-      <p style="font-size:18px; padding-bottom: 0.5rem; font-weight:bold; text-align: center;" class="each-element-things">Academic Excellence</p>
-      <p style="text-align: center;">An academically healthy Christian through the education based on the Christian worldview of the elementary, middle, and high school curriculum</p>
-    </div> 
+
+    <div class="faq-container" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203);">
+      <h1 style="padding-bottom: 1rem;">Frequently Asked Questions</h1>
+      <div class="faq-item">
+          <div class="faq-question">How many students are currently enrolled in the school?</div>
+          <div class="faq-answer">Currently, we have <strong>23 students</strong> enrolled across all grade levels.</div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">How do students make decisions about their university and career paths?</div>
+          <div class="faq-answer">All students begin their career exploration through weekly career research activities starting in 7th grade. When they reach 10th grade, they prepare for their future by developing two distinct career paths: one for domestic opportunities and another for international opportunities.</div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">What do students learn at this school?</div>
+          <div class="faq-answer">Through our <strong>S.O.T.</strong> program based on Christian values, students study core subjects such as Mathematics, Science, English, and Social Studies, along with various electives including Music, Art, Computer Science, and Japanese. Through Bible study, worship, and discussions, we develop students' creativity and critical thinking skills. Most importantly, <strong style="text-decoration: underline; font-weight: normal;">students deeply learn about Jesus's character as the foundation of their lives.</strong></div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">What learning materials does the school use?</div>
+          <div class="faq-answer">We use <strong>School of Tomorrow</strong>'s <strong>PACEs</strong> (Packets of Accelerated Christian Education) to provide students with a systematic and effective learning environment. This program is designed to foster students' autonomy and responsibility.</div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">What are the career paths for graduates?</div>
+          <div class="faq-answer">Students who complete all 12 levels of the <strong>S.O.T.</strong> program receive an official <strong>Diploma</strong> from <strong>Lighthouse Christian Academy</strong>, enabling them to apply to English-speaking universities worldwide. Students wishing to attend Korean universities can prepare for admission through the GED (High School Equivalency Test) for either early or regular admission.</div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">Could you share specific details about graduates' career paths?</div>
+          <div class="faq-answer">
+            <h4 style="padding: 0.7rem 0 0.3rem 0;">Class of 2024</h4>
+            <strong>Dordt University</strong> - Business Administration<br>
+            <strong>Azusa Pacific University</strong> - Marketing and Management<br>
+            <strong>University of Wisconsin Superior</strong> - Communicating Arts<br>
+            <strong>Handong Global University</strong> - Global Leadership (Regular Admission)<br>
+            <strong>Dankook University</strong> - Life Science and Microbiology (Regular Admission)
+            
+            <hr>
+            
+            <h4 style="padding: 0.7rem 0 0.3rem 0;">Class of 2025</h4>
+            <strong>Kookje University</strong> - Sports Leadership (Early Admission)
+          </div>
+      </div>
   </div>
-
-
 
   <!-- School Description Start -->
   <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding: 2rem 0rem 4rem 0rem;">
@@ -632,15 +265,10 @@ SCIS Admission Information
           <img src="../assets/images/logo.png" class="school-logo">
           <p>SCIS stands for Suwon Christian International School, a Christian alternative school established by Suwon Full Gospel Church. SCIS offers education from 1st grade to 12th grade based on the School of Tomorrow curriculum, grounded in a biblical worldview. Inspired by Isaiah 40:8, "The grass withereth, the flower fadeth: but the word of our God shall stand for ever," the school was founded on February 1, 2018, with the mission of nurturing global leaders who are truly needed in today's world, rooted in the eternal word of God.</p>
         </div>
-
-
       </div>
     </div>
   </div>
   <!-- School Description End -->  
-
-
-
 
   <!-- School Direction Start -->
   <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding: 2rem 0rem 4rem 0rem;">
@@ -701,9 +329,6 @@ SCIS Admission Information
     </div>
   </div>
 
-
-
-
   <!-- Faculty & Staff Start -->
   <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding-top: 2rem;">
     <div class="container">
@@ -712,19 +337,16 @@ SCIS Admission Information
           <h1 style="padding-top: 2rem;" id="Faculty Staff">Faculty&Staff</h1>
           <span class="breadcrumb" style="padding-bottom: 0.7rem; padding-left: calc(var(--bs-gutter-x) * .5);"><a href="index.html">Home</a> > <a href="#Faculty Staff">Faculty&Staff</a></span>
 
-
-
           <div class="section-heading">
             <div class="teachers">
-
               <div class="teacher">
                 <img src="../assets/images/teachers/head_pastor.png" class="profile-image">
                 <p class="teacher-name">REV. YOHAN LEE</p>
                 <p class="teacher-desc">Principal</p>
               </div>
-
+          
               <div class="teacher">
-                <img src="../assets/images/teachers/김성한목사님컷.png" class="profile-image" style="background-color:  #eeeeee; object-position: 0rem -15px; filter: saturate(1.8);">
+                <img src="../assets/images/teachers/김성한목사님컷.png" class="profile-image" style="background-color: #eeeeee; object-position: 0rem -15px; filter: saturate(1.8);">
                 <p class="teacher-name">REV. SUNGHAN KIM</p>
                 <p class="teacher-desc">Vice-Principal (Administrator)<br>
                   Overall School Operatior<br>
@@ -737,82 +359,60 @@ SCIS Admission Information
                 <p class="teacher-name">MRS. YUNA CHANG</p>
                 <p class="teacher-desc">Vice Principal, Piano accompaniment & elementary, middle, and high school reading</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/오은영사모님컷.png" class="profile-image" style="background-color: #eeeeee;">
                 <p class="teacher-name">MRS. EUNICE OH</p>
                 <p class="teacher-desc">Homeroom teacher of Leaf Class, Supervisor for Grades 4-6, Japanese, Korean History & Choir teaching</p>
               </div>
-
-            </div>
-
-            <div style="margin-top: 1.5rem;"></div>
-
-            <div class="teachers">
-
-              <div class="teacher">
-                <img src="../assets/images/teachers/Kevin.jpg" class="profile-image">
-                <p class="teacher-name">MR. GALAM YOO</p>
-                <p class="teacher-desc">Homeroom teacher of Flower-bud Class, Supervisor for Grades 10-12, ESL class, Coding & Middle school math</p>
-              </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Jake.jpg" class="profile-image">
                 <p class="teacher-name">MR. JONGHYUN LEE</p>
-                <p class="teacher-desc">Homeroom teacher of Stem Class, Supervisor for Grades 7-9, Guitar class & Elementary school math</p>
+                <p class="teacher-desc">Homeroom teacher of Flowerbud Class, Supervisor for Grades 10-12, Guitar class & Elementary and Middle school math</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Janny.jpg" class="profile-image" style="object-position: 0 0px">
                 <p class="teacher-name">Mrs. Jenny Jang</p>
-                <p class="teacher-desc">Piano & Monitor <br> for elementary school</p>
+                <p class="teacher-desc">Homeroom teacher of Stem Class, Supervisor for Grades 7-9 & Piano</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/pe.jpg" class="profile-image" style="object-position: top;">
                 <p class="teacher-name">MRS. BOREUM PARK</p>
                 <p class="teacher-desc">P.E. & Volleyball coach</p>
               </div>
-              
-            </div>
-
-
-            <div style="margin-top: 1.5rem;"></div>
-
-            <div class="teachers">
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/face_too_much.png" class="profile-image">
                 <p class="teacher-name">MRS. MOONY CHOI</p>
                 <p class="teacher-desc">Arts for elementary and middle school</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/KakaoTalk_20240824_135313479.jpg" class="profile-image">
                 <p class="teacher-name">MRS. JIYEON KWON</p>
                 <p class="teacher-desc">Cello</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/Violin.png" class="profile-image">
                 <p class="teacher-name">MR. JAEYOUNG PARK</p>
                 <p class="teacher-desc">Violin</p>
               </div>
-
+          
               <div class="teacher">
                 <img src="../assets/images/teachers/주영광선생님.png" class="profile-image" style="background-color: white">
                 <p class="teacher-name">MR. YOUNGGWANG JOO</p>
-                <p class="teacher-desc">Football coach</p>
+                <p class="teacher-desc">Football Coach</p>
               </div>
-            </div>
-            <div class="teachers">
-
+          
               <div class="teacher">
-                <img src="../assets/images/teachers/gimo.png" class="profile-image" style="margin-top: 2rem;">
+                <img src="../assets/images/teachers/gimo.png" class="profile-image">
                 <p class="teacher-name">Mr. Geemo Kim</p>
-                <p class="teacher-desc">학생진로상담</p>
+                <p class="teacher-desc">Student Career Counseling</p>
               </div>
-              
             </div>
           </div>
 
@@ -821,9 +421,6 @@ SCIS Admission Information
   </div>
   <!-- Facaulty & Staff End -->
 
-
-
-  
   <div class="featured section" style="margin-top: 0; border-top: solid 1px rgb(203, 203, 203); padding-top: 2rem;">
     <div class="container">
       <div class="row" style="justify-content: center;">
@@ -1048,6 +645,7 @@ SCIS Admission Information
   <script src="../assets/js/counter.js"></script>
   <script src="../assets/js/custom.js"></script>
   <script src="../vendor/remove_F12.js"></script>
+  <script src="../assets/js/FAQ.js"></script>
 
   <script src="../vendor/systemPrompt.js"></script>
   <script src="../vendor/chat.js"></script>
