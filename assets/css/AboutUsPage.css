@@ -23,6 +23,12 @@
     float: left;
 }
 
+.each-element:hover {
+  width: 20%;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
 .top-padding {
     padding-top: 8rem;
 }
