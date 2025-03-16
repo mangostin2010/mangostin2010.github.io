@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/stylesheet.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
-    <link rel="stylesheet" href="../assets/css/animate.css"><link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <link rel="stylesheet" href="../assets/css/adminpage.css">
@@ -119,12 +119,6 @@
                 <p>https://www.swcis.kr/assets/images/logo.png 학교 로고 URL입니다.</p>
             </div>
             <button onclick="submitAnnouncement()">공지사항 업데이트</button>
-            
-            <div class="preview" id="preview" style="display: none;">
-                <h3>미리보기</h3>
-                <p id="previewMessage"></p>
-                <img id="previewImage" src="" alt="공지사항 이미지">
-            </div>
         </div>
 
         
@@ -180,7 +174,6 @@
                         eventList = data;
                         createCalendarTable();
                     });
-                console.log(eventList)
             
                 function createCalendarTable() {
                     const table = document.getElementById('calendarTable');
@@ -600,38 +593,63 @@
             e.preventDefault();
             const title = $('#title').val();
             const date = $('#date').val();
-            const file = $('#images')[0].files[0];
+            const files = $('#images')[0].files;
     
-            if (!file) {
-                alert('Please select an image to upload.');
+            if (files.length === 0) {
+                alert('Please select at least one image to upload.');
                 return;
             }
     
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const imageData = e.target.result;
-                $.ajax({
-                    url: 'https://mangostin2010-scisjustin.hf.space/upload',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    crossOrigin: true,
-                    data: JSON.stringify({
-                        title: title,
-                        date: date,
-                        image: imageData
-                    }),
-                    success: function(response) {
-                        alert('Image uploaded successfully!');
-                        $('#uploadForm')[0].reset();
-                        $('#thumbnail-container').empty();
-                        loadFolders(); // Refresh folder list after upload
-                    },
-                    error: function() {
-                        alert('Failed to upload image.');
-                    }
-                });
-            };
-            reader.readAsDataURL(file);
+            let uploadedCount = 0;
+            let errorCount = 0;
+            
+            // Process each file
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+                    $.ajax({
+                        url: 'https://mangostin2010-scisjustin.hf.space/upload',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            title: title,
+                            date: date,
+                            image: imageData
+                        }),
+                        success: function(response) {
+                            uploadedCount++;
+                            console.log(`Upload success response:`, response);
+                            if (uploadedCount + errorCount === files.length) {
+                                if (errorCount === 0) {
+                                    alert('All images uploaded successfully!');
+                                } else {
+                                    alert(`${uploadedCount} images uploaded successfully, ${errorCount} failed.`);
+                                }
+                                $('#uploadForm')[0].reset();
+                                $('#thumbnail-container').empty();
+                                loadFolders(); // Refresh folder list after upload
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            errorCount++;
+                            console.error('Upload error details:', {
+                                status: xhr.status,
+                                statusText: xhr.statusText,
+                                responseText: xhr.responseText,
+                                responseJSON: xhr.responseJSON
+                            });
+                            if (uploadedCount + errorCount === files.length) {
+                                alert(`${uploadedCount} images uploaded successfully, ${errorCount} failed.`);
+                                $('#uploadForm')[0].reset();
+                                $('#thumbnail-container').empty();
+                                loadFolders(); // Refresh folder list after upload
+                            }
+                        }
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
         });
     
         // Function to load folders
@@ -693,7 +711,7 @@
         if (!password) return;
 
         try {
-            const response = await fetch('https://mangostin2010-scisjustin.hf.space/check_password', {
+            const response = await fetch('https://scisjustin.pythonanywhere.com/check_password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -702,8 +720,9 @@
             });
 
             const result = await response.json();
-            if (result.token) {
-                localStorage.setItem('authToken', result.token);
+            if (result.status === "success") {
+                // Store success status instead of token
+                localStorage.setItem('adminAuthenticated', 'true');
                 document.getElementById("admin-content").style.display = "block";
             } else {
                 alert("비밀번호가 틀립니다.");
@@ -714,35 +733,17 @@
         }
     }
 
-    // Use the token for subsequent requests
-    async function fetchProtectedData() {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            alert("Unauthorized access");
-            return;
-        }
-
-        try {
-            const response = await fetch('https://mangostin2010-scisjustin.hf.space/protected-data', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            const data = await response.json();
-            // Process the protected data
-        } catch (error) {
-            console.error("Error fetching protected data:", error);
+    // Check if already authenticated
+    function checkAuthentication() {
+        if (localStorage.getItem('adminAuthenticated') === 'true') {
+            document.getElementById("admin-content").style.display = "block";
+        } else {
+            checkPassword();
         }
     }
 
     // Prompt for the password when the page loads
-    window.onload = checkPassword;
-
-    function resetValue() {
-        document.getElementById("myInput").value = "기본 값";
-    }
+    window.onload = checkAuthentication;
 </script>
 
 <!-- Add this before the closing </body> tag -->
