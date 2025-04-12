@@ -12,14 +12,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>포스트 상세</h1>
-    <div id="post">
+    <!-- 비밀번호 화면 -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-container">
+            <h2>블로그 접속</h2>
+            <p>블로그에 접속하려면 비밀번호를 입력하세요.</p>
+            <input type="password" id="blog-password" placeholder="비밀번호를 입력하세요">
+            <button id="password-submit">접속하기</button>
+        </div>
     </div>
-    <div id="delete-section">
-        <input type="password" id="delete-password" placeholder="비밀번호를 입력하세요">
-        <button id="delete-button">삭제</button>
+
+    <!-- 블로그 콘텐츠 -->
+    <div id="blog-content" style="display: none;">
+        <h1>포스트 상세</h1>
+        <div id="post">
+        </div>
+        <div id="delete-section">
+            <input type="password" id="delete-password" placeholder="비밀번호를 입력하세요">
+            <button id="delete-button">삭제</button>
+        </div>
+        <a href="index.html">홈으로 돌아가기</a>
     </div>
-    <a href="index.html">홈으로 돌아가기</a>
 
     <script src="script.js"></script>
 </body>

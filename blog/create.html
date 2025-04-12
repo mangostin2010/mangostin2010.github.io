@@ -7,20 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>새 포스트 작성</h1>
-    <form id="create-post-form">
-        <label for="title">제목:</label>
-        <input type="text" id="title" name="title" required>
-        <br>
-        <label for="content">내용:</label>
-        <textarea id="content" name="content" required></textarea>
-        <br>
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">작성</button>
-    </form>
-    <a href="index.html" class="create-link">홈으로 돌아가기</a>
+    <!-- 비밀번호 화면 -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-container">
+            <h2>블로그 접속</h2>
+            <p>블로그에 접속하려면 비밀번호를 입력하세요.</p>
+            <input type="password" id="blog-password" placeholder="비밀번호를 입력하세요">
+            <button id="password-submit">접속하기</button>
+        </div>
+    </div>
+
+    <!-- 블로그 콘텐츠 -->
+    <div id="blog-content" style="display: none;">
+        <h1>새 포스트 작성</h1>
+        <form id="create-post-form">
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+            <label for="content">내용:</label>
+            <textarea id="content" name="content" required></textarea>
+            <br>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">작성</button>
+        </form>
+        <a href="index.html" class="create-link">홈으로 돌아가기</a>
+    </div>
 
     <script src="script.js"></script>
     <script>

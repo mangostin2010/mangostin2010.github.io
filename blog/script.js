@@ -19,6 +19,40 @@ async function fetchPosts() {
     }
 }
 
+// 비밀번호 확인 함수
+function checkPassword() {
+    const password = document.getElementById('blog-password').value;
+    // 기존 비밀번호 사용
+    if (password) {
+        // 비밀번호가 맞으면 세션 스토리지에 인증 정보 저장
+        sessionStorage.setItem('blogAuthenticated', 'true');
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('blog-content').style.display = 'block';
+        
+        // 페이지 로드 시 실행할 함수 호출
+        initializePage();
+    } else {
+        alert('비밀번호를 입력해주세요.');
+    }
+}
+
+// 페이지 초기화 함수
+function initializePage() {
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
+        fetchPosts();  // 메인 페이지에서 포스트 불러오기
+        setupSortDropdown();  // 드롭다운 메뉴 설정
+    } else if (window.location.pathname.endsWith('post.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');  // URL에서 포스트 ID 가져오기
+        if (postId) {
+            fetchPost(postId);  // 포스트 상세 페이지에서 포스트 불러오기
+            setupDeleteButton(postId);  // 삭제 버튼 설정
+        }
+    } else if (window.location.pathname.endsWith('create.html')) {
+        setupCreateForm();  // 새 포스트 작성 페이지에서 폼 설정
+    }
+}
+
 // 포스트가 없을 때 메시지 표시
 function displayNoPostsMessage() {
     const postsContainer = document.getElementById('posts');
@@ -234,19 +268,136 @@ function displayPost(post) {
     `;
 }
 
+// 드롭다운 메뉴 이벤트 설정
+function setupSortDropdown() {
+    const sortDropdown = document.getElementById('sort');
+    if (sortDropdown) {
+        sortDropdown.addEventListener('change', async (e) => {
+            const sortOrder = e.target.value;
+            const response = await fetch('https://scisjustin.pythonanywhere.com/api/posts');
+            if (response.ok) {
+                const posts = await response.json();
+                displayPosts(posts, sortOrder);
+            }
+        });
+    }
+}
+
+// 새 포스트 작성 폼 제출 이벤트
+function setupCreateForm() {
+    const createForm = document.getElementById('create-post-form');
+    if (createForm) {
+        createForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // 폼 제출 기본 동작 방지
+
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const password = document.getElementById('password').value;
+
+            if (!title || !content || !password) {
+                alert('제목, 내용, 비밀번호를 모두 입력해주세요.');
+                return;
+            }
+
+            try {
+                const response = await fetch('https://scisjustin.pythonanywhere.com/api/posts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title, content, password }),
+                });
+
+                if (response.ok) {
+                    window.location.href = 'index.html'; // 작성 후 메인 페이지로 이동
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || '포스트 작성에 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(error.message || '포스트 작성 중 오류가 발생했습니다.');
+            }
+        });
+    }
+}
+
+// 삭제 버튼 설정
+function setupDeleteButton(postId) {
+    const deleteButton = document.getElementById('delete-button');
+    const deletePasswordInput = document.getElementById('delete-password');
+
+    if (deleteButton && deletePasswordInput) {
+        deleteButton.addEventListener('click', async () => {
+            const password = deletePasswordInput.value;
+
+            if (!password) {
+                alert('비밀번호를 입력해주세요.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://scisjustin.pythonanywhere.com/api/posts/${postId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ password }),
+                });
+
+                if (response.ok) {
+                    alert('포스트가 삭제되었습니다.');
+                    window.location.href = 'index.html'; // 삭제 후 메인 페이지로 이동
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || '포스트 삭제에 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(error.message || '포스트 삭제 중 오류가 발생했습니다.');
+            }
+        });
+    }
+}
+
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.endsWith('index.html')) {
-        fetchPosts();  // 메인 페이지에서 포스트 불러오기
-        setupSortDropdown();  // 드롭다운 메뉴 설정
-    } else if (window.location.pathname.endsWith('post.html')) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');  // URL에서 포스트 ID 가져오기
-        if (postId) {
-            fetchPost(postId);  // 포스트 상세 페이지에서 포스트 불러오기
-            setupDeleteButton(postId);  // 삭제 버튼 설정
+    // 비밀번호 화면과 블로그 콘텐츠 요소 확인
+    const passwordScreen = document.getElementById('password-screen');
+    const blogContent = document.getElementById('blog-content');
+    
+    // 인증 상태 확인
+    const isAuthenticated = sessionStorage.getItem('blogAuthenticated') === 'true';
+    
+    if (passwordScreen && blogContent) {
+        if (isAuthenticated) {
+            // 이미 인증된 경우 블로그 콘텐츠 표시
+            passwordScreen.style.display = 'none';
+            blogContent.style.display = 'block';
+            initializePage();
+        } else {
+            // 인증되지 않은 경우 비밀번호 화면 표시
+            passwordScreen.style.display = 'flex';
+            blogContent.style.display = 'none';
+            
+            // 비밀번호 입력 후 엔터 키 이벤트 처리
+            const passwordInput = document.getElementById('blog-password');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+            
+            // 비밀번호 확인 버튼 이벤트 처리
+            const submitButton = document.getElementById('password-submit');
+            if (submitButton) {
+                submitButton.addEventListener('click', checkPassword);
+            }
         }
-    } else if (window.location.pathname.endsWith('create.html')) {
-        setupCreateForm();  // 새 포스트 작성 페이지에서 폼 설정
+    } else {
+        // 비밀번호 화면이나 블로그 콘텐츠 요소가 없는 경우 바로 초기화
+        initializePage();
     }
 });
