@@ -19,22 +19,43 @@ async function fetchPosts() {
     }
 }
 
-// 비밀번호 확인 함수
-function checkPassword() {
-    const password = document.getElementById('blog-password').value;
-    // 기존 비밀번호 사용
-    if (password) {
-        // 비밀번호가 맞으면 세션 스토리지에 인증 정보 저장
-        sessionStorage.setItem('blogAuthenticated', 'true');
-        document.getElementById('password-screen').style.display = 'none';
-        document.getElementById('blog-content').style.display = 'block';
-        
-        // 페이지 로드 시 실행할 함수 호출
-        initializePage();
-    } else {
+// 비밀번호 확인 함수 (API와 연동)
+async function checkPassword() {
+    const passwordInput = document.getElementById('blog-password');
+    const password = passwordInput.value;
+
+    if (!password) {
         alert('비밀번호를 입력해주세요.');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://scisjustin.pythonanywhere.com/api/check_password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ password })
+        });
+
+        if (response.status === 201) {
+            sessionStorage.setItem('blogAuthenticated', 'true');
+            document.getElementById('password-screen').style.display = 'none';
+            document.getElementById('blog-content').style.display = 'block';
+            initializePage();
+        } else if (response.status === 401) {
+            alert('비밀번호가 일치하지 않습니다.');
+            passwordInput.value = '';
+            passwordInput.focus();
+        } else {
+            alert('서버 오류가 발생했습니다.');
+        }
+    } catch (error) {
+        alert('서버와 연결할 수 없습니다.');
+        console.error(error);
     }
 }
+
 
 // 페이지 초기화 함수
 function initializePage() {
