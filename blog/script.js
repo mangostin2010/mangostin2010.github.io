@@ -20,9 +20,11 @@ async function fetchPosts() {
 }
 
 // 비밀번호 확인 함수 (API와 연동)
+// 비밀번호 확인 함수 (API와 연동)
 async function checkPassword() {
     const passwordInput = document.getElementById('blog-password');
-    const password = passwordInput.value;
+    const password = passwordInput.value.trim(); // 공백 제거
+    console.log('입력된 비밀번호:', password);
 
     if (!password) {
         alert('비밀번호를 입력해주세요.');
@@ -37,8 +39,12 @@ async function checkPassword() {
             },
             body: JSON.stringify({ password })
         });
-
-        if (response.status === 201) {
+        console.log('서버 응답 상태:', response.status);
+        
+        const responseData = await response.json(); // 응답 데이터 파싱
+        console.log('서버 응답 데이터:', responseData);
+        
+        if (response.status === 200) {
             sessionStorage.setItem('blogAuthenticated', 'true');
             document.getElementById('password-screen').style.display = 'none';
             document.getElementById('blog-content').style.display = 'block';
@@ -48,11 +54,11 @@ async function checkPassword() {
             passwordInput.value = '';
             passwordInput.focus();
         } else {
-            alert('서버 오류가 발생했습니다.');
+            alert(responseData.message || '서버 오류가 발생했습니다.');
         }
     } catch (error) {
         alert('서버와 연결할 수 없습니다.');
-        console.error(error);
+        console.error('Error:', error);
     }
 }
 
