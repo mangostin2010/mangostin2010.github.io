@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.DEBUG)
 USERNAME = "mangostin2010"
 REPO = "mangostin2010.github.io"
 BASE_PATH = "assets/images/community"
-TOKEN = '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'
+TOKEN = 'secret'
 EVENT_LIST_PATH = 'assets/eventList.json'
 HEADERS = {
     "Authorization": f"token {TOKEN}",
