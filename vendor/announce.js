@@ -27,7 +27,7 @@ window.onload = function () {
         console.log('데이터 받음:', data);
         
         // 공지 데이터가 없는 경우 모달을 표시하지 않음
-        if (!data.message && (!data.image || (Array.isArray(data.image) && data.image.length === 0))) {
+        if (!data.message && (!data.images || (Array.isArray(data.images) && data.images.length === 0))) {
             console.log('공지 데이터 없음, 모달 표시 중지');
             return;
         }
@@ -71,8 +71,8 @@ window.onload = function () {
         // 이미지 처리
         noticeImageContainer.innerHTML = ''; // 기존 이미지 제거
         
-        // 이미지 데이터를 배열로 변환
-        const images = Array.isArray(data.image) ? data.image : (data.image ? [data.image] : []);
+        // 이미지 데이터를 배열로 변환 - 'images' 필드 사용
+        const images = Array.isArray(data.images) ? data.images : (data.images ? [data.images] : []);
         
         // 이미지가 없는 경우 컨테이너 숨기기
         if (images.length === 0 || (images.length === 1 && !images[0])) {
