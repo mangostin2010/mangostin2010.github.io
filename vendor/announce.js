@@ -27,18 +27,38 @@ window.onload = function () {
         console.log('데이터 받음:', data);
         
         // 공지 데이터가 없는 경우 모달을 표시하지 않음
-        if (!data.message && !data.image) {
+        if (!data.message && (!data.image || (Array.isArray(data.image) && data.image.length === 0))) {
             console.log('공지 데이터 없음, 모달 표시 중지');
             return;
         }
 
         // 이미지와 메시지를 설정
-        const noticeImage = document.getElementById('notice-image');
+        const noticeImageContainer = document.getElementById('notice-image-container') || document.createElement('div');
         const noticeMessage = document.getElementById('notice-message');
         
-        if (!noticeImage || !noticeMessage) {
+        // 이미지 컨테이너가 없으면 생성하고 추가
+        if (!document.getElementById('notice-image-container')) {
+            noticeImageContainer.id = 'notice-image-container';
+            noticeImageContainer.style.width = '100%';
+            noticeImageContainer.style.display = 'flex';
+            noticeImageContainer.style.flexDirection = 'column';
+            noticeImageContainer.style.alignItems = 'center';
+            noticeImageContainer.style.gap = '10px';
+            
+            // 기존 이미지 요소 찾기
+            const existingImage = document.getElementById('notice-image');
+            if (existingImage) {
+                // 기존 이미지 요소를 컨테이너로 대체
+                existingImage.parentNode.replaceChild(noticeImageContainer, existingImage);
+            } else {
+                // 메시지 요소 앞에 이미지 컨테이너 삽입
+                noticeMessage.parentNode.insertBefore(noticeImageContainer, noticeMessage);
+            }
+        }
+        
+        if (!noticeMessage) {
             console.error('모달 요소를 찾을 수 없음:', {
-                noticeImage: !!noticeImage,
+                noticeImageContainer: !!noticeImageContainer,
                 noticeMessage: !!noticeMessage
             });
             return;
@@ -48,10 +68,16 @@ window.onload = function () {
         noticeMessage.innerHTML = data.message;
         console.log('메시지 설정됨:', data.message);
 
-        // 이미지가 없거나 공백인 경우 이미지 숨기고 바로 모달 표시
-        if (!data.image || data.image === '') {
-            console.log('이미지 없음, 이미지 숨김 처리');
-            noticeImage.style.display = 'none';
+        // 이미지 처리
+        noticeImageContainer.innerHTML = ''; // 기존 이미지 제거
+        
+        // 이미지 데이터를 배열로 변환
+        const images = Array.isArray(data.image) ? data.image : (data.image ? [data.image] : []);
+        
+        // 이미지가 없는 경우 컨테이너 숨기기
+        if (images.length === 0 || (images.length === 1 && !images[0])) {
+            console.log('이미지 없음, 이미지 컨테이너 숨김 처리');
+            noticeImageContainer.style.display = 'none';
             
             // 이미지 없이 텍스트만 표시
             const modal = document.getElementById('notice-modal');
@@ -64,38 +90,61 @@ window.onload = function () {
             return;
         }
         
-        // 이미지가 있는 경우 표시
-        noticeImage.style.display = 'block';
+        // 이미지 컨테이너 표시
+        noticeImageContainer.style.display = 'flex';
         
-        // 이미지 로드 완료 후 모달 표시
-        noticeImage.onload = () => {
-            console.log('이미지 로드 완료, 모달 표시');
-            const modal = document.getElementById('notice-modal');
-            if (modal) {
-                modal.style.display = 'flex';
-                // 스크롤 비활성화
-                document.body.style.overflow = 'hidden';
-            } else {
-                console.error('notice-modal 요소를 찾을 수 없음');
-            }
-        };
+        // 이미지 로드 카운터
+        let loadedImages = 0;
+        const totalImages = images.length;
+        
+        // 각 이미지 처리
+        images.forEach((imageUrl, index) => {
+            if (!imageUrl) return;
             
-            noticeImage.onerror = () => {
-                console.error('이미지 로드 실패:', data.image);
-                // 이미지 로드 실패해도 모달은 표시
-                const modal = document.getElementById('notice-modal');
-                if (modal) {
-                    modal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
+            const imgElement = document.createElement('img');
+            imgElement.style.maxWidth = '100%';
+            imgElement.style.borderRadius = '2rem';
+            imgElement.alt = `공지 이미지 ${index + 1}`;
+            
+            // 이미지 로드 완료 이벤트
+            imgElement.onload = () => {
+                loadedImages++;
+                console.log(`이미지 ${index + 1} 로드 완료 (${loadedImages}/${totalImages})`);
+                
+                // 모든 이미지가 로드되면 모달 표시
+                if (loadedImages === totalImages) {
+                    const modal = document.getElementById('notice-modal');
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
                 }
             };
             
-            console.log('이미지 로드 시작:', data.image);
-            noticeImage.src = data.image;
-        })
-        .catch(error => {
-            console.error('공지 내용을 불러오는 중 오류 발생:', error);
+            // 이미지 로드 실패 이벤트
+            imgElement.onerror = () => {
+                console.error(`이미지 ${index + 1} 로드 실패:`, imageUrl);
+                loadedImages++;
+                
+                // 이미지 로드 실패해도 카운트하고 모달 표시 여부 확인
+                if (loadedImages === totalImages) {
+                    const modal = document.getElementById('notice-modal');
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            };
+            
+            // 이미지 로드 시작
+            console.log(`이미지 ${index + 1} 로드 시작:`, imageUrl);
+            imgElement.src = imageUrl;
+            noticeImageContainer.appendChild(imgElement);
         });
+    })
+    .catch(error => {
+        console.error('공지 내용을 불러오는 중 오류 발생:', error);
+    });
 };
 
 // '오늘 하루 보지 않기' 체크박스와 확인 버튼 기능 구현

@@ -167,22 +167,22 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
+  <!-- 모달 내용 부분만 수정 -->
   <div id="notice-modal" class="modal" style="display: none;">
-    <!-- 모달 내용 -->
-    <div class="modal-content">
-        <span id="close-btn" class="close">&times;</span>
-        <h3>공지 | Announcement</h3>
-        <hr>
-        <img id="notice-image" src="" alt="공지 이미지" style="border-radius: 2rem;">
-        <!-- p 태그를 div로 변경하고 innerHTML을 사용할 수 있도록 함 -->
-        <div id="notice-message" style="font-size:17px; padding: 1rem 0 1rem 0"></div>
-
-        <label>
-            <input type="checkbox" id="dont-show-today"> 오늘 하루 보지 않기
-        </label>
-        <button id="confirm-btn" class="button-6">확인</button>
-
-    </div>
+      <!-- 모달 내용 -->
+      <div class="modal-content">
+          <span id="close-btn" class="close">&times;</span>
+          <h3>공지 | Announcement</h3>
+          <hr>
+          <div id="notice-image-container" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px;"></div>
+          <!-- p 태그를 div로 변경하고 innerHTML을 사용할 수 있도록 함 -->
+          <div id="notice-message" style="font-size:17px; padding: 1rem 0 1rem 0"></div>
+  
+          <label>
+              <input type="checkbox" id="dont-show-today"> 오늘 하루 보지 않기
+          </label>
+          <button id="confirm-btn" class="button-6">확인</button>
+      </div>
   </div>
 
   <script src="../vendor/announce.js" defer></script>
