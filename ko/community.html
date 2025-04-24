@@ -383,7 +383,39 @@ p {
   word-break: keep-all;
 }
 
+.calendar-and-schedule {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+.calendar-and-schedule img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+    .calendar-and-schedule a {
+        max-width: 45%
+    }
+}
+
+@media (max-width: 991px) {
+    .calendar-and-schedule {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .calendar-and-schedule img {
+        max-width: 90%;
+    }
+}
 
 
 </style>
@@ -462,7 +494,7 @@ p {
         <!-- Tab links -->
         <div class="tab">
             <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Gallery');">갤러리</button>
-            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">캘린더</button>
+            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">스케줄/일정</button>
         </div>
 
         <!-- Tab content -->
@@ -474,9 +506,14 @@ p {
         </div>
 
         <div id="Calendar_tab" class="tabcontent">
-            <h4 style="padding: 1rem 0; border-bottom: solid 1px #ababab;">캘린더</h4>
-            <p>2024년도의 SCIS 캘린더 입니다.</p>
+            <h4 style="padding: 1rem 0; border-bottom: solid 1px #ababab;">스케줄/일정</h4>
+            <p>2025년도의 SCIS 스케줄/일정 입니다.</p>
             <h1 class="calendar-title"></h1>
+            <div class="calendar-and-schedule">
+                <a class="../assets/schedule_images/calendar_2024.jpg"><img src="../assets/schedule_images/calendar_2024.jpg" alt="SCIS 2024 Calendar"></a>
+                <a href="../assets/schedule_images/schedule_2024.jpg"><img src="../assets/schedule_images/schedule_2024.jpg" alt="SCIS 2024 Schedule"></a>
+            </div>
+            <!-- 사진으로 대체됨
             <div class="calendar-container">
                 <div class="calendar-controls">
                     <button id="prev-month">Previous</button>
@@ -485,6 +522,7 @@ p {
                 </div>
                 <div id="calendar"></div>
             </div>
+             -->
         </div>
     </div>
 
