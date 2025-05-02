@@ -189,6 +189,42 @@
           <button id="confirm-btn" class="button-6">확인</button>
       </div>
   </div>
+  <!-- 이미지 확대 라이트박스 -->
+  <!-- 주요 변경점: 이미지 라이트박스 추가 및 JS 이벤트 처리 -->
+  <div id="img-lightbox" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+    <span id="lightbox-close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;font-weight:bold;">&times;</span>
+    <img id="lightbox-img" style="object-fit:contain;max-width:90vw;max-height:90vh;display:block;" alt="확대 이미지" />
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const noticeImgContainer = document.getElementById('notice-image-container');
+      const lightbox = document.getElementById('img-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      if(noticeImgContainer) {
+        noticeImgContainer.addEventListener('click', function(e) {
+          if(e.target && e.target.tagName === 'IMG') {
+            lightboxImg.src = e.target.src;
+            lightbox.style.display = 'flex';
+          }
+        });
+      }
+      if(lightboxClose) {
+        lightboxClose.onclick = function() {
+          lightbox.style.display = 'none';
+          lightboxImg.src = '';
+        };
+      }
+      if(lightbox) {
+        lightbox.addEventListener('click', function(e) {
+          if(e.target === lightbox) {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+          }
+        });
+      }
+    });
+  </script>
 
   <script src="../vendor/announce.js" defer></script>
 
