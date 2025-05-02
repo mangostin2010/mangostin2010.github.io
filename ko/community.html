@@ -494,7 +494,9 @@ p {
         <!-- Tab links -->
         <div class="tab">
             <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Gallery');">갤러리</button>
-            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">스케줄/일정</button>
+            <button class="tablinks" onclick="openCity(event, 'Calendar_tab')">학사일정</button>
+            <button class="tablinks" onclick="openCity(event, 'Schedule_tab')">학업일정</button>
+            <button class="tablinks" onclick="openCity(event, 'Lunch_tab')">급식표</button>
         </div>
 
         <!-- Tab content -->
@@ -506,12 +508,11 @@ p {
         </div>
 
         <div id="Calendar_tab" class="tabcontent">
-            <h4 style="padding: 1rem 0; border-bottom: solid 1px #ababab;">스케줄/일정</h4>
-            <p>2025년도의 SCIS 스케줄/일정 입니다.</p>
+            <h4 style="padding: 1rem 0; border-bottom: solid 1px #ababab;">학사일정</h4>
+            <p style="padding-bottom: 2rem;">2025년도의 SCIS 학사일정(캘린더) 입니다.<br>이미지를 클릭하여 전체화면으로 확인하세요.</p>
             <h1 class="calendar-title"></h1>
             <div class="calendar-and-schedule">
-                <a class="../assets/schedule_images/calendar_2024.jpg"><img src="../assets/schedule_images/calendar_2024.jpg" alt="SCIS 2024 Calendar"></a>
-                <a href="../assets/schedule_images/schedule_2024.jpg"><img src="../assets/schedule_images/schedule_2024.jpg" alt="SCIS 2024 Schedule"></a>
+                <img src="../assets/schedule_images/calendar_2024.jpg" alt="SCIS 2024 Calendar" class="enlargeable-img">
             </div>
             <!-- 사진으로 대체됨
             <div class="calendar-container">
@@ -523,6 +524,14 @@ p {
                 <div id="calendar"></div>
             </div>
              -->
+        </div>
+
+        <div id="Schedule_tab" class="tabcontent">
+            <h4 style="padding: 1rem 0; border-bottom: solid 1px #ababab;">학업일정</h4>
+            <p style="padding-bottom: 2rem;">2025년도의 SCIS 학업일정 입니다.<br>이미지를 클릭하여 전체화면으로 확인하세요.</p>
+            <div class="calendar-and-schedule">
+                <img src="../assets/schedule_images/schedule_2024.jpg" alt="SCIS 2024 Schedule" class="enlargeable-img">
+            </div>
         </div>
     </div>
 
@@ -652,6 +661,7 @@ p {
                         const imgElement = document.createElement('img');
                         imgElement.src = `/assets/images/community/${encodedFolder}/${image}`;
                         imgElement.loading = 'lazy';
+                        imgElement.classList.add('enlargeable-img'); // Add this line
                         imagesContainer.appendChild(imgElement);
                     });
 
@@ -693,5 +703,41 @@ p {
 
     <script src="../vendor/systemPrompt.js"></script>
     <script src="../vendor/chat.js"></script>
-</body>
-</html>
+
+    <!-- 이미지 확대 라이트박스 추가 -->
+    <div id="img-lightbox" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+      <span id="lightbox-close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;font-weight:bold;">&times;</span>
+      <img id="lightbox-img" style="object-fit:contain;max-width:90vw;max-height:90vh;display:block;" alt="확대 이미지" />
+    </div>
+    
+    <!-- Lightbox Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const lightbox = document.getElementById('img-lightbox');
+          const lightboxImg = document.getElementById('lightbox-img');
+          const lightboxClose = document.getElementById('lightbox-close');
+          // Delegate click event for dynamically loaded images
+          document.body.addEventListener('click', function(e) {
+            if(e.target && e.target.classList.contains('enlargeable-img')) {
+              lightboxImg.src = e.target.src;
+              lightbox.style.display = 'flex';
+            }
+          });
+          if(lightboxClose) {
+            lightboxClose.onclick = function() {
+              lightbox.style.display = 'none';
+              lightboxImg.src = '';
+            };
+          }
+          if(lightbox) {
+            lightbox.addEventListener('click', function(e) {
+              if(e.target === lightbox) {
+                lightbox.style.display = 'none';
+                lightboxImg.src = '';
+              }
+            });
+          }
+        });
+      </script>
+  </body>
+  </html>

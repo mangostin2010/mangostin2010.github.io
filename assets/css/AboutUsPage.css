@@ -292,7 +292,7 @@ margin: auto;
 }
 /* 모달 스타일 */
 .modal {
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -312,6 +312,12 @@ margin: auto;
   position: relative;
   width: 95%;
   margin-top: 40em;
+}
+
+@media (max-width: 576px) {
+  .modal-content {
+    width: 90%;
+  }
 }
 
 /* 이미지 크기 제한 */
@@ -466,4 +472,14 @@ text-decoration: underline;
 }
 .faq-item.active .faq-question::after {
     transform: rotate(180deg);
+}
+
+#img-lightbox img {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 20px #000;
+  border-radius: 10px;
 }
