@@ -1387,7 +1387,7 @@ Page Header Style
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 110px 0px;
+  /*padding: 110px 0px;*/
   text-align: center;
 }
 

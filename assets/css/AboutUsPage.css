@@ -93,6 +93,7 @@
     /*background-image: url(assets/images/rsc_all.jpg); */
     background-position: center;
     padding: 170px 0;
+    padding: 10rem 0;
   }
 
   /* Responsive adjustments */
@@ -482,4 +483,13 @@ text-decoration: underline;
   max-height: 90vh;
   box-shadow: 0 0 20px #000;
   border-radius: 10px;
+}
+
+.homepage-image {
+  width: 100%;
+  background-size: cover; /* 배경 이미지 크기를 요소에 맞게 조정 */
+  background-position: center; /* 배경 이미지 중앙 정렬 */
+  background-repeat: no-repeat; /* 배경 이미지 반복 금지 */
+  transition: background-image 1s ease-in-out; /* 배경 이미지 변경 효과 */
+  position: relative; /* 다른 요소와 겹치지 않도록 설정 */
 }
